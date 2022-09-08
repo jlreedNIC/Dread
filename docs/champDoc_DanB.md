@@ -1,5 +1,5 @@
 # 1.) INTRODUCTION
-#### My feature for Dread video game is a level tile randomizer.
+#### My feature for Dread video game is a level room tile randomizer.
 
 #### When the character sprite exits the a room in the level, an RNG seed will be used to populate the next connected room. There will be six variations of rooms for the player to encounter. Each room type will have a defined amount of exits(between one to four). Apart from the directional rooms which act as hubs, there will be a checkpoint room and a boss arena.
 
