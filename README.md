@@ -1,3 +1,6 @@
+#513 Studios 
+![513 Studios Logo](CompanyLogo/Company_Logo.png)
+
 # Dread
 A 2D sci-fi shooter. This is the readme file for the entire game.
 
