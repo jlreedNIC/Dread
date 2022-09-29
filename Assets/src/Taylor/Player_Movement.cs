@@ -1,3 +1,12 @@
+/// <summary>
+/// Taylor Martin
+/// 513 Studios
+/// Project D.R.E.A.D.
+/// University of Idaho
+/// Created: September 27 2022
+/// FILE: Player_Movement.cs
+/// player movement class
+/// </summary>
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,13 +44,15 @@ public class Player_Movement : MonoBehaviour
     }
 
     // Update is called once per frame
+    //great for processing inputs
     private void Update()
     {
         //processing player user inputs
         ProcessInputs(); 
     }
 
-    //fixed update is called every fixed framerate. better for physics calculations. 
+    //fixed update is called every fixed framerate. 
+    //better for physics calculations. 
     private void FixedUpdate()
     {
         //get input and move player

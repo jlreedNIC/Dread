@@ -1,3 +1,12 @@
+/// <summary>
+/// Taylor Martin
+/// 513 Studios
+/// Project D.R.E.A.D.
+/// University of Idaho
+/// Created: September 27 2022
+/// FILE: StartMenu.cs
+/// Start Menu Class
+/// </summary>
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
