@@ -22,6 +22,8 @@ public class Player_Movement : MonoBehaviour
     [SerializeField] private LayerMask _groundLayer;  
     [SerializeField] private bool _isTouchingGround;  
     private Vector2 _moveDirection; 
+    public Camera camera; 
+    private Vector2 _mousePosition; 
 
     // for animation
     //public Animator animator;
@@ -98,6 +100,9 @@ public class Player_Movement : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal"); 
         float moveY = Input.GetAxisRaw("Vertical");
         _moveDirection = new Vector2(moveX, moveY).normalized;
+
+        _mousePosition = camera.ScreenToWorldPoint(Input.mousePosition);
+
     }
 
     //player movement function 
@@ -105,6 +110,13 @@ public class Player_Movement : MonoBehaviour
     {
         //move the player
         _playerRB.velocity = new Vector2(_moveDirection.x * _playerMovementSpeed, _moveDirection.y * _playerMovementSpeed); 
+
+        //mouse look
+        Vector2 lookDirection = _mousePosition - _playerRB.position; 
+
+        float lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
+
+        _playerRB.rotation = lookAngle; 
 
         // animation
         //animator.SetFloat("speed", Mathf.Abs(_playerRB.velocity.x));
