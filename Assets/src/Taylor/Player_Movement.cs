@@ -21,6 +21,8 @@ public class Player_Movement : MonoBehaviour
     public Camera camera; 
     private Vector2 _mousePosition; 
 
+    [SerializeField] private Collider2D _playerCollider;  
+
     // for animation
     //public Animator animator;
 
@@ -33,6 +35,8 @@ public class Player_Movement : MonoBehaviour
     {
         //grab the RigidBody2D component for movement
         _playerRB = GetComponent<Rigidbody2D>(); 
+        _playerCollider = GetComponent<Collider2D>(); 
+
 
         //null game object check
         if(_playerRB == null)
@@ -69,7 +73,6 @@ public class Player_Movement : MonoBehaviour
         _moveDirection = new Vector2(moveX, moveY).normalized;
 
         _mousePosition = camera.ScreenToWorldPoint(Input.mousePosition);
-
     }
 
     //player movement function 
@@ -87,5 +90,11 @@ public class Player_Movement : MonoBehaviour
 
         // animation
         //animator.SetFloat("speed", Mathf.Abs(_playerRB.velocity.x));
+    }
+
+    public void OnCollisionEnter2D(Collision2D col)
+    {
+        Debug.Log("OnCollisionEnter2D");
+        Debug.Log("collide (name) : " + col.collider.gameObject.name);
     }
 }

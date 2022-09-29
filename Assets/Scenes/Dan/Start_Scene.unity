@@ -2218,6 +2218,10 @@ PrefabInstance:
       propertyPath: camera
       value: 
       objectReference: {fileID: 793286679}
+    - target: {fileID: 8794072403301634479, guid: af190c5737564b24890069065f455657, type: 3}
+      propertyPath: _playerCollider
+      value: 
+      objectReference: {fileID: 999118240}
     - target: {fileID: 8794072403301634480, guid: af190c5737564b24890069065f455657, type: 3}
       propertyPath: m_SortingLayer
       value: 0
