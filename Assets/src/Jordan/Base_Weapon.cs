@@ -37,8 +37,8 @@ public class Base_Weapon : MonoBehaviour
     {
         GameObject bullet = Instantiate(bullet_type, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        // rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse); // to use after mouse input added
+        rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse); // to use after mouse input added
 
-        rb.AddForce(new Vector2(0.0f, bulletForce), ForceMode2D.Impulse);
+        // rb.AddForce(new Vector2(0.0f, bulletForce), ForceMode2D.Impulse);
     }
 }
