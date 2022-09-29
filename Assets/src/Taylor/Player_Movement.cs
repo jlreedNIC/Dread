@@ -16,11 +16,7 @@ public class Player_Movement : MonoBehaviour
     //these will be our base player movement speed and jump height. 
     //serialized field lets us have private variables vieded and edited in Unity editor 
     [SerializeField] private float _playerMovementSpeed = 5.0f; 
-    [SerializeField] private float _playerJumpHeight = 5.0f; 
-    [SerializeField] private Transform _groundChecker; 
-    [SerializeField] private float _groundCheckerRadius; 
-    [SerializeField] private LayerMask _groundLayer;  
-    [SerializeField] private bool _isTouchingGround;  
+    [SerializeField] private float _playerJumpHeight = 5.0f;  
     private Vector2 _moveDirection; 
     public Camera camera; 
     private Vector2 _mousePosition; 
@@ -59,37 +55,8 @@ public class Player_Movement : MonoBehaviour
     {
         //get input and move player
         MovePlayer(); 
-
-    
-        // if(Input.GetButtonDown("Jump") && IsGrounded())
-        // {
-        //     // set jump animation to start
-        //     animator.SetBool("isJumping", true);
-        //     Jump();
-        // }
-        
-        // // set jump animation to stop
-        // if(_playerRB.velocity.y == 0 && IsGrounded())
-        // {
-        //     animator.SetBool("isJumping", false);
-        // }
     }
 
-    //using unity's expression method, we can make a clean one line function.
-    // private void Jump() => _playerRB.velocity = new Vector2(0 , _playerJumpHeight); 
-
-    //However to follow coding standards, we use brackets even for one liners
-    //function to make player jump
-    private void Jump()
-    {
-        _playerRB.velocity = new Vector2(_playerRB.velocity.x, _playerJumpHeight); 
-    }
-
-    //function to check if the player is on level terrain
-    private bool IsGrounded()
-    {
-        return _isTouchingGround = Physics2D.OverlapCircle(_groundChecker.position,_groundCheckerRadius, _groundLayer); 
-    }
 
     private void ProcessInputs()
     {
