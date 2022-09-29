@@ -33,6 +33,9 @@ public class weapon : MonoBehaviour
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         // rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse); // to use after mouse input added
 
-        rb.AddForce(new Vector2(0.0f, bulletForce), ForceMode2D.Impulse);
+        // rb.AddForce(new Vector2(0.0f, bulletForce), ForceMode2D.Impulse);
+
+        rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+
     }
 }
