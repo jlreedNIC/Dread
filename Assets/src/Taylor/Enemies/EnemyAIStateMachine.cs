@@ -19,8 +19,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//needed for navMesh and unity AI
+using UnityEngine.AI;  
+//needed for A* pathfinding package
+using Pathfinding;
 
-public abstract class EnemyAIStateMachine : MonoBehaviour
+public class EnemyAIStateMachine : MonoBehaviour
 {
 
     //enumeration to hold our enemy AI states
@@ -33,18 +37,32 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
     }
 
     protected EnemyAIStates _currentState;
+    
     //references Enemy Stats SO. Holds _enemyStats. 
     [SerializeField] protected EnemyStatsConfigSO _enemyStats; 
+    
     //The origin point of our enemy spawn
     public Vector3  OriginPoint; 
+    
     //the next random waypoint generated that the enemy will move too. 
     public Vector3 nextRandomWaypoint;    
+    
     //the target we want the enemy AI focus on. 
     public Transform target; 
+    
     //square of the maxspeed
     [SerializeField] protected float _maxSpeedSqr; 
+    
     //rigid body component for movement. 
     protected Rigidbody _selfRB; 
+
+    //Reference to A* pathfinding package AIDestinationSetter script. 
+    //used for turning script componenet on and off
+    public AIDestinationSetter aiDestinationSetter; 
+
+    //Reference to EnemyPatrolAI script. 
+    //used for randompoint patrolling 
+    public EnemyPatrolAI enemyPatrolAI; 
 
     // [SerializeField] AudioSource _audioSource;
     // [SerializeField] AudioClipSO _audioClipSO;
@@ -62,8 +80,7 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
         OriginPoint = transform.position; 
         
         //sets the current state to the base state of patrolling 
-        //sets the Enemy Navigator AI to the base state of patrolling
-        // SetAIState(EnemyAIStates.Patrol, EnemyNavigatorAI.navMeshStates.Patrol);
+        SetAIState(EnemyAIStates.Patrol);
         
 
         //starts the check distance co routine to make sure the point 
@@ -72,9 +89,11 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void FixedUpdate()
     {
-        
+        //calls AIStateMachine function to handle 
+        //and transition between states. 
+        AIStateMachine();
     }
 
     //AI State Machine Function 
@@ -94,9 +113,11 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
             // Patrol random points within enemy patrolRadius
             case EnemyAIStates.Patrol:
                                     {
-                                        //print patrolling string to console
-                                        //for debugging 
-                                        // Debug.Log("Light Enemy Patrolling"); 
+
+                                        //enables EnemyPatrolAI script. For random point patrolling. 
+                                        //disables aiDestinationSetter script. There is no destination set.
+                                        //patrols random points
+                                        ChangeObjectComponents(true, false); 
 
                                         //call state machine patrol function. 
                                         Patrol(); 
@@ -122,9 +143,10 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
             case EnemyAIStates.Chase:
                                     {
 
-                                        //print chasing string to console
-                                        //for debugging 
-                                        // Debug.Log("Light Enemy Chasing"); 
+                                        //disables EnemyPatrolAI script. Stops patrolling random points. 
+                                        //enables aiDestinationSetter script. There is a destination set. chase destination.
+                                        ChangeObjectComponents(false, true); 
+
                                         //call State Machine Chase function
                                         //to chase the player target. 
                                         Chase();
@@ -168,6 +190,33 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
     protected virtual void Search() 
     {
 
+    }
+
+    //Change Object Components Function
+    //takes 2 parameters
+    //bool isEnemyComponentOn
+    //bool isNavigatorComponentOn
+    //true will turn on the component
+    //false will turn off the component
+    public void ChangeObjectComponents(bool isEnemyComponentOn, bool isNavigatorComponentOn)
+    {
+        //sets enemyPatrolAI.enabled to true or false depending on what is sent in 
+        enemyPatrolAI.enabled = isEnemyComponentOn; 
+
+        //sets aiDestinationSetter.enabled to true or false depending on what is sent in 
+        //aiDestinationSetter.enabled = isNavigatorComponentOn;
+    }
+
+    //SetAIState() function
+    //sets the enemy AI state
+    //sets enemy Navigator AI state
+    //resets state time elapsed
+    public void SetAIState(EnemyAIStates currentAIState)
+    {
+        //update the enemy AI state
+        _currentState = currentAIState;
+        //reset elapsed state time 
+        _enemyStats.stateTimeElapsed = 0;
     }
 }
 
