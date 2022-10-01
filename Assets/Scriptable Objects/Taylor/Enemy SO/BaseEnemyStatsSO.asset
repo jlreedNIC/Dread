@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f96a7ff113f1e4abc0c0f95cec79a3, type: 3}
+  m_Name: BaseEnemyStatsSO
+  m_EditorClassIdentifier: 
+  moveSpeed: 0
+  rotationSpeed: 0
+  accelerationStep: 0
+  distanceToWaypoint: 0
+  lookRange: 0
+  lookSphereCastRadius: 0
+  patrolRadius: 50
+  XTiltModifier: 0
+  YTiltModifier: 0
+  NavOffset: {x: 0, y: 0, z: 0}
+  attackRate: 0
+  attackRange: 0
+  attackForce: 0
+  attackDamage: 0
+  searchDuration: 0
+  searchingTurnSpeed: 0

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8794072403301634478}
   m_Layer: 0
   m_Name: Test_Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,12 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerMovementSpeed: 5
   _playerJumpHeight: 5
-  _groundChecker: {fileID: 0}
-  _groundCheckerRadius: 0
-  _groundLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  _isTouchingGround: 0
+  camera: {fileID: 0}
+  _playerCollider: {fileID: 0}
   _playerRB: {fileID: 8794072403301634478}
 --- !u!50 &8794072403301634478
 Rigidbody2D:

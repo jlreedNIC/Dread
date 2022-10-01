@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 291761382}
   m_Layer: 0
   m_Name: Test_Enemy (2)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2398,7 +2398,7 @@ GameObject:
   - component: {fileID: 582861371}
   m_Layer: 0
   m_Name: Test_Enemy (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2643,11 +2643,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAACAn+t8YkhFoQIAAKEFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VNtuGjEQ/RXk5ybikpTQtxZI0kpJUGmVh5KHYT2wFl575UuARPx7Z7wLu0GthLTmzJnLmRn7XSjjS8yCdXdOyQcrUXzpCD6LT53GeI87WFszV2945DwrGXImQeL8hKAs4T1287bA4FT21aw1k7sERqNW1hVTucax9cETvALtkUzOBvY2BL13xI4+FyN22dOpP+TTG51G3c6BjhmagK5F7dXMXq8mVrxoMg1FiZKLbuiDm5p+VdEMyakZ7J9ZrZWvaxFhXyat8zJHhyxWKiBpKX/vsn9NSI5qnQeutO3+tFp5DLV0B/uJctSkKq74ZqvOFeA3VWWvoCMmMamoKubD/8wrZ4v7Y9pel1OEXGWbn7DPwIdWZ9vwpFV66s8W9AaWGp9zNI/2ztloJBmDi+waPfYnzd+TsnGO2abBq1LPwFg2DT8O8jhG1nBI4ndjrYolmy6vKmCubWp4mj46Gs13Kjjthq9DEMpV/Pb4C9btJaoNt8r5QKZapeHyljY6popp6hmriWFsncEE10WXaECH/YzChPMJntlaac8st8DXpU5e24634MwlwQ2/2z0zzey2GZbHH7EoZ1aZMEdwWd6K53O7fUCfP8WglcFGERseqYlja0y1ff4fbvPoVpC13ALuQnQ4gQDpFlBNtCWy7UoNTR4mas0LmVRw8D+kgn8v3OQcKK9OsHi0Jl2gD98XXoR1VPLjmguA0XDYH8hseDPKpBxcDIaf+0u4Hoxuhl2AwbVI90AZ6jnoWdW0elS0QabRYmjnjy9a585BmS6edLC9U2+FbY1fmZWdZw7RPFURTmLRURJ6IuRUKpI5xxCUSbsn3hdC22yDcnEKtEiNne6Cg0UTZSFK9WoDIwsxTk/YQjB8ulczh68Kt5z8GOwgDn8BUEsDBBQAAAgIAACAn+viX2F5bQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM011FQSi9KLMgoBooYgjilmSkgdrRSYqKlubmRcUqyuYVlckqKsa6xuZlRUqKpsaWFuUFiorGpUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAACAn+t8YkhFoQIAAKEFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAACAn+viX2F5bQAAAHgAAAAJACQAAAAAAAAAAAAAAO4CAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAApgMAAAAA
+    dataString: UEsDBBQAAAgIAACAn+u0xTlhoAIAAKEFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VNtuGjEQ/RXk5ybikpTQtxZI0kpJUGmVh5KHYT2wFl575UuARPx7Z7wLu0GKhLTmzJnLmRn7XSjjS8yCdXdOyQcrUXzrCD6LL53GeI87WFszV2945DwrGXImQeL8hqAs4T1287bA4FT23aw1k7sERqNW1hVTucax9cETvALtkUzOBvY2BL13xI4+FyN22dOpP+TTG51G3c6BjhmagK5F7dXMXq8mVrxoMg1FiZKLbuiDm5p+VdEMyakZ7J9ZrZWvaxFhXyat8zJHhyxWKiBpKX/vsn9NSI5qnQeutO3+tFp5DLV0B/uJctSkKq74YavOFeA3VWWvoCMmMamoKubDZ+aVs8X9MW2vyylCrrLNb9hn4EOrs2140io99WcLegNLjc85mkd752w0kozBRXaNHvuT5u9J2TjHbNPgValnYCybhh8HeRwjazgk8buxVsWSTZdXFTDXNjU8TR8djeYnFZx2w9chCOUq/nr8A+v2EtWGW+V8IFOt0nB5SxsdU8U09YzVxDC2zqBrRyjRgA77GcUJ5yM8s33udQt8X+rste14Dc5cEtzwu90z08xum2l5/BWLcmaVCXMEl+WteD632wf0+VMMWhls5sCGR+ri2BpTrZ//aGSveXQryFpeAXchOpxAgHQLqCTaEtlOSA1NHiZqzQuZRHDsfySCfy/c5BworU6weLQmXaAP3xdehHVU8uOaC4DRcNgfyGx4M8qkHFwMhl/7S7gejG6GXYDBtUj3QBlqOehZ1bN6UrRBptFiaOePL1rnzkGZLp50sL1Tb4VttUOZlZ1nDtE8VRFOYtFREnoi5FQqkjnHEJRJuyfeF0LbbINycQq0SI2d7oKDRRNlIUr1agMjCzFOT9hCMHy6VzOHrwq3nPwY7CAO/wFQSwMEFAAACAgAAICf6+JfYXltAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tFJioqW5uZFxSrK5hWVySoqxrrG5mVFSoqmxpYW5QWKisalSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAICf67TFOWGgAgAAoQUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAICf6+JfYXltAAAAeAAAAAkAJAAAAAAAAAAAAAAA7QIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAAClAwAAAAA=
     upgradeData: 
-    file_cachedStartup: {fileID: 0}
+    file_cachedStartup: {fileID: 4900000, guid: bd91b8eeca938b747adcdb3c717f1c09, type: 3}
     data_cachedStartup: 
-    cacheStartup: 0
+    cacheStartup: 1
   showNavGraphs: 1
   showUnwalkableNodes: 1
   debugMode: 0
@@ -2997,9 +2997,10 @@ GameObject:
   - component: {fileID: 884659939}
   - component: {fileID: 884659940}
   - component: {fileID: 884659941}
+  - component: {fileID: 884659942}
   m_Layer: 0
   m_Name: Test_Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3148,7 +3149,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 884659933}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
   m_Name: 
@@ -3213,6 +3214,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &884659942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884659933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e266166ebcb9134f9d147942aa68a70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OriginPoint: {x: 0, y: 0, z: 0}
+  enemyStats: {fileID: 11400000, guid: 5c4143de2ea578e408f16fba6fa727d4, type: 2}
 --- !u!1 &991752480
 GameObject:
   m_ObjectHideFlags: 0

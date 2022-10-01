@@ -53,7 +53,7 @@ public class EnemyPatrolAI : MonoBehaviour
         var point = Random.insideUnitSphere * enemyStats.patrolRadius;
 
         //sets the y axis point to 0. for just movement in the x and z axis
-        point.y = 0;
+        point.z = 0;
 
         //adds the generated point to the OriginPoint. Stroring new value in point. 
         point += OriginPoint;

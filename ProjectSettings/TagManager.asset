@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Cliffs
   - Door
+  - Enemy
   layers:
   - Default
   - TransparentFX
