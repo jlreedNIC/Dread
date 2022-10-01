@@ -2282,7 +2282,7 @@ PrefabInstance:
     - target: {fileID: 8794072403301634479, guid: af190c5737564b24890069065f455657, type: 3}
       propertyPath: _playerCollider
       value: 
-      objectReference: {fileID: 999118240}
+      objectReference: {fileID: 0}
     - target: {fileID: 8794072403301634480, guid: af190c5737564b24890069065f455657, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -19180,8 +19180,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8794072403301634483, guid: af190c5737564b24890069065f455657, type: 3}
   m_PrefabInstance: {fileID: 367775967}
   m_PrefabAsset: {fileID: 0}
---- !u!58 &999118240
-CircleCollider2D:
+--- !u!70 &999118244
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -19193,9 +19193,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.035, y: -0.095}
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 2}
+  m_Direction: 0
 --- !u!1 &1426991195
 GameObject:
   m_ObjectHideFlags: 0

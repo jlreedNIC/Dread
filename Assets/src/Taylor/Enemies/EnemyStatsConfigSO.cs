@@ -49,6 +49,8 @@ public class EnemyStatsConfigSO : ScriptableObject
     [field: SerializeField] public float attackForce; 
     //holds how much damage the enemy can do
     [field: SerializeField] public int attackDamage; 
+    //holds the amount of time elapsed while attacking
+    [field: SerializeField] public float attackCooldown;
 
     //searching stats
 
@@ -56,4 +58,8 @@ public class EnemyStatsConfigSO : ScriptableObject
     [field: SerializeField] public float searchDuration;
     //holds the the rate of time the enemy will turn while searching
     [field: SerializeField] public float searchingTurnSpeed; 
+
+    //state stats
+    //holds the amount of time elapsed while in a state
+    [field: SerializeField] public float stateTimeElapsed;
 }
