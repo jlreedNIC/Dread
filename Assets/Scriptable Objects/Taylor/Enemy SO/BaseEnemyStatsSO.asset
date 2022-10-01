@@ -16,9 +16,9 @@ MonoBehaviour:
   rotationSpeed: 0
   accelerationStep: 0
   distanceToWaypoint: 0
-  lookRange: 0
-  lookSphereCastRadius: 0
-  patrolRadius: 50
+  lookRange: 10
+  lookSphereCastRadius: 10
+  patrolRadius: 20
   XTiltModifier: 0
   YTiltModifier: 0
   NavOffset: {x: 0, y: 0, z: 0}
@@ -26,5 +26,7 @@ MonoBehaviour:
   attackRange: 0
   attackForce: 0
   attackDamage: 0
+  attackCooldown: 0
   searchDuration: 0
   searchingTurnSpeed: 0
+  stateTimeElapsed: 0

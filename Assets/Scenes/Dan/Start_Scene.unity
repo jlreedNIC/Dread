@@ -1350,6 +1350,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b68db55c1b361cd43a7418d705d9edc6, type: 3}
+--- !u!4 &1481051141 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3072208378367822317, guid: 24d22ed2bae015c43af09d975030adb9, type: 3}
+  m_PrefabInstance: {fileID: 3072208379579516392}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1746047687
 GameObject:
   m_ObjectHideFlags: 3
@@ -1452,10 +1457,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3072208378367822318, guid: 24d22ed2bae015c43af09d975030adb9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3072208378700370698, guid: 24d22ed2bae015c43af09d975030adb9, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 308517775}
+    - target: {fileID: 3072208378700370703, guid: 24d22ed2bae015c43af09d975030adb9, type: 3}
+      propertyPath: enemyEyes
+      value: 
+      objectReference: {fileID: 1481051141}
     - target: {fileID: 3072208378700370741, guid: 24d22ed2bae015c43af09d975030adb9, type: 3}
       propertyPath: m_Name
       value: Test_Enemy
@@ -1504,7 +1517,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3072208378367822318, guid: 24d22ed2bae015c43af09d975030adb9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 24d22ed2bae015c43af09d975030adb9, type: 3}
 --- !u!1001 &6251619488636112147
 PrefabInstance:

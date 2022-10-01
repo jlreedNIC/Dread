@@ -64,6 +64,8 @@ public class EnemyAIStateMachine : MonoBehaviour
     //used for randompoint patrolling 
     public EnemyPatrolAI enemyPatrolAI; 
 
+    public Transform enemyEyes; 
+
     // [SerializeField] AudioSource _audioSource;
     // [SerializeField] AudioClipSO _audioClipSO;
 
@@ -192,6 +194,24 @@ public class EnemyAIStateMachine : MonoBehaviour
 
     }
 
+    public bool Look()
+    {
+        RaycastHit hit;
+
+        Debug.DrawRay(enemyEyes.position, enemyEyes.forward.normalized * _enemyStats.lookRange, Color.green);
+
+        if(Physics.SphereCast(enemyEyes.position,_enemyStats.lookSphereCastRadius, enemyEyes.forward, out hit, _enemyStats.lookRange)
+            && hit.collider.CompareTag("Player"))
+        {
+            target = hit.transform;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     //Change Object Components Function
     //takes 2 parameters
     //bool isEnemyComponentOn
@@ -204,7 +224,7 @@ public class EnemyAIStateMachine : MonoBehaviour
         enemyPatrolAI.enabled = isEnemyComponentOn; 
 
         //sets aiDestinationSetter.enabled to true or false depending on what is sent in 
-        //aiDestinationSetter.enabled = isNavigatorComponentOn;
+        aiDestinationSetter.enabled = isNavigatorComponentOn;
     }
 
     //SetAIState() function
@@ -217,6 +237,15 @@ public class EnemyAIStateMachine : MonoBehaviour
         _currentState = currentAIState;
         //reset elapsed state time 
         _enemyStats.stateTimeElapsed = 0;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (_currentState != null && enemyEyes != null)
+        {
+            Gizmos.color = Color.gray;
+            Gizmos.DrawWireSphere(enemyEyes.position, _enemyStats.lookSphereCastRadius);
+        }
     }
 }
 

@@ -62,4 +62,5 @@ public class EnemyStatsConfigSO : ScriptableObject
     //state stats
     //holds the amount of time elapsed while in a state
     [field: SerializeField] public float stateTimeElapsed;
+
 }
