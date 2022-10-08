@@ -28,6 +28,7 @@ public class Base_Weapon : MonoBehaviour
         if(Input.GetButtonDown("Fire1"))
         {
             Fire();
+            FindObjectOfType<AudioManager>().Play("Pew");
         }
         
     }

@@ -16,7 +16,7 @@ public class Player_Movement : MonoBehaviour
     //these will be our base player movement speed and jump height. 
     //serialized field lets us have private variables vieded and edited in Unity editor 
     [SerializeField] private float _playerMovementSpeed = 5.0f; 
-    [SerializeField] private float _playerJumpHeight = 5.0f;  
+    // [SerializeField] private float _playerJumpHeight = 5.0f;  
     private Vector2 _moveDirection; 
     public Camera camera; 
     private Vector2 _mousePosition; 
