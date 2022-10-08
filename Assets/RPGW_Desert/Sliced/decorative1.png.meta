@@ -1919,7 +1919,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -1947,7 +1947,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
@@ -1959,9 +1959,21 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -15091,8 +15103,8 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       decorative1_248: 21300496
-      decorative1_358: 21300716
-      decorative1_558: 21301116
+      decorative1_99: 21300198
+      decorative1_343: 21300686
       decorative1_222: 21300444
       decorative1_608: 21301216
       decorative1_438: 21300876
@@ -15372,16 +15384,17 @@ TextureImporter:
       decorative1_352: 21300704
       decorative1_466: 21300932
       decorative1_130: 21300260
+      decorative1_481: 21300962
       decorative1_293: 21300586
-      decorative1_333: 21300666
       decorative1_607: 21301214
+      decorative1_333: 21300666
       decorative1_361: 21300722
-      decorative1_471: 21300942
       decorative1_0: 21300000
       decorative1_90: 21300180
       decorative1_595: 21301190
       decorative1_163: 21300326
       decorative1_94: 21300188
+      decorative1_471: 21300942
       decorative1_234: 21300468
       decorative1_306: 21300612
       decorative1_26: 21300052
@@ -15394,19 +15407,20 @@ TextureImporter:
       decorative1_565: 21301130
       decorative1_150: 21300300
       decorative1_24: 21300048
+      decorative1_540: 21301080
       decorative1_363: 21300726
-      decorative1_174: 21300348
       decorative1_529: 21301058
       decorative1_422: 21300844
-      decorative1_31: 21300062
-      decorative1_543: 21301086
+      decorative1_174: 21300348
+      decorative1_613: 21301226
       decorative1_420: 21300840
+      decorative1_31: 21300062
       decorative1_43: 21300086
+      decorative1_543: 21301086
       decorative1_151: 21300302
-      decorative1_604: 21301208
       decorative1_617: 21301234
       decorative1_451: 21300902
-      decorative1_481: 21300962
+      decorative1_604: 21301208
       decorative1_570: 21301140
       decorative1_454: 21300908
       decorative1_450: 21300900
@@ -15425,10 +15439,8 @@ TextureImporter:
       decorative1_95: 21300190
       decorative1_225: 21300450
       decorative1_240: 21300480
-      decorative1_613: 21301226
       decorative1_467: 21300934
       decorative1_375: 21300750
-      decorative1_540: 21301080
       decorative1_168: 21300336
       decorative1_259: 21300518
       decorative1_504: 21301008
@@ -15712,8 +15724,8 @@ TextureImporter:
       decorative1_165: 21300330
       decorative1_355: 21300710
       decorative1_48: 21300096
-      decorative1_99: 21300198
-      decorative1_343: 21300686
+      decorative1_358: 21300716
+      decorative1_558: 21301116
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

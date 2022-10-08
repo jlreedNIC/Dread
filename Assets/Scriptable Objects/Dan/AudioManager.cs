@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-
+    /*   Creates a "sound" array to store different audio files.
+     *   Parameters will be instantiated in the Awake() and will include
+     *      
+     */
     public Sound[] sounds;
-    // Start is called before the first frame update
+    // Awake Precedes Start() in the instantiation hierarchy
     void Awake()
     {
         foreach (Sound s in sounds)
@@ -18,7 +21,7 @@ public class AudioManager : MonoBehaviour
 
         }
     }
-    
+    // Start is called before the first frame update
     void Start()
     {
         Play("Theme");

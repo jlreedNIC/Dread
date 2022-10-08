@@ -2333,7 +2333,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -2361,7 +2361,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
@@ -2373,9 +2373,21 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -18431,8 +18443,8 @@ TextureImporter:
       Decorative_422: 21300844
       Decorative_423: 21300846
       Decorative_284: 21300568
-      Decorative_114: 21300228
       Decorative_410: 21300820
+      Decorative_114: 21300228
       Decorative_489: 21300978
       Decorative_334: 21300668
       Decorative_500: 21301000
@@ -18607,8 +18619,8 @@ TextureImporter:
       Decorative_462: 21300924
       Decorative_153: 21300306
       Decorative_230: 21300460
-      Decorative_517: 21301034
       Decorative_756: 21301512
+      Decorative_517: 21301034
       Decorative_164: 21300328
       Decorative_232: 21300464
       Decorative_178: 21300356
@@ -18626,11 +18638,11 @@ TextureImporter:
       Decorative_523: 21301046
       Decorative_532: 21301064
       Decorative_549: 21301098
+      Decorative_688: 21301376
+      Decorative_709: 21301418
+      Decorative_656: 21301312
       Decorative_47: 21300094
       Decorative_357: 21300714
-      Decorative_656: 21301312
-      Decorative_709: 21301418
-      Decorative_688: 21301376
       Decorative_441: 21300882
       Decorative_385: 21300770
       Decorative_485: 21300970
@@ -18856,8 +18868,8 @@ TextureImporter:
       Decorative_99: 21300198
       Decorative_695: 21301390
       Decorative_59: 21300118
-      Decorative_131: 21300262
       Decorative_506: 21301012
+      Decorative_131: 21300262
       Decorative_700: 21301400
       Decorative_552: 21301104
       Decorative_594: 21301188
@@ -18887,8 +18899,8 @@ TextureImporter:
       Decorative_236: 21300472
       Decorative_374: 21300748
       Decorative_560: 21301120
-      Decorative_312: 21300624
       Decorative_378: 21300756
+      Decorative_312: 21300624
       Decorative_516: 21301032
       Decorative_752: 21301504
       Decorative_126: 21300252
@@ -18965,9 +18977,9 @@ TextureImporter:
       Decorative_724: 21301448
       Decorative_332: 21300664
       Decorative_8: 21300016
-      Decorative_280: 21300560
-      Decorative_91: 21300182
       Decorative_559: 21301118
+      Decorative_91: 21300182
+      Decorative_280: 21300560
       Decorative_681: 21301362
       Decorative_564: 21301128
       Decorative_290: 21300580
@@ -19024,8 +19036,8 @@ TextureImporter:
       Decorative_665: 21301330
       Decorative_657: 21301314
       Decorative_264: 21300528
-      Decorative_531: 21301062
       Decorative_648: 21301296
+      Decorative_531: 21301062
       Decorative_277: 21300554
       Decorative_439: 21300878
       Decorative_189: 21300378
@@ -19034,9 +19046,9 @@ TextureImporter:
       Decorative_106: 21300212
       Decorative_104: 21300208
       Decorative_81: 21300162
-      Decorative_273: 21300546
-      Decorative_599: 21301198
       Decorative_261: 21300522
+      Decorative_599: 21301198
+      Decorative_273: 21300546
       Decorative_484: 21300968
       Decorative_565: 21301130
       Decorative_156: 21300312
@@ -19076,11 +19088,11 @@ TextureImporter:
       Decorative_501: 21301002
       Decorative_363: 21300726
       Decorative_108: 21300216
-      Decorative_371: 21300742
       Decorative_466: 21300932
       Decorative_401: 21300802
       Decorative_515: 21301030
       Decorative_748: 21301496
+      Decorative_371: 21300742
       Decorative_744: 21301488
       Decorative_20: 21300040
       Decorative_649: 21301298

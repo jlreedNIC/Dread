@@ -2213,7 +2213,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -2241,7 +2241,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
@@ -2253,9 +2253,21 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -17503,21 +17515,20 @@ TextureImporter:
       decorative2_611: 21301222
       decorative2_625: 21301250
       decorative2_16: 21300032
-      decorative2_90: 21300180
+      decorative2_667: 21301334
       decorative2_229: 21300458
-      decorative2_404: 21300808
       decorative2_672: 21301344
-      decorative2_239: 21300478
+      decorative2_651: 21301302
+      decorative2_290: 21300580
       decorative2_78: 21300156
       decorative2_350: 21300700
-      decorative2_290: 21300580
+      decorative2_404: 21300808
       decorative2_571: 21301142
-      decorative2_651: 21301302
       decorative2_253: 21300506
-      decorative2_667: 21301334
       decorative2_543: 21301086
       decorative2_497: 21300994
       decorative2_285: 21300570
+      decorative2_90: 21300180
       decorative2_33: 21300066
       decorative2_603: 21301206
       decorative2_682: 21301364
@@ -17525,6 +17536,7 @@ TextureImporter:
       decorative2_432: 21300864
       decorative2_251: 21300502
       decorative2_569: 21301138
+      decorative2_239: 21300478
       decorative2_488: 21300976
       decorative2_318: 21300636
       decorative2_87: 21300174
@@ -17554,8 +17566,8 @@ TextureImporter:
       decorative2_122: 21300244
       decorative2_669: 21301338
       decorative2_352: 21300704
-      decorative2_148: 21300296
       decorative2_508: 21301016
+      decorative2_148: 21300296
       decorative2_610: 21301220
       decorative2_277: 21300554
       decorative2_232: 21300464
@@ -17638,9 +17650,9 @@ TextureImporter:
       decorative2_691: 21301382
       decorative2_279: 21300558
       decorative2_187: 21300374
-      decorative2_334: 21300668
       decorative2_496: 21300992
       decorative2_534: 21301068
+      decorative2_334: 21300668
       decorative2_528: 21301056
       decorative2_88: 21300176
       decorative2_356: 21300712
@@ -17657,12 +17669,12 @@ TextureImporter:
       decorative2_281: 21300562
       decorative2_53: 21300106
       decorative2_249: 21300498
-      decorative2_575: 21301150
+      decorative2_629: 21301258
       decorative2_396: 21300792
       decorative2_45: 21300090
       decorative2_449: 21300898
       decorative2_139: 21300278
-      decorative2_629: 21301258
+      decorative2_575: 21301150
       decorative2_531: 21301062
       decorative2_25: 21300050
       decorative2_678: 21301356
@@ -17698,8 +17710,8 @@ TextureImporter:
       decorative2_278: 21300556
       decorative2_430: 21300860
       decorative2_205: 21300410
-      decorative2_519: 21301038
       decorative2_687: 21301374
+      decorative2_519: 21301038
       decorative2_670: 21301340
       decorative2_155: 21300310
       decorative2_145: 21300290
@@ -17728,8 +17740,8 @@ TextureImporter:
       decorative2_413: 21300826
       decorative2_514: 21301028
       decorative2_331: 21300662
-      decorative2_140: 21300280
       decorative2_405: 21300810
+      decorative2_140: 21300280
       decorative2_11: 21300022
       decorative2_485: 21300970
       decorative2_594: 21301188
@@ -17767,9 +17779,9 @@ TextureImporter:
       decorative2_161: 21300322
       decorative2_428: 21300856
       decorative2_70: 21300140
-      decorative2_268: 21300536
       decorative2_305: 21300610
       decorative2_468: 21300936
+      decorative2_268: 21300536
       decorative2_21: 21300042
       decorative2_522: 21301044
       decorative2_304: 21300608
@@ -17812,9 +17824,9 @@ TextureImporter:
       decorative2_605: 21301210
       decorative2_157: 21300314
       decorative2_562: 21301124
-      decorative2_642: 21301284
-      decorative2_58: 21300116
       decorative2_683: 21301366
+      decorative2_58: 21300116
+      decorative2_642: 21301284
       decorative2_375: 21300750
       decorative2_483: 21300966
       decorative2_336: 21300672
@@ -18041,9 +18053,9 @@ TextureImporter:
       decorative2_1: 21300002
       decorative2_174: 21300348
       decorative2_244: 21300488
-      decorative2_258: 21300516
       decorative2_307: 21300614
       decorative2_692: 21301384
+      decorative2_258: 21300516
       decorative2_282: 21300564
       decorative2_609: 21301218
       decorative2_703: 21301406

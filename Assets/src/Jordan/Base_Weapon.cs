@@ -28,6 +28,9 @@ public class Base_Weapon : MonoBehaviour
         if(Input.GetButtonDown("Fire1"))
         {
             Fire();
+            /* Plays Audio clip for gun firing on player clicks.
+            NOTE: This feature will need to be adjusted for other weapon types later in develoment
+            as they will have alternate sound bites.*/
             FindObjectOfType<AudioManager>().Play("Pew");
         }
         
