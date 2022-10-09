@@ -44,7 +44,7 @@ public class EnemyEyes : MonoBehaviour
     {
         if (target == null)
         {
-            Gizmos.color = Color.gray;
+            Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(transform.position, _enemyStats.lookSphereCastRadius);
         }
         if(target != null)
