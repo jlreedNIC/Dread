@@ -27,12 +27,12 @@ public class bullet : MonoBehaviour
     {
         Debug.Log("damage: " + total_damage);
 
-        // call other.health -= total_damage; ????
+        // call damageable script TakeDamage()
         if(other.gameObject.TryGetComponent<Damageable>(out Damageable damageableComponent))
         {
             damageableComponent.TakeDamage(total_damage);
         }
-        
+
         Destroy(gameObject);
     }
 }

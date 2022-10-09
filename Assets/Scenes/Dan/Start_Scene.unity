@@ -1223,6 +1223,11 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!1 &1223943058 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3072208378367822316, guid: 24d22ed2bae015c43af09d975030adb9, type: 3}
+  m_PrefabInstance: {fileID: 3072208379579516392}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1426991195
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,11 +1396,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b68db55c1b361cd43a7418d705d9edc6, type: 3}
---- !u!4 &1481051141 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3072208378367822317, guid: 24d22ed2bae015c43af09d975030adb9, type: 3}
-  m_PrefabInstance: {fileID: 3072208379579516392}
+--- !u!58 &1481051142
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223943058}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!114 &1481051143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223943058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a9de41b5d86399498b5ff6b7fb9e05a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionTag: Player
+  collider: {fileID: 0}
+  _enemyStats: {fileID: 11400000, guid: 5c4143de2ea578e408f16fba6fa727d4, type: 2}
 --- !u!1 &1746047687
 GameObject:
   m_ObjectHideFlags: 3
@@ -1513,7 +1544,7 @@ PrefabInstance:
     - target: {fileID: 3072208378700370703, guid: 24d22ed2bae015c43af09d975030adb9, type: 3}
       propertyPath: enemyEyes
       value: 
-      objectReference: {fileID: 1481051141}
+      objectReference: {fileID: 1481051143}
     - target: {fileID: 3072208378700370703, guid: 24d22ed2bae015c43af09d975030adb9, type: 3}
       propertyPath: _enemyStats
       value: 

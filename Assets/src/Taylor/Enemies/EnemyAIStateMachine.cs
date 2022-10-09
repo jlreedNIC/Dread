@@ -64,7 +64,7 @@ public class EnemyAIStateMachine : MonoBehaviour
     //used for randompoint patrolling 
     public EnemyPatrolAI enemyPatrolAI; 
 
-    public Transform enemyEyes; 
+    public EnemyEyes enemyEyes; 
 
     // [SerializeField] AudioSource _audioSource;
     // [SerializeField] AudioClipSO _audioClipSO;
@@ -173,13 +173,21 @@ public class EnemyAIStateMachine : MonoBehaviour
     //Patrol State Function
     protected virtual void Patrol() 
     {
-
+        if(enemyEyes.target != null)
+        {
+            target = enemyEyes.target; 
+            SetAIState(EnemyAIStates.Chase); 
+        }
     }
 
     //Chase State Function
     protected virtual void Chase() 
     {
-
+        if(enemyEyes.target == null)
+        {
+            target = null; 
+            SetAIState(EnemyAIStates.Patrol);
+        }
     }
 
     //Attack State Function
@@ -192,24 +200,6 @@ public class EnemyAIStateMachine : MonoBehaviour
     protected virtual void Search() 
     {
 
-    }
-
-    public bool Look()
-    {
-        RaycastHit hit;
-
-        Debug.DrawRay(enemyEyes.position, enemyEyes.forward.normalized * _enemyStats.lookRange, Color.green);
-
-        if(Physics.SphereCast(enemyEyes.position,_enemyStats.lookSphereCastRadius, enemyEyes.forward, out hit, _enemyStats.lookRange)
-            && hit.collider.CompareTag("Player"))
-        {
-            target = hit.transform;
-            return true;
-        }
-        else
-        {
-            return false;
-        }
     }
 
     //Change Object Components Function
@@ -237,14 +227,5 @@ public class EnemyAIStateMachine : MonoBehaviour
         _currentState = currentAIState;
         //reset elapsed state time 
         _enemyStats.stateTimeElapsed = 0;
-    }
-
-    private void OnDrawGizmos()
-    {
-        if (_currentState != null && enemyEyes != null)
-        {
-            Gizmos.color = Color.gray;
-            Gizmos.DrawWireSphere(enemyEyes.position, _enemyStats.lookSphereCastRadius);
-        }
     }
 }
