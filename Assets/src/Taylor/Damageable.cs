@@ -20,7 +20,7 @@ public class Damageable : MonoBehaviour
 
         if(currentHealth <= 0)
         {
-            Destroy(this.GameObject);
+            Destroy(this.gameObject);
         }
 
     }
@@ -28,6 +28,6 @@ public class Damageable : MonoBehaviour
     
     public void OnDestroy()
     {
-        Debug.Log(this.GameObject.Name + " Was Destroyed")
+        Debug.Log(this.gameObject.name + " Was Destroyed"); 
     }
 }

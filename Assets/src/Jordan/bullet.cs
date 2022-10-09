@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class bullet : MonoBehaviour
 {
-    [SerializeField] private float total_damage;
+    [SerializeField] private int total_damage;
     [SerializeField] private Transform starting_point;
     [SerializeField] private int distance;
 
@@ -26,11 +26,13 @@ public class bullet : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
         Debug.Log("damage: " + total_damage);
-        // call other.health -= total_damage; ????
-        if(other.gameObject.TryGetComponent<GameObject>(out GameObject gameObjectComponent))
-        {
 
+        // call other.health -= total_damage; ????
+        if(other.gameObject.TryGetComponent<Damageable>(out Damageable damageableComponent))
+        {
+            damageableComponent.TakeDamage(total_damage);
         }
+        
         Destroy(gameObject);
     }
 }
