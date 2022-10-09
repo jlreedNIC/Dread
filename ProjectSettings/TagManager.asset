@@ -7,6 +7,8 @@ TagManager:
   - Cliffs
   - Door
   - Enemy
+  - Floor
+  - Exit
   layers:
   - Default
   - TransparentFX
@@ -14,7 +16,7 @@ TagManager:
   - Terrain
   - Water
   - UI
-  - 
+  - Blocking
   - 
   - 
   - 
@@ -46,4 +48,10 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Items
+    uniqueID: 380557997
+    locked: 0
+  - name: Units
+    uniqueID: 1381146591
     locked: 0
