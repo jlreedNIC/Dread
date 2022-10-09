@@ -92,9 +92,10 @@ public class Player_Movement : MonoBehaviour
         //animator.SetFloat("speed", Mathf.Abs(_playerRB.velocity.x));
     }
 
-    public void OnCollisionEnter2D(Collision2D col)
-    {
-        Debug.Log("OnCollisionEnter2D");
-        Debug.Log("collide (name) : " + col.collider.gameObject.name);
-    }
+    //for testing
+    // public void OnCollisionEnter2D(Collision2D col)
+    // {
+    //     Debug.Log("OnCollisionEnter2D");
+    //     Debug.Log("collide (name) : " + col.collider.gameObject.name);
+    // }
 }
