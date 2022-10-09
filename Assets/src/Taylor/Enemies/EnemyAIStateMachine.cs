@@ -161,6 +161,11 @@ public class EnemyAIStateMachine : MonoBehaviour
             //and with enemy attackRange
             case EnemyAIStates.Attack:
                                     {
+
+                                        //disables EnemyPatrolAI script. Stops patrolling random points. 
+                                        //enables aiDestinationSetter script. There is a destination set. chase destination.
+                                        ChangeObjectComponents(false, true); 
+
                                         //print attacking string to console
                                         //for debugging 
                                         // Debug.Log("Light Enemy Attacking"); 
@@ -203,16 +208,25 @@ public class EnemyAIStateMachine : MonoBehaviour
     //Attack State Function
     protected virtual void Attack() 
     {
-        if(CheckIfCoolDownElapsed(_enemyStats.attackRate))
+        if(enemyEyes.target == null)
         {
-            //prints string to console. for debugging. 
-            Debug.Log("Enemy Ranged Attacking");
-            
-            //calls on our weapon spawner class method fire
-            //launches a missle prefab from 
-            //the weapon spawner prefab on the enemy game object
-            weaponSpawner.Fire(); 
-            _enemyStats.attackCooldown = 0;
+            target = null; 
+            SetAIState(EnemyAIStates.Patrol);
+        }
+
+        if(target != null)
+        {
+            if(CheckIfCoolDownElapsed(_enemyStats.attackRate))
+            {
+                //prints string to console. for debugging. 
+                Debug.Log("Enemy Ranged Attacking");
+                
+                //calls on our weapon spawner class method fire
+                //launches a missle prefab from 
+                //the weapon spawner prefab on the enemy game object
+                weaponSpawner.Fire(); 
+                _enemyStats.attackCooldown = 0;
+            }
         }
     }
 
@@ -255,4 +269,12 @@ public class EnemyAIStateMachine : MonoBehaviour
 		_enemyStats.attackCooldown += Time.deltaTime;
 		return _enemyStats.attackCooldown >= duration;
 	}
+
+    private void OnDrawGizmos()
+    {
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, _enemyStats.patrolRadius);
+
+    }
 }
