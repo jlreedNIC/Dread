@@ -19,14 +19,11 @@ MonoBehaviour:
   lookRange: 10
   lookSphereCastRadius: 10
   patrolRadius: 20
-  XTiltModifier: 0
-  YTiltModifier: 0
-  NavOffset: {x: 0, y: 0, z: 0}
-  attackRate: 0
-  attackRange: 0
+  attackRate: 1
+  attackRange: 10
   attackForce: 0
   attackDamage: 0
-  attackCooldown: 0
+  attackCooldown: 3.6399972
   searchDuration: 0
   searchingTurnSpeed: 0
   stateTimeElapsed: 0

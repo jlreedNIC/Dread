@@ -42,13 +42,13 @@ public class EnemyAIStateMachine : MonoBehaviour
     [SerializeField] protected EnemyStatsConfigSO _enemyStats; 
     
     //The origin point of our enemy spawn
-    public Vector3  OriginPoint; 
+    [SerializeField] public Vector3  OriginPoint; 
     
     //the next random waypoint generated that the enemy will move too. 
-    public Vector3 nextRandomWaypoint;    
+    [SerializeField] public Vector3 nextRandomWaypoint;    
     
     //the target we want the enemy AI focus on. 
-    public Transform target; 
+    [SerializeField] public Transform target; 
     
     //square of the maxspeed
     [SerializeField] protected float _maxSpeedSqr; 
@@ -58,13 +58,15 @@ public class EnemyAIStateMachine : MonoBehaviour
 
     //Reference to A* pathfinding package AIDestinationSetter script. 
     //used for turning script componenet on and off
-    public AIDestinationSetter aiDestinationSetter; 
+    [SerializeField] public AIDestinationSetter aiDestinationSetter; 
 
     //Reference to EnemyPatrolAI script. 
     //used for randompoint patrolling 
-    public EnemyPatrolAI enemyPatrolAI; 
+    [SerializeField] public EnemyPatrolAI enemyPatrolAI; 
 
-    public EnemyEyes enemyEyes; 
+    [SerializeField] public EnemyEyes enemyEyes; 
+
+    [SerializeField] public Base_Weapon weaponSpawner; 
 
     // [SerializeField] AudioSource _audioSource;
     // [SerializeField] AudioClipSO _audioClipSO;
@@ -188,12 +190,30 @@ public class EnemyAIStateMachine : MonoBehaviour
             target = null; 
             SetAIState(EnemyAIStates.Patrol);
         }
+        if(target != null)
+        {
+            if(Vector2.Distance(transform.position, target.transform.position) < _enemyStats.attackRange)
+            {   
+                //changes the state of the enemy to the attack state
+                SetAIState(EnemyAIStates.Attack);
+            }
+        }
     }
 
     //Attack State Function
     protected virtual void Attack() 
     {
-
+        if(CheckIfCoolDownElapsed(_enemyStats.attackRate))
+        {
+            //prints string to console. for debugging. 
+            Debug.Log("Enemy Ranged Attacking");
+            
+            //calls on our weapon spawner class method fire
+            //launches a missle prefab from 
+            //the weapon spawner prefab on the enemy game object
+            weaponSpawner.Fire(); 
+            _enemyStats.attackCooldown = 0;
+        }
     }
 
     //Search State Function
@@ -228,4 +248,11 @@ public class EnemyAIStateMachine : MonoBehaviour
         //reset elapsed state time 
         _enemyStats.stateTimeElapsed = 0;
     }
+
+    //checks if attack duration exceeded
+    public bool CheckIfCoolDownElapsed(float duration)
+	{
+		_enemyStats.attackCooldown += Time.deltaTime;
+		return _enemyStats.attackCooldown >= duration;
+	}
 }

@@ -32,12 +32,6 @@ public class EnemyStatsConfigSO : ScriptableObject
     [field: SerializeField] public float lookSphereCastRadius; 
     //variable to hold the radius whithin which new random points can be generated for patrol movement
     [field: SerializeField] public float patrolRadius; 
-    //variable to hold the force added to an enemy game object on the x-axis. For movement
-    [field: SerializeField] public float XTiltModifier; 
-    //variable to hold the force added to an enemy game object on the y-axis. For movement
-    [field: SerializeField] public float YTiltModifier;
-    // Holds point above navigator for enemy to patrol 
-    [field: SerializeField] public Vector3 NavOffset;
 
     //attack stat variables
 

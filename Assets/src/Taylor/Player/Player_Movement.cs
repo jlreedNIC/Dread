@@ -30,6 +30,8 @@ public class Player_Movement : MonoBehaviour
     //player rigidbody
     [SerializeField] private Rigidbody2D _playerRB; 
 
+    public Base_Weapon weaponSpawner;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -73,6 +75,15 @@ public class Player_Movement : MonoBehaviour
         _moveDirection = new Vector2(moveX, moveY).normalized;
 
         _mousePosition = camera.ScreenToWorldPoint(Input.mousePosition);
+
+        if(Input.GetButtonDown("Fire1"))
+        {
+            weaponSpawner.Fire();
+            /* Plays Audio clip for gun firing on player clicks.
+            NOTE: This feature will need to be adjusted for other weapon types later in develoment
+            as they will have alternate sound bites.*/
+            FindObjectOfType<AudioManager>().Play("Pew");
+        }
     }
 
     //player movement function 

@@ -4,40 +4,40 @@ using UnityEngine;
 
 public class Base_Weapon : MonoBehaviour
 {
-    [SerializeField] private Transform firePoint; // where bullets spawn from
+    [SerializeField] public Transform firePoint; // where bullets spawn from
 
-    [SerializeField] private float bulletForce = 20f;
+    [SerializeField] public float bulletForce = 20f;
 
-    [SerializeField] private string weapon_name;
-    [SerializeField] private float fire_rate;
-    [SerializeField] private int weapon_dmg_mod;
-    [SerializeField] private int fire_range;
+    [SerializeField] public string weapon_name;
+    [SerializeField] public float fire_rate;
+    [SerializeField] public int weapon_dmg_mod;
+    [SerializeField] public int fire_range;
 
-    [SerializeField] private GameObject bullet_type;
+    [SerializeField] public GameObject bullet_type;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
-        // likely to be in player script
-        if(Input.GetButtonDown("Fire1"))
-        {
-            Fire();
-            /* Plays Audio clip for gun firing on player clicks.
-            NOTE: This feature will need to be adjusted for other weapon types later in develoment
-            as they will have alternate sound bites.*/
-            FindObjectOfType<AudioManager>().Play("Pew");
-        }
+        // // likely to be in player script
+        // if(Input.GetButtonDown("Fire1"))
+        // {
+        //     Fire();
+        //     /* Plays Audio clip for gun firing on player clicks.
+        //     NOTE: This feature will need to be adjusted for other weapon types later in develoment
+        //     as they will have alternate sound bites.*/
+        //     FindObjectOfType<AudioManager>().Play("Pew");
+        // }
         
     }
 
     // currently spawns a bullet traveling in the upwards direction
-    void Fire()
+    public void Fire()
     {
         GameObject bullet = Instantiate(bullet_type, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
