@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6568951365491708553}
   - component: {fileID: 7690173433080087012}
   - component: {fileID: -4637396361008958351}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Exit
-  m_TagString: Floor
+  m_TagString: Exit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,10 +71,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 380557997
+  m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1499216529, guid: dac45ad7ca11ee640980acc4ac7ce510, type: 3}
+  m_Sprite: {fileID: 21300086, guid: f176f921edc263b48b833d1feab7ee3a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
