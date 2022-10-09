@@ -136,6 +136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea2c903172ebd5449fbe98f85c159e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  total_damage: 0
+  total_damage: 5
   starting_point: {fileID: 0}
   distance: 0
