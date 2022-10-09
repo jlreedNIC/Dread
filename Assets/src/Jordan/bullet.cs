@@ -5,34 +5,44 @@ using UnityEngine;
 public class bullet : MonoBehaviour
 {
     [SerializeField] private int total_damage;
-    [SerializeField] private Transform starting_point;
+    [SerializeField] private Vector3 starting_point;
     [SerializeField] private int distance;
 
     // Start is called before the first frame update
     void Start()
     {
         // set starting point when bullet is spawned by base weapon
+        starting_point = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
 
     // Update is called once per frame
     void Update()
     {
-        // either here or in fixed update, check amount of distance allowed to travel
+        // check amount of distance allowed to travel
         // if dist. traveled is max then destroy game object
-        // think about setting up collider for range that gets set with each new weapon
-        // on collider exit, (or collide with enemy) destroy object
+        float dist = Vector3.Distance(starting_point, transform.position);
+        if(dist >= distance)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
         Debug.Log("damage: " + total_damage);
 
-        // call damageable script TakeDamage()
+        // check if object is damageable, then deal damage
         if(other.gameObject.TryGetComponent<Damageable>(out Damageable damageableComponent))
         {
             damageableComponent.TakeDamage(total_damage);
         }
-
+        
         Destroy(gameObject);
+    }
+
+    // sets the distance the bullet can travel before despawning
+    public void setFireRange(int range)
+    {
+        distance = range;
     }
 }
