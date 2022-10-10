@@ -7,6 +7,7 @@ public class bullet : MonoBehaviour
     [SerializeField] private int total_damage;
     [SerializeField] private Vector3 starting_point;
     [SerializeField] private int distance;
+    [SerializeField] private float dist_traveled;
 
     // Start is called before the first frame update
     void Start()
@@ -18,10 +19,15 @@ public class bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    void FixedUpdate()
+    {
         // check amount of distance allowed to travel
         // if dist. traveled is max then destroy game object
-        float dist = Vector3.Distance(starting_point, transform.position);
-        if(dist >= distance)
+        dist_traveled = Vector3.Distance(starting_point, transform.position);
+        if(dist_traveled >= distance)
         {
             Destroy(gameObject);
         }
