@@ -5,6 +5,7 @@ using UnityEngine;
 /*
     TO DO:
         decorator
+        look into scriptable object for the stats
  */
 
 public class Base_Weapon : MonoBehaviour
@@ -109,6 +110,9 @@ public class Base_Weapon : MonoBehaviour
     // switch which weapon the player is carrying
     // takes a GameObject parameter (must be of type base_class (which may be changed) )
     // returns the new weapon GameObject
+
+    // need to work on canBePickedUp
+    // if enemies are loaded with prefab, player will end up picking up the enemy weapon
     public GameObject SwitchActiveWeapon(GameObject oldWeapon)
     {
         if(canBePickedUp)
