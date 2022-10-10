@@ -35,11 +35,10 @@ public class bullet : MonoBehaviour
         Debug.Log("damage: " + total_damage);
 
         // check if object is damageable, then deal damage
-        // comment out for current tests
-        // if(other.gameObject.TryGetComponent<Damageable>(out Damageable damageableComponent))
-        // {
-        //     damageableComponent.TakeDamage(total_damage);
-        // }
+        if(other.gameObject.TryGetComponent<Damageable>(out Damageable damageableComponent))
+        {
+            damageableComponent.TakeDamage(total_damage);
+        }
         
         Destroy(gameObject);
     }
