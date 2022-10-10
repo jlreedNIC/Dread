@@ -503,8 +503,7 @@ MonoBehaviour:
   weapon_dmg_mod: 0
   fire_range: 0
   bullet_type: {fileID: 1818565862397610861, guid: faf8f038e3cb20243b6895a419420ab5, type: 3}
-  canFire: 0
-  canBePickedUp: 0
+  AudioMan: {fileID: 0}
 --- !u!212 &638271038
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -740,7 +739,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1043203328
 Transform:
   m_ObjectHideFlags: 0
@@ -1050,7 +1049,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3072208378700370741, guid: 24d22ed2bae015c43af09d975030adb9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3072208378700370743, guid: 24d22ed2bae015c43af09d975030adb9, type: 3}
       propertyPath: m_RootOrder
