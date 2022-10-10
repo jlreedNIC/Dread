@@ -19,6 +19,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 //needed for navMesh and unity AI
 using UnityEngine.AI;  
 //needed for A* pathfinding package
