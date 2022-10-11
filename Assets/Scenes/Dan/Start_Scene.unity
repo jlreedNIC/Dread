@@ -230,7 +230,7 @@ PrefabInstance:
     - target: {fileID: 8794072403301634479, guid: af190c5737564b24890069065f455657, type: 3}
       propertyPath: weapon
       value: 
-      objectReference: {fileID: 1059339520}
+      objectReference: {fileID: 569604764}
     - target: {fileID: 8794072403301634479, guid: af190c5737564b24890069065f455657, type: 3}
       propertyPath: weaponSpawner
       value: 
@@ -366,6 +366,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de550358e11194e4e887d8da206dca15, type: 3}
+--- !u!1 &569604764 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3554467850779648890, guid: de550358e11194e4e887d8da206dca15, type: 3}
+  m_PrefabInstance: {fileID: 509634971}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &625259772
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,7 +708,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3554467850779648891, guid: de550358e11194e4e887d8da206dca15, type: 3}
   m_PrefabInstance: {fileID: 509634971}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 569604764}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c7dddee568667f4aa7c2d9dcb823ab7, type: 3}

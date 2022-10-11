@@ -30,7 +30,7 @@ public class Player_Movement : MonoBehaviour
     //player rigidbody
     [SerializeField] private Rigidbody2D _playerRB; 
 
-    public Base_Weapon weaponSpawner;
+    [SerializeField] private GameObject weapon;
 
     // Start is called before the first frame update
     private void Start()
@@ -78,7 +78,7 @@ public class Player_Movement : MonoBehaviour
 
         if(Input.GetButtonDown("Fire1"))
         {
-            weaponSpawner.Fire();
+            weapon.GetComponent<Base_Weapon>().Fire();
             /* Plays Audio clip for gun firing on player clicks.
             NOTE: This feature will need to be adjusted for other weapon types later in develoment
             as they will have alternate sound bites.*/
@@ -106,9 +106,15 @@ public class Player_Movement : MonoBehaviour
     }
 
     //for testing
-    // public void OnCollisionEnter2D(Collision2D col)
-    // {
-    //     Debug.Log("OnCollisionEnter2D");
-    //     Debug.Log("collide (name) : " + col.collider.gameObject.name);
-    // }
+    public void OnCollisionEnter2D(Collision2D col)
+    {
+        Debug.Log("OnCollisionEnter2D");
+        Debug.Log("collide (name) : " + col.collider.gameObject.name);
+
+        // switch active weapon
+        if(col.gameObject.tag == "Weapon")
+        {
+            weapon = col.gameObject.GetComponent<Base_Weapon>().SwitchActiveWeapon(weapon);
+        }
+    }
 }
