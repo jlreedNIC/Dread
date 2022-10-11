@@ -6,7 +6,23 @@ using Random = UnityEngine.Random;
 
 public class BoardManager : MonoBehaviour
 {
+    // singleton instantiation of the board
+    public static BoardManager Instance
+    {
+        get
+        {
+            return Nested.Instance;
+        }
+    }
 
+    private class Nested
+    {
+        static Nested() {}
+        internal static readonly BoardManager Instance = new BoardManager();
+    }
+
+
+    // Board Manager Begin
     [Serializable]
     public class Count
     {
@@ -37,7 +53,11 @@ public class BoardManager : MonoBehaviour
      * has been spawned or not.
      */ 
     private List<Vector3> gridPositions = new List<Vector3>();
-    void InitializeList()
+    
+    /* Clears the board and manages tile, object, and enemy assignments
+     * 
+     */
+    public void InitializeList()
     {
         // before generation, clear the gameboard of all tiles
         gridPositions.Clear();
@@ -50,8 +70,8 @@ public class BoardManager : MonoBehaviour
             }
         }
     }
-
-    void BoardSetup()
+    // Instantiates both tile types ana prepares them to randomly be placed on the tile map
+    public void BoardSetup()
     {
         boardHolder = new GameObject("Board").transform;
         for(int x = -1; x < columns + 1; x++)
@@ -60,18 +80,21 @@ public class BoardManager : MonoBehaviour
             {
                 GameObject toInstantiate = floorTiles[Random.Range (0, floorTiles.Length)];
                 if (x == -1 || x == columns || y == -1 || y == rows)
+                {
                     toInstantiate = outerWallTiles[Random.Range (0, outerWallTiles.Length)];
-
+                }
+                
                 GameObject instance = Instantiate(toInstantiate, new Vector3(x, y, 0f), Quaternion.identity) as GameObject;
 
                 instance.transform.SetParent(boardHolder);
             }
         }
     }
+    
     // spawns level tiles onto the game board
     Vector3 RandomPosition()
     {
-        int randomIndex =  Random.Range(0, gridPositions.Count);
+        int randomIndex = Random.Range(0, gridPositions.Count);
         Vector3 randomPosition = gridPositions[randomIndex];
         gridPositions.RemoveAt(randomIndex);
         // use this value to spawn an object in a random location
@@ -79,25 +102,36 @@ public class BoardManager : MonoBehaviour
     }
 
     // tile spawner function
-    void LayoutObjectAtRandom(GameObject[] tileArray, int minimum, int maximum)
+    public int LayoutObjectAtRandom(GameObject[] tileArray, int minimum, int maximum)
     {
-        // controls the number of objects spawned in the level
-        int objectCount = Random.Range(minimum, maximum + 1);
-        // spawn the number of objects specified by object count
-        for(int i = 0; i < objectCount; i++)
-        {
-            // choose a random position to start spawning [call to randoms position function]
-            Vector3 randomPosition = RandomPosition();
-            GameObject tileChoice = tileArray[Random.Range(0, tileArray.Length)];
-            // Do Not Rotate Tiles
-            Instantiate (tileChoice, randomPosition, Quaternion.identity);
+        if( minimum != 0 && maximum != 0)
+        {   
+            // controls the number of objects spawned in the level
+            int objectCount = Random.Range(minimum, maximum + 1);
+
+            // spawn the number of objects specified by object count
+            for(int i = 0; i < objectCount; i++)
+            {
+                // choose a random position to start spawning [call to randoms position function]
+                Vector3 randomPosition = RandomPosition();
+                GameObject tileChoice = tileArray[Random.Range(0, tileArray.Length)];
+                // Do Not Rotate Tiles
+                Instantiate (tileChoice, randomPosition, Quaternion.identity);
+            }
         }
+        return (maximum);
     }
 
     public void SetupScene(int level)
     {
         BoardSetup();
         InitializeList();
+        if(columns < 8 || rows < 8)
+        {
+            Debug.Log("Out of Bounds entered a row or col value < 8");
+            Application.Quit();
+        }
+        else
         LayoutObjectAtRandom(wallTiles, wallCount.minimum, wallCount.maximum);
         /* Spawn # of enemies based on the level's number IE: level 1 spawn 1 enemy; 2 spawn 2,..etc.
          * int enemyCount = (int)Mathf.Log(level, 2f);
