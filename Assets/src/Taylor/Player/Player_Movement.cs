@@ -18,7 +18,7 @@ public class Player_Movement : MonoBehaviour
     [SerializeField] private float _playerMovementSpeed = 5.0f; 
     // [SerializeField] private float _playerJumpHeight = 5.0f;  
     private Vector2 _moveDirection; 
-    public Camera camera; 
+    public Camera cam; 
     private Vector2 _mousePosition; 
 
     [SerializeField] private Collider2D _playerCollider;  
@@ -74,7 +74,7 @@ public class Player_Movement : MonoBehaviour
         float moveY = Input.GetAxisRaw("Vertical");
         _moveDirection = new Vector2(moveX, moveY).normalized;
 
-        _mousePosition = camera.ScreenToWorldPoint(Input.mousePosition);
+        _mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
 
         if(Input.GetButtonDown("Fire1"))
         {
@@ -82,7 +82,9 @@ public class Player_Movement : MonoBehaviour
             /* Plays Audio clip for gun firing on player clicks.
             NOTE: This feature will need to be adjusted for other weapon types later in develoment
             as they will have alternate sound bites.*/
-            FindObjectOfType<AudioManager>().Play("Pew");
+            
+            // This line currently causing a compiler error
+            // FindObjectOfType<AudioManager>().Play("Pew");
         }
     }
 

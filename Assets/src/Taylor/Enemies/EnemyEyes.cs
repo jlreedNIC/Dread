@@ -11,15 +11,15 @@ public class EnemyEyes : MonoBehaviour
 
     [SerializeField] private string detectionTag = "Player"; 
 
-    [SerializeField] private CircleCollider2D collider; 
+    [SerializeField] private CircleCollider2D colliders; 
 
     [SerializeField] private EnemyStatsConfigSO _enemyStats; 
 
     public void Start()
     {
-        collider = GetComponent<CircleCollider2D>();
+        colliders = GetComponent<CircleCollider2D>();
 
-        collider.radius = _enemyStats.lookSphereCastRadius; 
+        colliders.radius = _enemyStats.lookSphereCastRadius; 
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
