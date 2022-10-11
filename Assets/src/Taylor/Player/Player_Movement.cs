@@ -18,7 +18,7 @@ public class Player_Movement : MonoBehaviour
     [SerializeField] private float _playerMovementSpeed = 5.0f; 
     // [SerializeField] private float _playerJumpHeight = 5.0f;  
     private Vector2 _moveDirection; 
-    public Camera cam; 
+    public Camera camera; 
     private Vector2 _mousePosition; 
 
     [SerializeField] private Collider2D _playerCollider;  
@@ -74,7 +74,7 @@ public class Player_Movement : MonoBehaviour
         float moveY = Input.GetAxisRaw("Vertical");
         _moveDirection = new Vector2(moveX, moveY).normalized;
 
-        _mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
+        _mousePosition = camera.ScreenToWorldPoint(Input.mousePosition);
 
         if(Input.GetButtonDown("Fire1"))
         {
