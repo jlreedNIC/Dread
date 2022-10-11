@@ -789,6 +789,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1601953729596326109, guid: b68db55c1b361cd43a7418d705d9edc6, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 321976c667153494799828d11cad02ae, type: 2}
+    - target: {fileID: 1601953729596326109, guid: b68db55c1b361cd43a7418d705d9edc6, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601953729596326109, guid: b68db55c1b361cd43a7418d705d9edc6, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337579970183460073, guid: b68db55c1b361cd43a7418d705d9edc6, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 8975827633389035426, guid: b68db55c1b361cd43a7418d705d9edc6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 5.4000244
+      objectReference: {fileID: 0}
     - target: {fileID: 8975827634520624835, guid: b68db55c1b361cd43a7418d705d9edc6, type: 3}
       propertyPath: m_Pivot.x
       value: 0

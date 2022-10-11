@@ -230,11 +230,11 @@ PrefabInstance:
     - target: {fileID: 8794072403301634479, guid: af190c5737564b24890069065f455657, type: 3}
       propertyPath: weapon
       value: 
-      objectReference: {fileID: 1059339518}
+      objectReference: {fileID: 1059339520}
     - target: {fileID: 8794072403301634479, guid: af190c5737564b24890069065f455657, type: 3}
       propertyPath: weaponSpawner
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1059339520}
     - target: {fileID: 8794072403301634479, guid: af190c5737564b24890069065f455657, type: 3}
       propertyPath: _playerCollider
       value: 
@@ -698,11 +698,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 3072208378700370741, guid: 24d22ed2bae015c43af09d975030adb9, type: 3}
   baseEnemySpawnRate: 0.5
---- !u!1 &1059339518 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3554467850779648890, guid: de550358e11194e4e887d8da206dca15, type: 3}
+--- !u!114 &1059339520 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3554467850779648891, guid: de550358e11194e4e887d8da206dca15, type: 3}
   m_PrefabInstance: {fileID: 509634971}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c7dddee568667f4aa7c2d9dcb823ab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1426991195
 GameObject:
   m_ObjectHideFlags: 0
