@@ -9,10 +9,10 @@ public class BoardTest
     // Bounds test that checks the optimal upperbound for level generation
     [Test]
     public void UpperBoundTest()
-    {
+    {   
         int columns = 8;
         int rows = 8;
-        
+
         BoardManager newRef  = BoardManager.Instance;
         /* InitializeList clears the gameboard of all tiles then populates
          the new level grid with tiles */ 
@@ -41,7 +41,7 @@ public class BoardTest
         Assert.AreEqual(0, columns);
         Debug.Log("Columns are equal to: " + columns);
 
-        // increase the size of the grid by 1 -> grid = 1 x 1
+        // increase the size of the grid by 1 for each row and col size -> grid = 1 x 1
         columns = columns + 1;
         rows = rows + 1;
         newRef.InitializeList();
@@ -50,7 +50,7 @@ public class BoardTest
         Assert.AreEqual(1, columns);
         Debug.Log("Columns are equal to: " + columns);
 
-        // increase the size of the grid by 1 -> grid = 2 x 2
+        // incrrement the size of the grid by 1 for row and col size -> grid = 2 x 2
         columns = columns + 1;
         rows = rows + 1;
         newRef.InitializeList();

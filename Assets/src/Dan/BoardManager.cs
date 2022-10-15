@@ -35,7 +35,8 @@ public class BoardManager : MonoBehaviour
             maximum = max;
         }
     }
-    // initialize gameboard size to 8 x 8 matrix
+
+    // initialize gameboard size to default values for an 8 x 8 matrix
     public int columns = 8;
     public int rows = 8;
     // instantiate wall boundaries min = 5 walls, max = 9 walls
