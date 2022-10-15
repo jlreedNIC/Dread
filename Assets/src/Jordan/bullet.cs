@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+    TO DO:
+        fix friendly fire issue
+*/
+
 public class bullet : MonoBehaviour
 {
     [SerializeField] private int total_damage;
@@ -47,6 +52,11 @@ public class bullet : MonoBehaviour
     public void setFireRange(int range)
     {
         max_distance = range;
+    }
+
+    public void setTotalDamage(int dmg)
+    {
+        total_damage = dmg;
     }
 
     // really only used for testing, otherwise could go in fixed update above

@@ -6,28 +6,46 @@ using UnityEngine;
     TO DO:
         decorator
         look into scriptable object for the stats
+        fix switch weapon action
  */
 
 public class Base_Weapon : MonoBehaviour
 {
-    [SerializeField] private Transform firePoint; // where bullets spawn from
+    public Transform firePoint; // where bullets spawn from
 
-    [SerializeField] private float bulletForce = 20f;
+    public float bulletForce = 20f;
 
-    [SerializeField] private string weapon_name;
+    [SerializeField] private string weapon_name; // make this part of decorator??
     [SerializeField] private float fire_rate;
     [SerializeField] private int weapon_dmg_mod;
     [SerializeField] private int fire_range;
 
     // gets set with the ammo manager
-    [SerializeField] private GameObject bullet_type;
+    public GameObject bullet_type; // delete
 
-    [SerializeField] private bool canFire;
-    [SerializeField] private bool canBePickedUp;
+    // made public for inheritance purposes
+    public bool canFire;
+    public bool canBePickedUp;
+    // when canbepickedup is false, turn collider off
 
     // audio manager
     // should we have this? or just call the script Dan is making???
     // [SerializeField] private AudioManager AudioMan;
+
+    virtual public int GetWeaponDamage()
+    {
+        return weapon_dmg_mod;
+    }
+
+    virtual public float GetWeaponFireRate()
+    {
+        return fire_rate;
+    }
+
+    virtual public int GetWeaponFireRange()
+    {
+        return fire_range;
+    }
 
     // Start is called before the first frame update
     public void Start()
@@ -59,12 +77,14 @@ public class Base_Weapon : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        
+        // if(!canBePickedUp) getComponent<collider>.deactivate //find better code
     }
 
     // currently spawns a bullet traveling in the upwards direction
-    public void Fire()
+    virtual public void Fire()
     {
+        Debug.Log("base weapon fire");
+        Debug.Log("fire? " + canFire);
         if(canFire)
         {
             // play pewpew sound
@@ -79,18 +99,39 @@ public class Base_Weapon : MonoBehaviour
             //     Debug.Log("can't play pewpew");
             // }
         
+            /* 
+                get weapon damage (recursive)
+                get fire rate (recursive)
+                get weapon range (recursive)
+
+                ammo manager . fire bullet (range, damage)
+                    spawn bullet
+                    apply damage
+                    apply range
+                    apply force
+                
+                firecooldown(rate??)
+            */
             canFire = !canFire;
+
+            int curDmg = GetWeaponDamage();
+            float curRate = GetWeaponFireRate();
+            int curRange = GetWeaponFireRange();
+            Debug.Log("weapon damage: " + curDmg + " fire rate: " + curRate + " fire range: " + curRange);
 
             // bullet info will be set in ammo manager class
             // spawn bullet
             GameObject bullet = Instantiate(bullet_type, firePoint.position, firePoint.rotation);
-            // set bullet distance able to travel
-            bullet.GetComponent<bullet>().setFireRange(fire_range);
+
+            // set max bullet dist and bullet damage
+            bullet.GetComponent<bullet>().setFireRange(curRange);
+            bullet.GetComponent<bullet>().setTotalDamage(curDmg);
+
             // apply force to bullet to move
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse); 
 
-            StartCoroutine(FireCooldown());
+            StartCoroutine(FireCooldown(curRate));
         }
         else
         {
@@ -100,9 +141,9 @@ public class Base_Weapon : MonoBehaviour
 
     // weapon can only be fired so often
     // this function operates as the cooldown and will not let weapon be fired until ready
-    private IEnumerator FireCooldown()
+    public IEnumerator FireCooldown(float rate)
     {
-        yield return new WaitForSeconds(fire_rate);
+        yield return new WaitForSeconds(rate);
         canFire = true;
         yield break;
     }
@@ -113,7 +154,7 @@ public class Base_Weapon : MonoBehaviour
 
     // need to work on canBePickedUp
     // if enemies are loaded with prefab, player will end up picking up the enemy weapon
-    public GameObject SwitchActiveWeapon(GameObject oldWeapon)
+    virtual public GameObject SwitchActiveWeapon(GameObject oldWeapon)
     {
         if(canBePickedUp)
         {
@@ -127,9 +168,7 @@ public class Base_Weapon : MonoBehaviour
 
             // remove the parent and rotation of the old weapon
             oldWeapon.transform.parent = null;
-            // oldWeapon.transform.position += new Vector3(2,0,0);
             oldWeapon.transform.rotation = new Quaternion(0,0,0,0);
-            // oldWeapon.GetComponent<Base_Weapon>().canBePickedUp = false;
 
             // return the new weapon to be set in the player script
             return this.gameObject;
