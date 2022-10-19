@@ -18,19 +18,6 @@ public class Damage_Decorator : Base_Decorator
     override public int GetWeaponDamage()
     {
         Debug.Log("recursive weapon damage call/damage decorator");
-        return dmg_upgrade + weapon_wrappee.GetWeaponDamage();
+        return dmg_upgrade + weapon_wrappee.GetComponent<Base_Weapon>().GetWeaponDamage();
     }
-
-    override public float GetWeaponFireRate()
-    {
-        Debug.Log("recursive fire rate call/damage decorator");
-        return weapon_wrappee.GetWeaponFireRate();
-    }
-
-    override public int GetWeaponFireRange()
-    {
-        Debug.Log("recursive fire range call/damage decorator");
-        return weapon_wrappee.GetWeaponFireRange();
-    }
-
 }

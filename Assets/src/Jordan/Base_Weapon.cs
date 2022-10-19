@@ -7,6 +7,10 @@ using UnityEngine;
         decorator
         look into scriptable object for the stats
         fix switch weapon action
+
+        look at creating weapon class and a weapon object/behavior class
+            in essence, a weapon class that we can do the decorator on
+            and an object class that will handle the gameobject behavior (spawning bullets and whatnot)
  */
 
 public class Base_Weapon : MonoBehaviour

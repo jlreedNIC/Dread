@@ -13,56 +13,30 @@ using UnityEngine;
 
 public class Base_Decorator : Base_Weapon
 {
-    public Base_Weapon weapon_wrappee;
+    public GameObject weapon_wrappee;
 
-    virtual public int GetWeaponDamage()
+    public void setWrappee(GameObject current)
+    {
+        Debug.Log("applying wrappee...");
+        weapon_wrappee = current;
+    }
+
+    override public int GetWeaponDamage()
     {
         Debug.Log("recursive damage call/base decorator");
-        return weapon_wrappee.GetWeaponDamage();
+        return weapon_wrappee.GetComponent<Base_Weapon>().GetWeaponDamage();
     }
 
-    virtual public float GetWeaponFireRate()
+    override public float GetWeaponFireRate()
     {
         Debug.Log("recursive fire rate call/base decorator");
-        return weapon_wrappee.GetWeaponFireRate();
+        return weapon_wrappee.GetComponent<Base_Weapon>().GetWeaponFireRate();
     }
 
-    virtual public int GetWeaponFireRange()
+    override public int GetWeaponFireRange()
     {
         Debug.Log("recursive fire range call/base decorator");
-        return weapon_wrappee.GetWeaponFireRange();
-    }
-
-    override public GameObject SwitchActiveWeapon(GameObject oldWeapon)
-    {
-        if(canBePickedUp)
-        {
-            canBePickedUp = false;
-
-            Debug.Log("switching weapons");
-            // give the new player the position, rotation, and parent of the old weapon
-            transform.position = oldWeapon.transform.position;
-            transform.rotation = oldWeapon.transform.rotation;
-            transform.parent = oldWeapon.transform.parent;
-
-            // remove the parent and rotation of the old weapon
-            oldWeapon.transform.parent = null;
-            oldWeapon.transform.rotation = new Quaternion(0,0,0,0);
-
-            // weapon_wrappee = new Base_Weapon(oldWeapon.GetComponent<Base_Weapon>());
-            weapon_wrappee = oldWeapon.GetComponent<Base_Weapon>();
-
-            // make sure new weapon canbefired
-            canFire = true;
-
-            // return the new weapon to be set in the player script
-            return this.gameObject;
-        }
-        else
-        {
-            Debug.Log("can't switch with this weapon right now");
-            return oldWeapon;
-        }        
+        return weapon_wrappee.GetComponent<Base_Weapon>().GetWeaponFireRange();
     }
 
     override public void Fire()

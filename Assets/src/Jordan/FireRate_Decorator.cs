@@ -15,22 +15,13 @@ public class FireRate_Decorator : Base_Decorator
 {
     [SerializeField] private float rate_upgrade = -1;
 
-    override public int GetWeaponDamage()
-    {
-        Debug.Log("recursive damage call/firerate decorator");
-        return weapon_wrappee.GetWeaponDamage();
-    }
-
     override public float GetWeaponFireRate()
     {
         Debug.Log("recursive fire rate call/firerate decorator");
-        return rate_upgrade + weapon_wrappee.GetWeaponFireRate();
-    }
-
-    override public int GetWeaponFireRange()
-    {
-        Debug.Log("recursive fire range call/firerate decorator");
-        return weapon_wrappee.GetWeaponFireRange();
+        float total_rate = rate_upgrade + weapon_wrappee.GetComponent<Base_Weapon>().GetWeaponFireRate();
+        if(total_rate <= 0)
+            return 0;
+        else return rate_upgrade + weapon_wrappee.GetComponent<Base_Weapon>().GetWeaponFireRate();
     }
 
 }
