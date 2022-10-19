@@ -10,6 +10,7 @@ TagManager:
   - Floor
   - Exit
   - Weapon
+  - weapon_upgrade
   layers:
   - Default
   - TransparentFX

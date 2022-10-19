@@ -116,5 +116,10 @@ public class Player_Movement : MonoBehaviour
         {
             weapon = col.gameObject.GetComponent<Base_Weapon>().SwitchActiveWeapon(weapon);
         }
+        
+        if(col.gameObject.tag == "weapon_upgrade")
+        {
+            weapon = col.gameObject.GetComponent<weapon_upgrade>().applyUpgrade(weapon);
+        }
     }
 }
