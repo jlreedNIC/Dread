@@ -23,25 +23,25 @@ public class Base_Decorator : Base_Weapon
 
     override public int GetWeaponDamage()
     {
-        Debug.Log("recursive damage call/base decorator");
+        // Debug.Log("recursive damage call/base decorator");
         return weapon_wrappee.GetComponent<Base_Weapon>().GetWeaponDamage();
     }
 
     override public float GetWeaponFireRate()
     {
-        Debug.Log("recursive fire rate call/base decorator");
+        // Debug.Log("recursive fire rate call/base decorator");
         return weapon_wrappee.GetComponent<Base_Weapon>().GetWeaponFireRate();
     }
 
     override public int GetWeaponFireRange()
     {
-        Debug.Log("recursive fire range call/base decorator");
+        // Debug.Log("recursive fire range call/base decorator");
         return weapon_wrappee.GetComponent<Base_Weapon>().GetWeaponFireRange();
     }
 
     override public void Fire()
     {
-        Debug.Log("base decorator fire");
+        // Debug.Log("base decorator fire");
         if(canFire)
         {
             // play pewpew sound
@@ -74,7 +74,7 @@ public class Base_Decorator : Base_Weapon
             int curDmg = GetWeaponDamage();
             float curRate = GetWeaponFireRate();
             int curRange = GetWeaponFireRange();
-            Debug.Log("weapon damage: " + curDmg + " fire rate: " + curRate + " fire range: " + curRange);
+            // Debug.Log("weapon damage: " + curDmg + " fire rate: " + curRate + " fire range: " + curRange);
 
             // bullet info will be set in ammo manager class
             // spawn bullet

@@ -73,7 +73,7 @@ public class Base_Weapon : MonoBehaviour
         }
 
         // base range
-        fire_range = 5;
+        // fire_range = 5;
         canFire = true;
         canBePickedUp = true;
     }

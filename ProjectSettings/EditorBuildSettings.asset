@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Taylor/Taylor_Testing.unity
     guid: a0af4b1df82b7604da166814e8e358fb
+  - enabled: 1
+    path: Assets/Scenes/Jordan/weapon_stress_test_scene.unity
+    guid: 2cdcfc32985e46040a8c5990e7525e81
   m_configObjects: {}
