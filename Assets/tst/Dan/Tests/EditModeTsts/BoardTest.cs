@@ -5,16 +5,23 @@ using UnityEngine;
 using UnityEngine.TestTools;
 
 public class BoardTest
-{
-    // Bounds test that checks the optimal upperbound for level generation
+{    
+    // NOTE:
+    // The bounds checks for level generation dimensional values.
+
+    // This test is to ensure the values are being preserved after the
+    // Function InitializedList() clears all values for the board.
+
+    
+
     [Test]
     public void UpperBoundTest()
     {   
-        int columns = 8;
-        int rows = 8;
-
+        int columns = BoardManager.rows;
+        int rows = BoardManager.columns;
+        // Check Default dimensions are preserved
         BoardManager newRef  = BoardManager.Instance;
-        /* InitializeList clears the gameboard of all tiles then populates
+        /* InitializeList() clears the gameboard of all tiles then populates
          the new level grid with tiles */ 
         newRef.InitializeList();
         Assert.AreEqual(8, rows);
@@ -22,16 +29,16 @@ public class BoardTest
         Assert.AreEqual(8, columns);
         Debug.Log("Columns are equal to: " + columns);
     }
-    /* Bounds test to see if the board manager will take a matrix value
-     * That is less than the optimal max value(8) for the tile set generator
-     * grid = 8 x 8
-     */
+
     [Test]
     public void LowerBoundTest()
     {
-        int columns = 0;
-        int rows = 0;
-        
+        int columns = BoardManager.columns;
+        int rows = BoardManager.rows;
+
+        rows = 0;
+        columns = 0;
+        // check to see if lower bounds are possible as an updated value
         BoardManager newRef  = BoardManager.Instance;
         /* InitializeList clears the gameboard of all tiles then populates
          the new level grid with tiles */ 
@@ -42,17 +49,19 @@ public class BoardTest
         Debug.Log("Columns are equal to: " + columns);
 
         // increase the size of the grid by 1 for each row and col size -> grid = 1 x 1
-        columns = columns + 1;
-        rows = rows + 1;
+        // check to see if these bad values are preserved
+        rows = 1;
+        columns = 1;
         newRef.InitializeList();
         Assert.AreEqual(1, rows);
         Debug.Log("Rows are equal to: " + rows);
         Assert.AreEqual(1, columns);
         Debug.Log("Columns are equal to: " + columns);
 
-        // incrrement the size of the grid by 1 for row and col size -> grid = 2 x 2
-        columns = columns + 1;
-        rows = rows + 1;
+        // increment the size of the grid by 1 for row and col size -> grid = 2 x 2 
+        // check to see if the values are preserved
+        rows = 2;
+        columns = 2;
         newRef.InitializeList();
         Assert.AreEqual(2, rows);
         Debug.Log("Rows are equal to: " + rows);

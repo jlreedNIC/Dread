@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Jordan/weapon_stress_test_scene.unity
     guid: 2cdcfc32985e46040a8c5990e7525e81
+  - enabled: 1
+    path: Assets/Scenes/Dan/level_stress_test.unity
+    guid: 3100cc0e43ca36a46835f3ee186179a9
   m_configObjects: {}

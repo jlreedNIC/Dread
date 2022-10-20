@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class BoardManager : MonoBehaviour
 {
-    // singleton instantiation of the board
+    //singleton instantiation of the board
     public static BoardManager Instance
     {
         get
@@ -37,8 +37,10 @@ public class BoardManager : MonoBehaviour
     }
 
     // initialize gameboard size to default values for an 8 x 8 matrix
-    public int columns = 8;
-    public int rows = 8;
+    // NOTE: STATIC ONLY FOR TESTING PURPOSES!! REMOVE AFTER TO RE-SERIALIZE IN INTERPRETER MODE
+    static public int columns = 8;
+    static public int rows = 8;
+
     // instantiate wall boundaries min = 5 walls, max = 9 walls
     public Count wallCount = new Count (5,9);
 
@@ -47,6 +49,8 @@ public class BoardManager : MonoBehaviour
     public GameObject[] floorTiles;
     public GameObject[] wallTiles;
     public GameObject[] outerWallTiles;
+
+
 
     private Transform boardHolder;
 
@@ -71,7 +75,8 @@ public class BoardManager : MonoBehaviour
             }
         }
     }
-    // Instantiates both tile types ana prepares them to randomly be placed on the tile map
+
+    // Instantiates both tile types and prepares them to randomly be placed on the tile map
     public void BoardSetup()
     {
         boardHolder = new GameObject("Board").transform;
@@ -92,7 +97,7 @@ public class BoardManager : MonoBehaviour
         }
     }
     
-    // spawns level tiles onto the game board
+    // Randomizes level tiles and postions for them to be placed onto the game board
     Vector3 RandomPosition()
     {
         int randomIndex = Random.Range(0, gridPositions.Count);
@@ -117,19 +122,21 @@ public class BoardManager : MonoBehaviour
                 Vector3 randomPosition = RandomPosition();
                 GameObject tileChoice = tileArray[Random.Range(0, tileArray.Length)];
                 // Do Not Rotate Tiles
-                Instantiate (tileChoice, randomPosition, Quaternion.identity);
+                Instantiate(tileChoice, randomPosition, Quaternion.identity);
             }
         }
         return (maximum);
     }
-
+    
+    // Generates the board and initilizes the arrays with between 5 - 9 interior wall tiles,
+    // a perimeter wall, and a guaranteed exit tile.
     public void SetupScene(int level)
     {
         BoardSetup();
         InitializeList();
         if(columns < 8 || rows < 8)
         {
-            Debug.Log("Out of Bounds entered a row or col value < 8");
+            Debug.Log("Out of Bounds Error: dimensional value entered for a row or col is less than 8");
             Application.Quit();
         }
         else
