@@ -38,8 +38,8 @@ public class BoardManager : MonoBehaviour
 
     // initialize gameboard size to default values for an 8 x 8 matrix
     // NOTE: STATIC ONLY FOR TESTING PURPOSES!! REMOVE AFTER TO RE-SERIALIZE IN INTERPRETER MODE
-    static public int columns = 8;
-    static public int rows = 8;
+    public int columns = 8;
+    public int rows = 8;
 
     // instantiate wall boundaries min = 5 walls, max = 9 walls
     public Count wallCount = new Count (5,9);
