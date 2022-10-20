@@ -31,13 +31,14 @@ public class bullet : MonoBehaviour
     {
         // check amount of distance allowed to travel
         // if dist. traveled is max then destroy game object
-        dist_traveled = Vector3.Distance(starting_point, transform.position);
-        CheckDistance();
+        // dist_traveled = Vector3.Distance(starting_point, transform.position);
+        // CheckDistance();
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
         Debug.Log("damage: " + total_damage);
+        Debug.Log("not deleting bullets just for test purposes");
 
         // check if object is damageable, then deal damage
         if(other.gameObject.TryGetComponent<Damageable>(out Damageable damageableComponent))
@@ -45,7 +46,7 @@ public class bullet : MonoBehaviour
             damageableComponent.TakeDamage(total_damage);
         }
         
-        Destroy(gameObject);
+        // Destroy(gameObject);
     }
 
     // sets the distance the bullet can travel before despawning

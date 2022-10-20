@@ -21,8 +21,8 @@ public class WeaponUpgradeStressTest
         GameObject dmgUpgrade = GameObject.Find("damage decorator");
 
         long numRecursiveCalls = 0;
-        float fps = 20;
-        while(fps > 5)
+        float fps = 21;
+        while(fps > 20)
         {
             fps = 1.0f / Time.deltaTime;
             GameObject newDmgUpgrade = GameObject.Instantiate(dmgUpgrade);      // new weapon upgrade/decorator
