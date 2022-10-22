@@ -11,8 +11,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Movement : MonoBehaviour
+public sealed class Player_Movement : MonoBehaviour
 {
+    private Player_Movement() {}
+
+    public static Player_Movement Instance
+    {
+        get
+        {
+            return Nested.instance;
+        }
+    }
+
+    private class Nested
+    {
+        static Nested() {}
+        internal static readonly Player_Movement instance = new Player_Movement();
+    }
     //these will be our base player movement speed and jump height. 
     //serialized field lets us have private variables vieded and edited in Unity editor 
     [SerializeField] private float _playerMovementSpeed = 5.0f; 
