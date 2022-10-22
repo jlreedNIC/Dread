@@ -25,7 +25,7 @@ using UnityEngine.AI;
 //needed for A* pathfinding package
 using Pathfinding;
 
-public class EnemyAIStateMachine : MonoBehaviour
+public abstract class EnemyAIStateMachine : MonoBehaviour
 {
 
     //enumeration to hold our enemy AI states
@@ -271,7 +271,7 @@ public class EnemyAIStateMachine : MonoBehaviour
 		return _enemyStats.attackCooldown >= duration;
 	}
 
-    private void OnDrawGizmos()
+    public void OnDrawGizmos()
     {
 
         Gizmos.color = Color.blue;
