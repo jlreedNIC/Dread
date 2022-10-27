@@ -19,7 +19,7 @@ public class Base_Decorator : Base_Weapon
 
     public void setWrappee(GameObject current)
     {
-        Debug.Log("applying wrappee...");
+        // Debug.Log("applying wrappee");
         weapon_wrappee = current;
     }
 

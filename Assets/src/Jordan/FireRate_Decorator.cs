@@ -17,7 +17,7 @@ public class FireRate_Decorator : Base_Decorator
 
     override public float GetWeaponFireRate()
     {
-        Debug.Log("recursive fire rate call/firerate decorator");
+        // Debug.Log("recursive fire rate call/firerate decorator");
         float total_rate = rate_upgrade + weapon_wrappee.GetComponent<Base_Weapon>().GetWeaponFireRate();
         if(total_rate <= 0)
             return 0;

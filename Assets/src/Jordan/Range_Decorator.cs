@@ -17,7 +17,7 @@ public class Range_Decorator : Base_Decorator
 
     override public int GetWeaponFireRange()
     {
-        Debug.Log("recursive fire range call/range decorator");
+        // Debug.Log("recursive fire range call/range decorator");
         return range_upgrade + weapon_wrappee.GetComponent<Base_Weapon>().GetWeaponFireRange();
     }
 }
