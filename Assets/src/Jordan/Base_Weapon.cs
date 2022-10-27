@@ -85,10 +85,9 @@ public class Base_Weapon : MonoBehaviour
     }
 
     // currently spawns a bullet traveling in the upwards direction
-    virtual public void Fire()
+    public void Fire()
     {
-        Debug.Log("base weapon fire");
-        Debug.Log("fire? " + canFire);
+        // Debug.Log("base decorator fire");
         if(canFire)
         {
             // play pewpew sound
@@ -116,26 +115,31 @@ public class Base_Weapon : MonoBehaviour
                 
                 firecooldown(rate??)
             */
-            canFire = !canFire;
+            
 
             int curDmg = GetWeaponDamage();
             float curRate = GetWeaponFireRate();
             int curRange = GetWeaponFireRange();
-            Debug.Log("weapon damage: " + curDmg + " fire rate: " + curRate + " fire range: " + curRange);
+            // Debug.Log("weapon damage: " + curDmg + " fire rate: " + curRate + " fire range: " + curRange);
 
             // bullet info will be set in ammo manager class
-            // spawn bullet
-            GameObject bullet = Instantiate(bullet_type, firePoint.position, firePoint.rotation);
+            GameObject bullet = AmmoManager.Instance.createBullet(curRange, curDmg, firePoint);
+            if(bullet != null)
+            {
+                canFire = !canFire;
+                // spawn bullet
+                // GameObject bullet = Instantiate(bullet_type, firePoint.position, firePoint.rotation);
 
-            // set max bullet dist and bullet damage
-            bullet.GetComponent<bullet>().setFireRange(curRange);
-            bullet.GetComponent<bullet>().setTotalDamage(curDmg);
+                // // set max bullet dist and bullet damage
+                // bullet.GetComponent<bullet>().setFireRange(curRange);
+                // bullet.GetComponent<bullet>().setTotalDamage(curDmg);
 
-            // apply force to bullet to move
-            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse); 
+                // apply force to bullet to move
+                Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+                rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse); 
 
-            StartCoroutine(FireCooldown(curRate));
+                StartCoroutine(FireCooldown(curRate));
+            }
         }
         else
         {

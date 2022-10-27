@@ -13,12 +13,13 @@ public class bullet : MonoBehaviour
     [SerializeField] private Vector3 starting_point;
     [SerializeField] private int max_distance;
     [SerializeField] private float dist_traveled;
+    [SerializeField] private string bulletName;
 
     // Start is called before the first frame update
     void Start()
     {
         // set starting point when bullet is spawned by base weapon
-        starting_point = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        // starting_point = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
 
     // Update is called once per frame
@@ -31,14 +32,14 @@ public class bullet : MonoBehaviour
     {
         // check amount of distance allowed to travel
         // if dist. traveled is max then destroy game object
-        // dist_traveled = Vector3.Distance(starting_point, transform.position);
-        // CheckDistance();
+        dist_traveled = Vector3.Distance(starting_point, transform.position);
+        CheckDistance();
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
         Debug.Log("damage: " + total_damage);
-        Debug.Log("not deleting bullets just for test purposes");
+        // Debug.Log("not deleting bullets just for test purposes");
 
         // check if object is damageable, then deal damage
         if(other.gameObject.TryGetComponent<Damageable>(out Damageable damageableComponent))
@@ -46,7 +47,7 @@ public class bullet : MonoBehaviour
             damageableComponent.TakeDamage(total_damage);
         }
         
-        // Destroy(gameObject);
+        Destroy(gameObject);
     }
 
     // sets the distance the bullet can travel before despawning
@@ -68,10 +69,16 @@ public class bullet : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     // used only in testing
     // may be able to get rid of when implementing play mode test
     public void TestDistTraveled(float n)
     {
         dist_traveled = n;
+    }
+
+    public string getName()
+    {
+        return bulletName;
     }
 }

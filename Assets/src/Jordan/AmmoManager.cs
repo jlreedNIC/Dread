@@ -4,34 +4,55 @@ using UnityEngine;
 
 /*
     TO DO:
-        
+        make sure this is not creating more than one instance
  */
 
-// think about if we need the game object to be in the scene. if not, can we get rid of : MonoBehavior??
 public sealed class AmmoManager : MonoBehaviour
 {
     // singleton implementation
     private AmmoManager() {}
-    public static AmmoManager Instance
-    {
-        get
-        {
-            return Nested.instance;
-        }
-    }
+    // public static AmmoManager Instance
+    // {
+    //     get
+    //     {
+    //         return Nested.instance;
+    //     }
+    // }
 
-    private class Nested
+    // private class Nested
+    // {
+    //     static Nested() {}
+    //     // internal static readonly AmmoManager instance = new AmmoManager();
+    //     internal static readonly AmmoManager instance = new GameObject().AddComponent<AmmoManager>();
+    // }
+    public static AmmoManager Instance { get; private set; }
+
+    private void Awake()
     {
-        static Nested() {}
-        internal static readonly AmmoManager instance = new AmmoManager();
+        if(Instance != null && Instance != this)
+        {
+            Debug.Log("tried creating new instance");
+            Destroy(this);
+        }
+        else
+        {
+            Debug.Log("new instance");
+            Instance = this;
+            DontDestroyOnLoad(this.gameObject); // when do we actually need to use this?
+        }
     }
 
     [SerializeField] private int totalAmmo;             // total amount of ammo available
     [SerializeField] private int maxTotal;              // total amount of ammo able to be carried
     [SerializeField] private int ammoDamage;            // ammount of damage that the ammo can do
-    [SerializeField] private string currentAmmoType;    // type of ammo that is currently created
+    
+    [SerializeField] private GameObject bullet_type;    // current bullet type to create
 
-    // think about creating array of available ammo types with relevant information
+    void Start()
+    {
+        // initial ammo inventory set to 40
+        totalAmmo = maxTotal = 40;
+    }
 
     // function will return the total amount of ammo currently have
     public int GetTotalAmmo()
@@ -50,9 +71,9 @@ public sealed class AmmoManager : MonoBehaviour
         return ammoDamage;
     }
 
-    public string GetCurrentType()
+    public string GetCurrentBulletName()
     {
-        return currentAmmoType;
+        return bullet_type.GetComponent<bullet>().getName();
     }
 
     public void updateAmmoCount(int n)
@@ -67,12 +88,34 @@ public sealed class AmmoManager : MonoBehaviour
         maxTotal += count;
     }
 
-    public void SetNewAmmoType()
+    // set the current ammo type
+    // takes a gameobject type (prefab for bullet)
+    public void SetNewAmmoType(GameObject bullet)
     {
         // this function will set the currentAmmoType and ammoDamage
         // based off of what is received
 
         // this is designed for picking up new 'items' that will give upgraded bullets
+        bullet_type = bullet;
     }
     
+    // returns null if not enough ammo
+    public GameObject createBullet(int range, int damage, Transform firePoint)
+    {
+        if(totalAmmo > 0)
+        {
+            Debug.Log("creating new bullet");
+            // create a bullet here with the range, damage, position, rotation
+            GameObject bullet = Instantiate(bullet_type, firePoint.position, firePoint.rotation);
+
+            // set max bullet dist and bullet damage
+            bullet.GetComponent<bullet>().setFireRange(range);
+            bullet.GetComponent<bullet>().setTotalDamage(damage);
+
+            updateAmmoCount(-1);
+
+            return bullet;
+        }
+        else return null;
+    }
 }
