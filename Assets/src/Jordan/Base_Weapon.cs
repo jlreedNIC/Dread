@@ -1,16 +1,26 @@
+/**
+ * @file    Base_Weapon.cs
+ * @author  Jordan Reed
+ *
+ * @brief   
+ *
+ * @date    September 2022
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /*
     TO DO:
-        decorator
         look into scriptable object for the stats
         fix switch weapon action
 
         look at creating weapon class and a weapon object/behavior class
             in essence, a weapon class that we can do the decorator on
             and an object class that will handle the gameobject behavior (spawning bullets and whatnot)
+        
+        need to create an enemy base weapon class that won't be tied to the ammo manager
  */
 
 public class Base_Weapon : MonoBehaviour
@@ -19,13 +29,10 @@ public class Base_Weapon : MonoBehaviour
 
     public float bulletForce = 20f;
 
-    [SerializeField] private string weapon_name; // make this part of decorator??
+    [SerializeField] private string weapon_name;
     [SerializeField] private float fire_rate;
     [SerializeField] private int weapon_dmg_mod;
-    [SerializeField] private int fire_range;
-
-    // gets set with the ammo manager
-    public GameObject bullet_type; // delete
+    [SerializeField] private int fire_range;    
 
     // made public for inheritance purposes
     public bool canFire;
@@ -51,6 +58,11 @@ public class Base_Weapon : MonoBehaviour
         return fire_range;
     }
 
+    public string getWeaponName()
+    {
+        return weapon_name;
+    }
+    
     // Start is called before the first frame update
     public void Start()
     {
@@ -84,8 +96,7 @@ public class Base_Weapon : MonoBehaviour
         // if(!canBePickedUp) getComponent<collider>.deactivate //find better code
     }
 
-    // currently spawns a bullet traveling in the upwards direction
-    public void Fire()
+    virtual public void Fire()
     {
         // Debug.Log("base decorator fire");
         if(canFire)
@@ -101,21 +112,6 @@ public class Base_Weapon : MonoBehaviour
             // {
             //     Debug.Log("can't play pewpew");
             // }
-        
-            /* 
-                get weapon damage (recursive)
-                get fire rate (recursive)
-                get weapon range (recursive)
-
-                ammo manager . fire bullet (range, damage)
-                    spawn bullet
-                    apply damage
-                    apply range
-                    apply force
-                
-                firecooldown(rate??)
-            */
-            
 
             int curDmg = GetWeaponDamage();
             float curRate = GetWeaponFireRate();
@@ -127,12 +123,6 @@ public class Base_Weapon : MonoBehaviour
             if(bullet != null)
             {
                 canFire = !canFire;
-                // spawn bullet
-                // GameObject bullet = Instantiate(bullet_type, firePoint.position, firePoint.rotation);
-
-                // // set max bullet dist and bullet damage
-                // bullet.GetComponent<bullet>().setFireRange(curRange);
-                // bullet.GetComponent<bullet>().setTotalDamage(curDmg);
 
                 // apply force to bullet to move
                 Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
