@@ -19,7 +19,7 @@ public class bullet : MonoBehaviour
     void Start()
     {
         // set starting point when bullet is spawned by base weapon
-        // starting_point = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        starting_point = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
 
     // Update is called once per frame
@@ -66,6 +66,7 @@ public class bullet : MonoBehaviour
     {
         if(dist_traveled >= max_distance)
         {
+            Debug.Log("destroyed bullet at dist " + dist_traveled);
             Destroy(gameObject);
         }
     }

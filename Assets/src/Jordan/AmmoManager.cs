@@ -104,7 +104,7 @@ public sealed class AmmoManager : MonoBehaviour
     {
         if(totalAmmo > 0)
         {
-            Debug.Log("creating new bullet");
+            // Debug.Log("creating new bullet " + range);
             // create a bullet here with the range, damage, position, rotation
             GameObject bullet = Instantiate(bullet_type, firePoint.position, firePoint.rotation);
 
