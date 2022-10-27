@@ -111,8 +111,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -127.109985, y: 48}
-  m_SizeDelta: {x: 85.2101, y: 50}
+  m_AnchoredPosition: {x: -197.12006, y: 45.399994}
+  m_SizeDelta: {x: 218.0072, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &419240839693137057
 CanvasRenderer:
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10/10
+  m_text: 100/100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 321976c667153494799828d11cad02ae, type: 2}
   m_sharedMaterial: {fileID: 1459091954994717080, guid: 321976c667153494799828d11cad02ae, type: 2}
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -323,7 +323,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 9.09259, y: -27.1}
-  m_SizeDelta: {x: 291.5381, y: 9.603401}
+  m_SizeDelta: {x: 327.7465, y: 9.6034}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &8975827634510914617
 CanvasRenderer:
@@ -375,6 +375,7 @@ GameObject:
   - component: {fileID: 8975827634520624834}
   - component: {fileID: 8975827634520624861}
   - component: {fileID: 8975827634520624860}
+  - component: {fileID: 6210498786674230615}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -467,3 +468,17 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6210498786674230615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8975827634520624863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e811da04d20c9942ad873546d7150f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AmmoCount: {fileID: 7627696869580646971}
+  healthBar: {fileID: 8975827634510914616}
