@@ -133,9 +133,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1818565862397610861}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ea2c903172ebd5449fbe98f85c159e0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7b822a4a4a7794a479b1e67c9c2c8b11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  total_damage: 5
-  starting_point: {fileID: 0}
-  distance: 0
+  total_damage: 0
+  starting_point: {x: 0, y: 0, z: 0}
+  max_distance: 0
+  dist_traveled: 0
+  bulletName: 

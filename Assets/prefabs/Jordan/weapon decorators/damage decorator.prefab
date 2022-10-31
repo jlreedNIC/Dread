@@ -122,16 +122,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3716014507274626675}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7aab0c533165714c9b79accb5726168, type: 3}
+  m_Script: {fileID: 11500000, guid: 40f8966cc991f2f4d9beb3f7ab630608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 0}
+  firePoint: {fileID: 3716014507282511515}
   bulletForce: 20
   weapon_name: 
   fire_rate: 0
   weapon_dmg_mod: 0
   fire_range: 0
-  bullet_type: {fileID: 1818565862397610861, guid: faf8f038e3cb20243b6895a419420ab5, type: 3}
   canFire: 0
   canBePickedUp: 0
   weapon_wrappee: {fileID: 0}
