@@ -4,12 +4,21 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 
+/*
+ * TO DO:
+ *      look into turning this class into singleton
+ *      where do we store the parts count? here or in the player stat class?
+ */
+
 public class HUD : MonoBehaviour
 {
-    [SerializeField] private GameObject AmmoCount;  
+    [SerializeField] private GameObject AmmoCount;
+    [SerializeField] private GameObject PartCount;
     [SerializeField] private Image healthBar;
-    private TMP_Text AmmoText;  
+    private TMP_Text AmmoText;
+    private TMP_Text PartText;
     private int curAmmo, maxAmmo;
+    private int curParts, maxParts;
     private float curHealth, maxHealth;
     private float maxWidth, curWidth;
     private RectTransform imageRect;
@@ -18,6 +27,7 @@ public class HUD : MonoBehaviour
     void Start()
     {
         AmmoText = AmmoCount.GetComponent<TMP_Text>();
+        PartText = PartCount.GetComponent<TMP_Text>();
         imageRect = healthBar.GetComponent<RectTransform>();
         maxWidth = imageRect.rect.width;
     }
@@ -30,6 +40,12 @@ public class HUD : MonoBehaviour
         maxAmmo = AmmoManager.Instance.GetMaxAmmo();
 
         AmmoText.text = curAmmo + "/" + maxAmmo;
+
+        // get current values of part counts and update text
+        // curParts = getPartCount();
+        curParts = 4;
+        maxParts = 7;
+        PartText.text = curParts + "/" + maxParts;
 
         // get current health and update health bar
         // curHealth = getPlayerHealth();

@@ -1941,6 +1941,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 56436594}
     m_Modifications:
+    - target: {fileID: 1388237061504491130, guid: de550358e11194e4e887d8da206dca15, type: 3}
+      propertyPath: fire_range
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3554467850779648886, guid: de550358e11194e4e887d8da206dca15, type: 3}
       propertyPath: m_RootOrder
       value: 0
