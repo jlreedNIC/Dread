@@ -14,6 +14,11 @@ using UnityEngine;
 public class Damage_Decorator : Base_Decorator
 {
     [SerializeField] private int dmg_upgrade = 1;
+    
+    override public string getWeaponName()
+    {
+        return "Damage +" + dmg_upgrade;
+    }
 
     override public int GetWeaponDamage()
     {

@@ -29,7 +29,7 @@ public class Base_Weapon : MonoBehaviour
 
     public float bulletForce = 20f;
 
-    [SerializeField] private string weapon_name;
+    [SerializeField] protected string weapon_name;
     [SerializeField] private float fire_rate;
     [SerializeField] private int weapon_dmg_mod;
     [SerializeField] private int fire_range;    
@@ -58,7 +58,7 @@ public class Base_Weapon : MonoBehaviour
         return fire_range;
     }
 
-    public string getWeaponName()
+    virtual public string getWeaponName()
     {
         return weapon_name;
     }

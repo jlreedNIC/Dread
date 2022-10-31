@@ -15,6 +15,11 @@ public class Range_Decorator : Base_Decorator
 {
     [SerializeField] private int range_upgrade = 1;
 
+    override public string getWeaponName()
+    {
+        return "Fire Range +" + range_upgrade;
+    }
+
     override public int GetWeaponFireRange()
     {
         // Debug.Log("recursive fire range call/range decorator");

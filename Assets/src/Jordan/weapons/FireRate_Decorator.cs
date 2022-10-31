@@ -15,6 +15,11 @@ public class FireRate_Decorator : Base_Decorator
 {
     [SerializeField] private float rate_upgrade = -1;
 
+    override public string getWeaponName()
+    {
+        return "Fire Rate -" + rate_upgrade;
+    }
+
     override public float GetWeaponFireRate()
     {
         // Debug.Log("recursive fire rate call/firerate decorator");

@@ -5,12 +5,14 @@ using UnityEngine;
 public class weapon_upgrade : MonoBehaviour
 {
     // generalized script to use for any weapon upgrade
-    [SerializeField] private GameObject upgradeWrapper;
-    public GameObject upgrade_type;
+    [SerializeField] private GameObject upgradeWrapper;     // weapon upgrade to create
+    public GameObject upgrade_type;                         // prefab of type to create
+    [SerializeField] private HUD HUDref;
 
     public GameObject applyUpgrade(GameObject currentWeapon)
     {
-        Debug.Log("picked up weapon upgrade. applying now...");
+        Debug.Log("picked up weapon upgrade. showing pop up and applying now...");
+        HUDref.itemScreenPopUp("Weapon Upgrade: " + upgradeWrapper.GetComponent<Base_Weapon>().getWeaponName());
 
         // give the new weapon the position, rotation, and parent of the old weapon
         upgradeWrapper.transform.position = currentWeapon.transform.position;

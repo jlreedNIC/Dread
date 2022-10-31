@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeWrapper: {fileID: 0}
   upgrade_type: {fileID: 6540543595812278784, guid: 5f9bd52b609896f448727012a6a51eed, type: 3}
+  HUDref: {fileID: 6210498786674230615, guid: b68db55c1b361cd43a7418d705d9edc6, type: 3}
 --- !u!60 &585845933342158574
 PolygonCollider2D:
   m_ObjectHideFlags: 0
