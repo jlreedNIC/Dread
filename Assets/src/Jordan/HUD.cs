@@ -1,3 +1,12 @@
+/**
+ * @file    HUD.cs
+ * @author  Jordan Reed
+ *
+ * @brief   This class manages the HUD. It updates the values for health, ammo count, and part count that the player sees.
+ *
+ * @date    October 2022
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -12,22 +21,20 @@ using TMPro;
 
 public class HUD : MonoBehaviour
 {
-    [SerializeField] private GameObject AmmoCount;
-    [SerializeField] private GameObject PartCount;
-    [SerializeField] private Image healthBar;
-    private TMP_Text AmmoText;
-    private TMP_Text PartText;
-    private int curAmmo, maxAmmo;
-    private int curParts, maxParts;
-    private float curHealth, maxHealth;
-    private float maxWidth, curWidth;
-    private RectTransform imageRect;
+    [SerializeField] private GameObject AmmoCount;      // holds the text mesh pro object for the ammo count
+    [SerializeField] private GameObject PartCount;      // holds the text mesh pro object for the part count
+    [SerializeField] private Image healthBar;           // holds the progress bar image for the health bar
+
+    private TMP_Text objectText;                        // Text object to update the text mesh pro objects on screen
+    private int curVal, maxVal;                         // ints to hold the current and maximum values to update on screen text
+
+    private float curHealth, maxHealth;                 // float values to hold the health values
+    private float maxWidth, curWidth;                   // float values to hold the width of the health bar
+    private RectTransform imageRect;                    // holds the width and height of the health image bar
 
     // Start is called before the first frame update
     void Start()
     {
-        AmmoText = AmmoCount.GetComponent<TMP_Text>();
-        PartText = PartCount.GetComponent<TMP_Text>();
         imageRect = healthBar.GetComponent<RectTransform>();
         maxWidth = imageRect.rect.width;
     }
@@ -35,17 +42,17 @@ public class HUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // get current ammo counts and update text field
-        curAmmo = AmmoManager.Instance.GetTotalAmmo();
-        maxAmmo = AmmoManager.Instance.GetMaxAmmo();
+        // set current ammo values
+        objectText = AmmoCount.GetComponent<TMP_Text>();
+        curVal = AmmoManager.Instance.GetTotalAmmo();
+        maxVal = AmmoManager.Instance.GetMaxAmmo();
+        objectText.text = curVal + "/" + maxVal;
 
-        AmmoText.text = curAmmo + "/" + maxAmmo;
-
-        // get current values of part counts and update text
-        // curParts = getPartCount();
-        curParts = 4;
-        maxParts = 7;
-        PartText.text = curParts + "/" + maxParts;
+        // set current part counts
+        objectText = PartCount.GetComponent<TMP_Text>();
+        curVal = 4;
+        maxVal = 7;
+        objectText.text = curVal + "/" + maxVal;
 
         // get current health and update health bar
         // curHealth = getPlayerHealth();
