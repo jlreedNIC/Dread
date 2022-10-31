@@ -31,6 +31,16 @@ public sealed class Player_Movement : MonoBehaviour
     //these will be our base player movement speed and jump height. 
     //serialized field lets us have private variables vieded and edited in Unity editor 
     [SerializeField] private float _playerMovementSpeed = 5.0f; 
+    [SerializeField] float activeMoveSpeed; 
+    [SerializeField] private float _playerDashSpeed;
+    [SerializeField] private float _playerDashCounter;
+    [SerializeField] private float _playerDashCooldownCounter;
+    [SerializeField] private float _playerDashCooldown = 1f; 
+
+
+    [SerializeField] private float _playerDashLength= 0.5f; 
+
+
     // [SerializeField] private float _playerJumpHeight = 5.0f;  
     private Vector2 _moveDirection; 
     public Camera camera; 
@@ -54,6 +64,7 @@ public sealed class Player_Movement : MonoBehaviour
         _playerRB = GetComponent<Rigidbody2D>(); 
         _playerCollider = GetComponent<Collider2D>(); 
 
+        activeMoveSpeed = _playerMovementSpeed; 
 
         //null game object check
         if(_playerRB == null)
@@ -101,13 +112,15 @@ public sealed class Player_Movement : MonoBehaviour
             // This line currently causing a compiler error
             // FindObjectOfType<AudioManager>().Play("Pew");
         }
+
+        HandlePlayerDash(); 
     }
 
     //player movement function 
     private void MovePlayer()
     {
         //move the player
-        _playerRB.velocity = new Vector2(_moveDirection.x * _playerMovementSpeed, _moveDirection.y * _playerMovementSpeed); 
+        _playerRB.velocity = new Vector2(_moveDirection.x * activeMoveSpeed, _moveDirection.y * activeMoveSpeed); 
 
         //mouse look
         Vector2 lookDirection = _mousePosition - _playerRB.position; 
@@ -118,6 +131,38 @@ public sealed class Player_Movement : MonoBehaviour
 
         // animation
         //animator.SetFloat("speed", Mathf.Abs(_playerRB.velocity.x));
+    }
+
+    public void HandlePlayerDash()
+    {
+
+        //transform.position += _moveDirection * dashDistance; 
+
+        //_playerRB = new Vector2(_moveDirection.x * dashDistance, _moveDirection.y * dashDistance); 
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            if(_playerDashCooldownCounter <= 0 && _playerDashCounter <= 0)
+            {
+                activeMoveSpeed = _playerDashSpeed; 
+                _playerDashCounter = _playerDashLength; 
+            }
+        }
+
+        if(_playerDashCounter > 0)
+        {
+            _playerDashCounter -= Time.deltaTime;
+
+            if(_playerDashCounter <= 0)
+            {
+                activeMoveSpeed = _playerMovementSpeed; 
+                _playerDashCooldownCounter = _playerDashCooldown; 
+            }
+        }
+
+        if(_playerDashCooldownCounter > 0)
+        {
+            _playerDashCooldownCounter -= Time.deltaTime;
+        }
     }
 
     //for testing

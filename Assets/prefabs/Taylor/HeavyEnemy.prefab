@@ -187,15 +187,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e2bdf43de5e6b34aa4409bdf3698413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyStats: {fileID: 0}
+  _enemyStats: {fileID: 11400000, guid: 760330e62fe03aa4298d6dc8fe99a446, type: 2}
   OriginPoint: {x: 0, y: 0, z: 0}
   nextRandomWaypoint: {x: 0, y: 0, z: 0}
   target: {fileID: 0}
   _maxSpeedSqr: 0
   aiDestinationSetter: {fileID: 8276153317174102066}
   enemyPatrolAI: {fileID: 8276153317174102063}
-  enemyEyes: {fileID: 0}
-  weaponSpawner: {fileID: 0}
+  enemyEyes: {fileID: 8276153317007012233}
+  weaponSpawner: {fileID: 5647807812426128471}
 --- !u!114 &8276153317174102062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OriginPoint: {x: 0, y: 0, z: 0}
-  enemyStats: {fileID: 11400000, guid: 5c4143de2ea578e408f16fba6fa727d4, type: 2}
+  enemyStats: {fileID: 11400000, guid: 760330e62fe03aa4298d6dc8fe99a446, type: 2}
 --- !u!114 &8276153317174102060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,6 +407,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc0be9a7b8e12e94da411aae1789c98d, type: 3}
+--- !u!114 &5647807812426128471 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2237717222242160540, guid: fc0be9a7b8e12e94da411aae1789c98d, type: 3}
+  m_PrefabInstance: {fileID: 5867342303652303819}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af586f37ca38b84fb8ce0a211170b4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &9166244598919208500 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3339971459748285951, guid: fc0be9a7b8e12e94da411aae1789c98d, type: 3}
