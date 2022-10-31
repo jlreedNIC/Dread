@@ -17,7 +17,7 @@ public class FireRate_Decorator : Base_Decorator
 
     override public string getWeaponName()
     {
-        return "Fire Rate -" + rate_upgrade;
+        return "Fire Rate " + rate_upgrade;
     }
 
     override public float GetWeaponFireRate()
