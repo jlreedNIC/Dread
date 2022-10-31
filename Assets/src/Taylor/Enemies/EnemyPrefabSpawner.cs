@@ -17,6 +17,7 @@ public class EnemyPrefabSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // StartCoroutine(spawnEnemy(baseEnemySpawnRate, enemyPrefab));
         StartCoroutine(spawnEnemy(baseEnemySpawnRate, enemyPrefab));
     }
     public void Update()
@@ -29,6 +30,8 @@ public class EnemyPrefabSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(interval);
         GameObject newEnemy = Instantiate(enemy, new Vector3(Random.Range(-5f, 5), Random.Range(-6f, 6f), 0), Quaternion.identity);
+        //GameObject newEnemy = EnemyObjectPooling.Instance.RequestEnemy(); 
+        newEnemy.transform.position = new Vector3(Random.Range(-5f, 5), Random.Range(-6f, 6f), 0);
         StartCoroutine(spawnEnemy(interval, enemy));
     }
 }
