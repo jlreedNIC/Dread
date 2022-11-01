@@ -39,6 +39,7 @@ public class weapon_upgrade : MonoBehaviour
         upgradeWrapper.transform.position = currentWeapon.transform.position;
         upgradeWrapper.transform.rotation = currentWeapon.transform.rotation;
         upgradeWrapper.transform.parent = currentWeapon.transform.parent;
+        upgradeWrapper.transform.localScale = currentWeapon.transform.localScale;
 
         // remove the parent and rotation of the old weapon
         currentWeapon.transform.parent = upgradeWrapper.transform;
@@ -48,32 +49,30 @@ public class weapon_upgrade : MonoBehaviour
         currentWeapon.GetComponent<SpriteRenderer>().enabled = !currentWeapon.GetComponent<SpriteRenderer>().enabled;
         currentWeapon.GetComponent<Collider2D>().enabled = !currentWeapon.GetComponent<Collider2D>().enabled;
 
-
+        // Debug.Log("setting wrapper and wrappee");
         upgradeWrapper.GetComponent<Base_Decorator>().setWrappee(currentWeapon);
+        // Debug.Log("wrappee: " + currentWeapon);
 
         // enable new weapon to be seen and collided with
         upgradeWrapper.GetComponent<SpriteRenderer>().enabled = !upgradeWrapper.GetComponent<SpriteRenderer>().enabled;
         upgradeWrapper.GetComponent<Collider2D>().enabled = !upgradeWrapper.GetComponent<Collider2D>().enabled;
 
-        // hide item
-        // GetComponent<SpriteRenderer>().enabled = !GetComponent<SpriteRenderer>().enabled;
-        // GetComponent<Collider2D>().enabled = !GetComponent<Collider2D>().enabled;
-        // transform.parent = currentWeapon.transform;
+        // Debug.Log("destroying " + gameObject);
         Destroy(gameObject);
 
         // return the new weapon to be set in the player script
         return upgradeWrapper;
     }
 
-
-
     // Start is called before the first frame update
     void Start()
     {
         // instantiate weapon upgrade and make it not visible and not collidable
         upgradeWrapper = Instantiate(upgrade_type);
+        
         upgradeWrapper.GetComponent<SpriteRenderer>().enabled = !upgradeWrapper.GetComponent<SpriteRenderer>().enabled;
         upgradeWrapper.GetComponent<Collider2D>().enabled = !upgradeWrapper.GetComponent<Collider2D>().enabled;
+        upgradeWrapper.transform.parent = this.transform;
     }
 
     // Update is called once per frame

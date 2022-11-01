@@ -85,9 +85,9 @@ public class Base_Weapon : MonoBehaviour
         }
 
         canFire = true;
-
+        // canBePickedUp = true;
         // weapon can be picked up only if it's not held by an enemy or the player
-        if(this.transform.parent.gameObject.CompareTag("Player") || this.transform.parent.gameObject.CompareTag("Enemy")) 
+        if(this.transform.parent != null)
         {
             canBePickedUp = false;
         }

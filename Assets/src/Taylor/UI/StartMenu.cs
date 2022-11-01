@@ -30,7 +30,7 @@ public class StartMenu : MonoBehaviour
     //if start game button is pressed 
     public void StartGame()
     {
-        SceneManager.LoadScene(1); 
+        SceneManager.LoadScene(4); 
     }
 
     //QuitGame Function
