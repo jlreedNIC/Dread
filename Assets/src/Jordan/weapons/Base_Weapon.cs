@@ -84,16 +84,31 @@ public class Base_Weapon : MonoBehaviour
             firePoint = this.gameObject.transform.GetChild(0);
         }
 
-        // base range
-        // fire_range = 5;
         canFire = true;
-        canBePickedUp = true;
+
+        // weapon can be picked up only if it's not held by an enemy or the player
+        if(this.transform.parent.gameObject.CompareTag("Player") || this.transform.parent.gameObject.CompareTag("Enemy")) 
+        {
+            canBePickedUp = false;
+        }
+        else
+        {
+            canBePickedUp = true;
+        }
     }
 
     // Update is called once per frame
     public void Update()
     {
-        // if(!canBePickedUp) getComponent<collider>.deactivate //find better code
+        // if weapon can be picked up, turn the collider on, otherwise keep it off
+        if(canBePickedUp) 
+        {
+            this.GetComponent<Collider2D>().enabled = true;
+        }
+        else 
+        {
+            this.GetComponent<Collider2D>().enabled = false;
+        }
     }
 
     virtual public void Fire()
