@@ -181,11 +181,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73f9a49ba5bede3429a05684133b5c29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  columns: 12
-  rows: 12
+  columns: 15
+  rows: 15
   wallCount:
     minimum: 5
-    maximum: 9
+    maximum: 12
   exit: {fileID: 5956914806586560560, guid: be7511072b9e63349ba2de61d94499dd, type: 3}
   floorTiles:
   - {fileID: 5773150032967721518, guid: 104a73d670c4518458d114043d84ded3, type: 3}
@@ -286,7 +286,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 993632309}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.5, y: 6.5, z: -10}
+  m_LocalPosition: {x: 6.5, y: 7.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
