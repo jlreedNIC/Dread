@@ -21,51 +21,80 @@ public sealed class EnemyObjectPooling : MonoBehaviour
         internal static readonly EnemyObjectPooling instance = new EnemyObjectPooling();
     }
 
-    [SerializeField] private int _defaultPoolSize = 10;
+    [SerializeField] public int _defaultPoolSize = 10;
     [SerializeField] private GameObject _enemyPrefab;
     [SerializeField] private List<GameObject> _enemyPool = new List<GameObject>();
+
+    [SerializeField] EnemyPrefabSpawner spawner;
 
     //[SerializeField] private List<GameObject> _enemyTypes = new List<GameObject>();
 
 
     void Start()
     {
+        spawner.enabled = false;
         GenerateEnemies(_defaultPoolSize);
     }
 
     List<GameObject> GenerateEnemies(int amount)
     {
+        Debug.Log("In GeneratingEnemies"); 
         for (int i = 0; i < amount; i++)
         {
             GameObject enemy = Instantiate(_enemyPrefab);
+
+            Debug.Log(enemy.name + (i+1) + " Was instantiated"); 
+            //enemy.transform.position = new Vector3(Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0);
             enemy.SetActive(false);
 
             _enemyPool.Add(enemy);
+            Debug.Log(enemy.name + (i+1) + " Was added to pool"); 
         }
+        
+        Debug.Log(" Current Enemy Pool Size: " + _enemyPool.Count); 
 
+        spawner.enabled = true;
         return _enemyPool;
     }
 
     public GameObject RequestEnemy()
     {
-        foreach (GameObject enemy in _enemyPool)
+        Debug.Log("In RequestEnemy"); 
+
+        foreach(GameObject enemy in _enemyPool)
         {
+            Debug.Log("In RequestEnemy for loop"); 
             if (enemy.activeInHierarchy == false)
             {
+                Debug.Log("In RequestEnemy for loop if block"); 
                 enemy.SetActive(true);
+                Debug.Log(enemy.name + " Was set active"); 
                 return enemy;
             }
         }
+        // for(int i = 0; i < _enemyPool.Count; i++)
+        // {
+        //     Debug.Log("In RequestEnemy for loop"); 
+        //     if (_enemyPool[i].activeInHierarchy == false)
+        //     {
+        //         Debug.Log("In RequestEnemy for loop if block"); 
+        //         _enemyPool[i].SetActive(true);
+        //         Debug.Log(_enemyPool[i].name + " Was set active"); 
+        //         return _enemyPool[i];
+        //     }
+        // }
 
-        GameObject newEnemy = Instantiate(_enemyPrefab);
-        _enemyPool.Add(newEnemy);
+        // GameObject newEnemy = Instantiate(_enemyPrefab);
+        // _enemyPool.Add(newEnemy);
 
-        return newEnemy;
+        // return newEnemy;
+        return null;
     }
 
     public void DespawnEnemy(GameObject enemy)
     {
         enemy.SetActive(false);
+        Debug.Log(enemy.name + " Was Destroyed");
     }
 }
 

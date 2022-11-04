@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 8276153317174102064}
   m_Layer: 0
   m_Name: LightEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -357,6 +357,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8276153317174102058}
     m_Modifications:
+    - target: {fileID: 2237717222242160540, guid: fc0be9a7b8e12e94da411aae1789c98d, type: 3}
+      propertyPath: fire_range
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237717222242160540, guid: fc0be9a7b8e12e94da411aae1789c98d, type: 3}
+      propertyPath: weapon_dmg_mod
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3339971459748285939, guid: fc0be9a7b8e12e94da411aae1789c98d, type: 3}
       propertyPath: m_Name
       value: enemy_base_weapon
