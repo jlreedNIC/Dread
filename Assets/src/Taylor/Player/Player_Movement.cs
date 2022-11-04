@@ -30,6 +30,7 @@ public sealed class Player_Movement : MonoBehaviour
     }
     //these will be our base player movement speed and jump height. 
     //serialized field lets us have private variables vieded and edited in Unity editor 
+    [SerializeField] private Damageable damageable; 
     [SerializeField] private float _playerMovementSpeed = 5.0f; 
     [SerializeField] float activeMoveSpeed; 
     [SerializeField] private float _playerDashSpeed;
@@ -39,9 +40,7 @@ public sealed class Player_Movement : MonoBehaviour
 
 
     [SerializeField] private float _playerDashLength= 0.5f; 
-
-
-    // [SerializeField] private float _playerJumpHeight = 5.0f;  
+ 
     private Vector2 _moveDirection; 
     public Camera camera; 
     private Vector2 _mousePosition; 
@@ -144,7 +143,9 @@ public sealed class Player_Movement : MonoBehaviour
             if(_playerDashCooldownCounter <= 0 && _playerDashCounter <= 0)
             {
                 activeMoveSpeed = _playerDashSpeed; 
-                _playerDashCounter = _playerDashLength; 
+                _playerDashCounter = _playerDashLength;
+                damageable.enabled = false; 
+
             }
         }
 
@@ -155,7 +156,8 @@ public sealed class Player_Movement : MonoBehaviour
             if(_playerDashCounter <= 0)
             {
                 activeMoveSpeed = _playerMovementSpeed; 
-                _playerDashCooldownCounter = _playerDashCooldown; 
+                _playerDashCooldownCounter = _playerDashCooldown;
+                damageable.enabled = true; 
             }
         }
 

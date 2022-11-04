@@ -28,8 +28,14 @@ public class Damageable : MonoBehaviour
 
         if(currentHealth <= 0)
         {
-            Destroy(this.gameObject);
-            //EnemyObjectPooling.Instance.DespawnEnemy(this.gameObject); 
+            if(this.gameObject.tag == "Player")
+            {
+                Destroy(this.gameObject);
+            }
+            if(this.gameObject.tag == "Enemy")
+            {
+                EnemyObjectPooling.Instance.DespawnEnemy(this.gameObject); 
+            }
         }
     }
 

@@ -3,7 +3,7 @@
 /// 513 Studios
 /// Project D.R.E.A.D.
 /// University of Idaho
-/// Created: June 21 2022
+/// Created: September 2022
 /// FILE: EnemyStatsConfigSO.cs
 /// Scriptable object For storing the enemy stats
 /// </summary>
