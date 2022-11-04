@@ -234,7 +234,8 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
     //Search State Function
     protected virtual void Search() 
     {
-
+        // Spin the object around the target at 20 degrees/second.
+        //transform.RotateAround(target.transform.position, Vector3.up, 20 * Time.deltaTime);
     }
 
     //Change Object Components Function
