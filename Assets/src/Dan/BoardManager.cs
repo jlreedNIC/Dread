@@ -2,6 +2,7 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding; 
 using Random = UnityEngine.Random;
 
 public class BoardManager : MonoBehaviour
@@ -146,5 +147,7 @@ public class BoardManager : MonoBehaviour
          * LayoutObjectAtRandom(enemyTiles, enemyCount, enemyCount);
          */
          Instantiate(exit, new Vector3(columns - 1, rows - 1, 0F), Quaternion.identity);
+        // Recalculate all graphs
+        AstarPath.active.Scan();
     }
 }

@@ -27,10 +27,17 @@ public class EnemyPrefabSpawner : MonoBehaviour
     // }
     void Start()
     {
-        StartCoroutine(spawnEnemy());
+        //GameObject enemy = EnemyObjectPooling.Instance.GetEnemyFromPool();
+        //StartCoroutine(spawnEnemy());
         // spawnEnemy();
         //StartCoroutine(spawnEnemy(baseEnemySpawnRate));
         // StartCoroutine(spawnEnemy(baseEnemySpawnRate, enemyPrefab));
+        for(int i = 0; i < maxNumEnemies; i++)
+        {
+            Debug.Log(" Currently Requesting Enemy: " + (i+1)); 
+            GameObject enemy = EnemyObjectPooling.Instance.GetEnemyFromPool();
+            enemy.SetActive(true);  
+        }
     }
     public void Update()
     {
@@ -69,12 +76,12 @@ public class EnemyPrefabSpawner : MonoBehaviour
     //     //yield return new WaitForSeconds(interval);
     // }
 
-    public IEnumerator spawnEnemy()
+    private IEnumerator spawnEnemy()
     {
         for(int i = 0; i < maxNumEnemies; i++)
         {
             Debug.Log(" Currently Requesting Enemy: " + (i+1)); 
-            GameObject enemy = EnemyObjectPooling.Instance.RequestEnemy(); 
+            GameObject enemy = EnemyObjectPooling.Instance.GetEnemyFromPool(); 
         }
         yield return new WaitForSeconds(1f);
     }

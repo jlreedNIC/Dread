@@ -9,8 +9,7 @@ public class Damageable : MonoBehaviour
 
     //variable to hold and modify current health value
     [SerializeField] public int currentHealth;  
-    
-    EnemyObjectPooling poolManager; 
+     
 
     //Start
     //init curret health as sent in game object base health
@@ -34,7 +33,8 @@ public class Damageable : MonoBehaviour
             }
             if(this.gameObject.tag == "Enemy")
             {
-                EnemyObjectPooling.Instance.DespawnEnemy(this.gameObject); 
+                // EnemyObjectPooling.Instance.DespawnEnemy(this.gameObject); 
+                EnemyObjectPooling.Instance.ReturnEnemyToPool(this.gameObject); 
             }
         }
     }
@@ -52,9 +52,22 @@ public class Damageable : MonoBehaviour
         }
     }
 
+    public void OnEnable()
+    {
+        currentHealth = baseHealth;
+    }
     
     public void OnDestroy()
     {
-        Debug.Log(this.gameObject.name + " Was Destroyed"); 
+        if(this.gameObject.tag == "Player")
+        {
+            Debug.Log(this.gameObject.name + " Was Destroyed");
+            Destroy(this.gameObject);
+        }
+        if(this.gameObject.tag == "Enemy")
+        {
+            Debug.Log(this.gameObject.name + " Was returned to pool");
+
+        }
     }
 }

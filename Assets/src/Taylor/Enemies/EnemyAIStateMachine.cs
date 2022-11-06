@@ -73,7 +73,7 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
     // [SerializeField] AudioClipSO _audioClipSO;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         //gets the rigid body component from game object
         _selfRB = GetComponent<Rigidbody>();
