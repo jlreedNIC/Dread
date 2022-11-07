@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyPrefabSpawner : MonoBehaviour
 {
-    // [SerializeField] public List<GameObject> enemies; 
+    [SerializeField] public List<GameObject> enemyTypes; 
 
     // [SerializeField] public List<Transform> spawnPoints; 
 
@@ -17,30 +17,12 @@ public class EnemyPrefabSpawner : MonoBehaviour
     public int currentNumEnemies = 0; 
     public bool isAbleToSpawn = true; 
 
-
-    // Start is called before the first frame update
-    // void Start()
-    // {
-    //     spawnEnemy();
-    //     //StartCoroutine(spawnEnemy(baseEnemySpawnRate));
-    //     // StartCoroutine(spawnEnemy(baseEnemySpawnRate, enemyPrefab));
-    // }
     void Start()
     {
         maxNumEnemies = EnemyObjectPooling.Instance._defaultPoolSize; 
-        EnemyObjectPooling.Instance.GenerateEnemies(maxNumEnemies);
-        //GameObject enemy = EnemyObjectPooling.Instance.GetEnemyFromPool();
-        //StartCoroutine(spawnEnemy());
-        // spawnEnemy();
-        //StartCoroutine(spawnEnemy(baseEnemySpawnRate));
-        // StartCoroutine(spawnEnemy(baseEnemySpawnRate, enemyPrefab));
+        EnemyObjectPooling.Instance.GenerateEnemies(maxNumEnemies,enemyPrefab);
+        StartCoroutine(spawnEnemy());
     }
-    // public void Update()
-    // {
-    //     // int randEnemy = Random.Range(0,enemies.Length);
-    //     // int ranSpwanPoint = Random.Range
-    // }
-
     // public void spawnEnemy()
     // {
     //     Debug.Log("In spawnEnemy"); 
@@ -78,18 +60,10 @@ public class EnemyPrefabSpawner : MonoBehaviour
         {
             Debug.Log(" Currently Requesting Enemy: " + (i+1)); 
             // GameObject enemy = EnemyObjectPooling.Instance.GetEnemyFromPool();
-            GameObject enemy = EnemyObjectPooling.Instance.RequestEnemy(); 
+            GameObject enemy = EnemyObjectPooling.Instance.RequestEnemy();
+            enemy.transform.position = new Vector3(Random.Range(-5f, 5), Random.Range(-6f, 6f), 0);
+            yield return new WaitForSeconds(1f);
         }
         yield return new WaitForSeconds(1f);
     }
-
-    // private IEnumerator spawnEnemy(float interval, GameObject enemy)
-    // {
-    //     yield return new WaitForSeconds(interval);
-    //     //GameObject newEnemy = Instantiate(enemy, new Vector3(Random.Range(-5f, 5), Random.Range(-6f, 6f), 0), Quaternion.identity);
-    //     GameObject newEnemy = EnemyObjectPooling.Instance.RequestEnemy(); 
-    //     //newEnemy.transform.position = new Vector3(Random.Range(-5f, 5), Random.Range(-6f, 6f), 0);
-    //     StartCoroutine(spawnEnemy(interval, enemy));
-    // }
-
 }

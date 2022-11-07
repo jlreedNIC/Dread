@@ -788,6 +788,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 8975827634520624863, guid: b68db55c1b361cd43a7418d705d9edc6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b68db55c1b361cd43a7418d705d9edc6, type: 3}
 --- !u!1 &1687092583
@@ -821,6 +825,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultPoolSize: 10
   _enemyPrefab: {fileID: 8276153317174102065, guid: 59b37695a9106c846b9c2d313722e5ea, type: 3}
+  _enemyPool: []
 --- !u!4 &1687092585
 Transform:
   m_ObjectHideFlags: 0

@@ -34,7 +34,6 @@ public class Damageable : MonoBehaviour
             if(this.gameObject.tag == "Enemy")
             {
                 EnemyObjectPooling.Instance.DespawnEnemy(this.gameObject); 
-                // EnemyObjectPooling.Instance.ReturnEnemyToPool(this.gameObject); 
             }
         }
     }

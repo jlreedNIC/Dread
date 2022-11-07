@@ -25,8 +25,6 @@ public sealed class EnemyObjectPooling : MonoBehaviour
     [SerializeField] private GameObject _enemyPrefab;
     [SerializeField] private List<GameObject> _enemyPool = new List<GameObject>();
 
-    //[SerializeField] private Queue<GameObject> _enemyPool = new Queue<GameObject>();
-
     //[SerializeField] EnemyPrefabSpawner spawner;
 
     //[SerializeField] private List<GameObject> _enemyTypes = new List<GameObject>();
@@ -38,12 +36,12 @@ public sealed class EnemyObjectPooling : MonoBehaviour
         //GenerateEnemies(_defaultPoolSize);
     }
 
-    public List<GameObject> GenerateEnemies(int amount)
+    public List<GameObject> GenerateEnemies(int amount, GameObject enemyPrefab)
     {
         Debug.Log("In GeneratingEnemies"); 
         for (int i = 0; i < amount; i++)
         {
-            GameObject enemy = Instantiate(_enemyPrefab);
+            GameObject enemy = Instantiate(enemyPrefab);
 
             Debug.Log(enemy.name + (i+1) + " Was instantiated"); 
             //enemy.transform.position = new Vector3(Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0);
@@ -98,37 +96,6 @@ public sealed class EnemyObjectPooling : MonoBehaviour
         enemy.SetActive(false);
         Debug.Log(enemy.name + " Was Destroyed");
     }
-
-    // Queue<GameObject> GenerateEnemies(int amount)
-    // {
-    //     for (int i = 0; i < amount; i++)
-    //     {
-    //         GameObject enemy = Instantiate(_enemyPrefab);
-    //         _enemyPool.Enqueue(enemy);
-    //         enemy.SetActive(false);
-    //     }
-    //     return _enemyPool; 
-    // }
-
-    // public GameObject GetEnemyFromPool()
-    // {
-    //     if (_enemyPool.Count > 0)
-    //     {
-    //         GameObject enemy = _enemyPool.Dequeue();
-    //         //enemy.SetActive(true);
-    //         return enemy;
-    //     }
-    //     else
-    //     {
-    //         return null;
-    //     }
-    // }
-
-    // public void ReturnEnemyToPool(GameObject enemy)
-    // {
-    //     _enemyPool.Enqueue(enemy);
-    //     enemy.SetActive(false);
-    // }
 }
 
 // In your GameManager or SpawnManager or wherever else you would normally be instantiating your enemy prefab, you’ll replace that instantiation call with the following:
