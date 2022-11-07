@@ -13,7 +13,7 @@ public class EnemyPrefabSpawner : MonoBehaviour
 
     [SerializeField] public float baseEnemySpawnRate = 3.5f; 
 
-    public int maxNumEnemies = EnemyObjectPooling.Instance._defaultPoolSize; 
+    public int maxNumEnemies = 0; 
     public int currentNumEnemies = 0; 
     public bool isAbleToSpawn = true; 
 
@@ -27,23 +27,19 @@ public class EnemyPrefabSpawner : MonoBehaviour
     // }
     void Start()
     {
+        maxNumEnemies = EnemyObjectPooling.Instance._defaultPoolSize; 
+        EnemyObjectPooling.Instance.GenerateEnemies(maxNumEnemies);
         //GameObject enemy = EnemyObjectPooling.Instance.GetEnemyFromPool();
         //StartCoroutine(spawnEnemy());
         // spawnEnemy();
         //StartCoroutine(spawnEnemy(baseEnemySpawnRate));
         // StartCoroutine(spawnEnemy(baseEnemySpawnRate, enemyPrefab));
-        for(int i = 0; i < maxNumEnemies; i++)
-        {
-            Debug.Log(" Currently Requesting Enemy: " + (i+1)); 
-            GameObject enemy = EnemyObjectPooling.Instance.GetEnemyFromPool();
-            enemy.SetActive(true);  
-        }
     }
-    public void Update()
-    {
-        // int randEnemy = Random.Range(0,enemies.Length);
-        // int ranSpwanPoint = Random.Range
-    }
+    // public void Update()
+    // {
+    //     // int randEnemy = Random.Range(0,enemies.Length);
+    //     // int ranSpwanPoint = Random.Range
+    // }
 
     // public void spawnEnemy()
     // {
@@ -81,7 +77,8 @@ public class EnemyPrefabSpawner : MonoBehaviour
         for(int i = 0; i < maxNumEnemies; i++)
         {
             Debug.Log(" Currently Requesting Enemy: " + (i+1)); 
-            GameObject enemy = EnemyObjectPooling.Instance.GetEnemyFromPool(); 
+            // GameObject enemy = EnemyObjectPooling.Instance.GetEnemyFromPool();
+            GameObject enemy = EnemyObjectPooling.Instance.RequestEnemy(); 
         }
         yield return new WaitForSeconds(1f);
     }

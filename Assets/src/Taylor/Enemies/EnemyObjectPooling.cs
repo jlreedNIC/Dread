@@ -23,9 +23,9 @@ public sealed class EnemyObjectPooling : MonoBehaviour
 
     [SerializeField] public int _defaultPoolSize = 10;
     [SerializeField] private GameObject _enemyPrefab;
-    // [SerializeField] private List<GameObject> _enemyPool = new List<GameObject>();
+    [SerializeField] private List<GameObject> _enemyPool = new List<GameObject>();
 
-    [SerializeField] private Queue<GameObject> _enemyPool = new Queue<GameObject>();
+    //[SerializeField] private Queue<GameObject> _enemyPool = new Queue<GameObject>();
 
     //[SerializeField] EnemyPrefabSpawner spawner;
 
@@ -35,100 +35,100 @@ public sealed class EnemyObjectPooling : MonoBehaviour
     void Start()
     {
         //spawner.enabled = false;
-        GenerateEnemies(_defaultPoolSize);
+        //GenerateEnemies(_defaultPoolSize);
     }
 
-    // List<GameObject> GenerateEnemies(int amount)
-    // {
-    //     Debug.Log("In GeneratingEnemies"); 
-    //     for (int i = 0; i < amount; i++)
-    //     {
-    //         GameObject enemy = Instantiate(_enemyPrefab);
-
-    //         Debug.Log(enemy.name + (i+1) + " Was instantiated"); 
-    //         //enemy.transform.position = new Vector3(Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0);
-    //         enemy.SetActive(false);
-
-    //         _enemyPool.Add(enemy);
-    //         Debug.Log(enemy.name + (i+1) + " Was added to pool"); 
-    //     }
-        
-    //     Debug.Log(" Current Enemy Pool Size: " + _enemyPool.Count); 
-
-    //     //spawner.enabled = true;
-    //     return _enemyPool;
-    // }
-
-    // public GameObject RequestEnemy()
-    // {
-    //     Debug.Log("In RequestEnemy"); 
-
-    //     foreach(GameObject enemy in _enemyPool)
-    //     {
-    //         Debug.Log("In RequestEnemy for loop"); 
-    //         if (enemy.activeInHierarchy == false)
-    //         {
-    //             Debug.Log("In RequestEnemy for loop if block"); 
-    //             enemy.SetActive(true);
-    //             Debug.Log(enemy.name + " Was set active"); 
-    //             return enemy;
-    //         }
-    //     }
-    //     // for(int i = 0; i < _enemyPool.Count; i++)
-    //     // {
-    //     //     Debug.Log("In RequestEnemy for loop"); 
-    //     //     if (_enemyPool[i].activeInHierarchy == false)
-    //     //     {
-    //     //         Debug.Log("In RequestEnemy for loop if block"); 
-    //     //         _enemyPool[i].SetActive(true);
-    //     //         Debug.Log(_enemyPool[i].name + " Was set active"); 
-    //     //         return _enemyPool[i];
-    //     //     }
-    //     // }
-
-    //     // GameObject newEnemy = Instantiate(_enemyPrefab);
-    //     // _enemyPool.Add(newEnemy);
-
-    //     // return newEnemy;
-    //     return null;
-    // }
-
-    // public void DespawnEnemy(GameObject enemy)
-    // {
-    //     enemy.SetActive(false);
-    //     Debug.Log(enemy.name + " Was Destroyed");
-    // }
-
-    Queue<GameObject> GenerateEnemies(int amount)
+    public List<GameObject> GenerateEnemies(int amount)
     {
+        Debug.Log("In GeneratingEnemies"); 
         for (int i = 0; i < amount; i++)
         {
             GameObject enemy = Instantiate(_enemyPrefab);
-            _enemyPool.Enqueue(enemy);
+
+            Debug.Log(enemy.name + (i+1) + " Was instantiated"); 
+            //enemy.transform.position = new Vector3(Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0);
             enemy.SetActive(false);
+
+            _enemyPool.Add(enemy);
+            Debug.Log(enemy.name + (i+1) + " Was added to pool"); 
         }
-        return _enemyPool; 
+        
+        Debug.Log(" Current Enemy Pool Size: " + _enemyPool.Count); 
+
+        //spawner.enabled = true;
+        return _enemyPool;
     }
 
-    public GameObject GetEnemyFromPool()
+    public GameObject RequestEnemy()
     {
-        if (_enemyPool.Count > 0)
+        Debug.Log("In RequestEnemy"); 
+
+        foreach(GameObject enemy in _enemyPool)
         {
-            GameObject enemy = _enemyPool.Dequeue();
-            //enemy.SetActive(true);
-            return enemy;
+            Debug.Log("In RequestEnemy for loop"); 
+            if (enemy.activeInHierarchy == false)
+            {
+                Debug.Log("In RequestEnemy for loop if block"); 
+                enemy.SetActive(true);
+                Debug.Log(enemy.name + " Was set active"); 
+                return enemy;
+            }
         }
-        else
-        {
-            return null;
-        }
+        // for(int i = 0; i < _enemyPool.Count; i++)
+        // {
+        //     Debug.Log("In RequestEnemy for loop"); 
+        //     if (_enemyPool[i].activeInHierarchy == false)
+        //     {
+        //         Debug.Log("In RequestEnemy for loop if block"); 
+        //         _enemyPool[i].SetActive(true);
+        //         Debug.Log(_enemyPool[i].name + " Was set active"); 
+        //         return _enemyPool[i];
+        //     }
+        // }
+
+        // GameObject newEnemy = Instantiate(_enemyPrefab);
+        // _enemyPool.Add(newEnemy);
+
+        // return newEnemy;
+        return null;
     }
 
-    public void ReturnEnemyToPool(GameObject enemy)
+    public void DespawnEnemy(GameObject enemy)
     {
-        _enemyPool.Enqueue(enemy);
         enemy.SetActive(false);
+        Debug.Log(enemy.name + " Was Destroyed");
     }
+
+    // Queue<GameObject> GenerateEnemies(int amount)
+    // {
+    //     for (int i = 0; i < amount; i++)
+    //     {
+    //         GameObject enemy = Instantiate(_enemyPrefab);
+    //         _enemyPool.Enqueue(enemy);
+    //         enemy.SetActive(false);
+    //     }
+    //     return _enemyPool; 
+    // }
+
+    // public GameObject GetEnemyFromPool()
+    // {
+    //     if (_enemyPool.Count > 0)
+    //     {
+    //         GameObject enemy = _enemyPool.Dequeue();
+    //         //enemy.SetActive(true);
+    //         return enemy;
+    //     }
+    //     else
+    //     {
+    //         return null;
+    //     }
+    // }
+
+    // public void ReturnEnemyToPool(GameObject enemy)
+    // {
+    //     _enemyPool.Enqueue(enemy);
+    //     enemy.SetActive(false);
+    // }
 }
 
 // In your GameManager or SpawnManager or wherever else you would normally be instantiating your enemy prefab, you’ll replace that instantiation call with the following:
@@ -138,3 +138,33 @@ public sealed class EnemyObjectPooling : MonoBehaviour
 
 // To use DespawnEnemy, in the Enemy script we go to wherever we would normally be destroying the instance and replace that destruction with the following line:
 // PoolManager.Instance.DespawnEnemy(gameObject);
+
+// using UnityEngine;
+// using UnityEngine.Pool;
+// public class SpawnUsingPool : MonoBehaviour
+// {
+//     public GameObject objectPrefab;
+//     ObjectPool<GameObject> objectPool;
+//     void Awake()
+//     {
+//         objectPool = new ObjectPool<GameObject>(OnObjectCreate, OnTake, OnRelease, OnObjectDestroy);
+//     }
+//     GameObject OnObjectCreate()
+//     {
+//         GameObject newObject = Instantiate(objectPrefab);
+//         newObject.AddComponent<PoolObject>().myPool = objectPool;
+//         return newObject;
+//     }
+//     void OnTake(GameObject poolObject)
+//     {
+//         poolObject.SetActive(true);
+//     }
+//     void OnRelease(GameObject poolObject)
+//     {
+//         poolObject.SetActive(false);
+//     }
+//     void OnObjectDestroy(GameObject poolObject)
+//     {
+//         Destroy(poolObject);
+//     }
+// }
