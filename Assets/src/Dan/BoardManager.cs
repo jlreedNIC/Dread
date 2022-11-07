@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 public class BoardManager : MonoBehaviour
 {
-    //singleton instantiation of the board
+    // Singleton instantiation of the board
     public static BoardManager Instance
     {
         get
@@ -24,6 +24,8 @@ public class BoardManager : MonoBehaviour
 
 
     // Board Manager Begin
+
+    // Set fields to be visible in the inspector
     [Serializable]
     public class Count
     {
@@ -42,7 +44,7 @@ public class BoardManager : MonoBehaviour
     public int columns = 8;
     public int rows = 8;
 
-    // instantiate wall boundaries min = 5 walls, max = 9 walls
+    // Instantiate wall boundaries min = 5 walls, max = 9 walls
     public Count wallCount = new Count (5,9);
 
     // Prefab Variables
@@ -55,13 +57,14 @@ public class BoardManager : MonoBehaviour
 
     private Transform boardHolder;
 
-    /* Keeps track of grid positions to determine if a tile
+    /* 
+     * Keeps track of grid positions to determine if a tile
      * has been spawned or not.
      */ 
     private List<Vector3> gridPositions = new List<Vector3>();
     
-    /* Clears the board and manages tile, object, and enemy assignments
-     * 
+    /* 
+     * Clears the board and manages tile, object, and enemy assignments
      */
     public void InitializeList()
     {
@@ -77,7 +80,7 @@ public class BoardManager : MonoBehaviour
         }
     }
 
-    // Instantiates both tile types and prepares them to randomly be placed on the tile map
+    // Instantiates the tile array types and prepares them to randomly be placed on the tile map
     public void BoardSetup()
     {
         boardHolder = new GameObject("Board").transform;
@@ -122,7 +125,7 @@ public class BoardManager : MonoBehaviour
                 // choose a random position to start spawning [call to randoms position function]
                 Vector3 randomPosition = RandomPosition();
                 GameObject tileChoice = tileArray[Random.Range(0, tileArray.Length)];
-                // Do Not Rotate Tiles
+                // Do Not Rotate Tiles On Instantiation
                 Instantiate(tileChoice, randomPosition, Quaternion.identity);
             }
         }
