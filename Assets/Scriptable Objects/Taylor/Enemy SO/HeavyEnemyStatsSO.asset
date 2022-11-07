@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0f96a7ff113f1e4abc0c0f95cec79a3, type: 3}
-  m_Name: HeavyEnemyStatsSO 1
+  m_Name: HeavyEnemyStatsSO
   m_EditorClassIdentifier: 
   moveSpeed: 0
   rotationSpeed: 0

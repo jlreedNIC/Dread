@@ -20,7 +20,7 @@ public class EnemyPrefabSpawner : MonoBehaviour
     void Start()
     {
         maxNumEnemies = EnemyObjectPooling.Instance._defaultPoolSize; 
-        EnemyObjectPooling.Instance.GenerateEnemies(maxNumEnemies,enemyPrefab);
+        EnemyObjectPooling.Instance.GenerateEnemies(maxNumEnemies,enemyTypes);
         StartCoroutine(spawnEnemy());
     }
     // public void spawnEnemy()

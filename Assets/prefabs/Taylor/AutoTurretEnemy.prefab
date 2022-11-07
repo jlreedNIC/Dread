@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 8276153317174102058}
   - component: {fileID: 8276153317174102059}
   - component: {fileID: 8276153317174102056}
-  - component: {fileID: 8276153317174102057}
+  - component: {fileID: 1680343314609034498}
   - component: {fileID: 8276153317174102062}
   - component: {fileID: 8276153317174102063}
   - component: {fileID: 8276153317174102060}
@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 8276153317174102067}
   - component: {fileID: 8276153317174102064}
   m_Layer: 0
-  m_Name: LightEnemy
+  m_Name: AutoTurretEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,7 +103,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8276153317007012235}
-  - {fileID: 1900458165239323120}
+  - {fileID: 9166244598919208500}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -165,7 +165,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.056959715, g: 0.9433962, b: 0.086801335, a: 1}
+  m_Color: {r: 0.032075405, g: 0.77450836, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -175,7 +175,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8276153317174102057
+--- !u!114 &1680343314609034498
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -184,10 +184,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8276153317174102065}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af83f42ed1596c44a82dc282bd0c61e8, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c14a1c706271184d8ff497d7e5c70e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyStats: {fileID: 11400000, guid: 6d2a19459b3c13c4190e5260599334c0, type: 2}
+  _enemyStats: {fileID: 11400000, guid: 890a227728c81d4419b5055804c138ca, type: 2}
   OriginPoint: {x: 0, y: 0, z: 0}
   nextRandomWaypoint: {x: 0, y: 0, z: 0}
   target: {fileID: 0}
@@ -195,7 +195,7 @@ MonoBehaviour:
   aiDestinationSetter: {fileID: 8276153317174102066}
   enemyPatrolAI: {fileID: 8276153317174102063}
   enemyEyes: {fileID: 8276153317007012233}
-  weaponSpawner: {fileID: 3101793822559787923}
+  weaponSpawner: {fileID: 5647807812426128471}
 --- !u!114 &8276153317174102062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OriginPoint: {x: 0, y: 0, z: 0}
-  enemyStats: {fileID: 11400000, guid: 5c4143de2ea578e408f16fba6fa727d4, type: 2}
+  enemyStats: {fileID: 11400000, guid: 760330e62fe03aa4298d6dc8fe99a446, type: 2}
 --- !u!114 &8276153317174102060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,13 +282,13 @@ MonoBehaviour:
     mode: 2
     interval: 0.5
     sensitivity: 10
-    maximumInterval: 0.5
+    maximumInterval: 2
     visualizeSensitivity: 0
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
   slowdownDistance: 0.6
-  pickNextWaypointDist: 0.5
+  pickNextWaypointDist: 2
   endReachedDistance: 0.2
   alwaysDrawGizmos: 1
   slowWhenNotFacingTarget: 1
@@ -350,7 +350,7 @@ MonoBehaviour:
   bezierTangentLength: 0.4
   offset: 0.2
   factor: 0.1
---- !u!1001 &3748752979464410127
+--- !u!1001 &5867342303652303819
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -374,20 +374,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3339971459748285951, guid: fc0be9a7b8e12e94da411aae1789c98d, type: 3}
-      propertyPath: m_LocalScale.x
-      value: -0.21913514
-      objectReference: {fileID: 0}
-    - target: {fileID: 3339971459748285951, guid: fc0be9a7b8e12e94da411aae1789c98d, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.8578
-      objectReference: {fileID: 0}
-    - target: {fileID: 3339971459748285951, guid: fc0be9a7b8e12e94da411aae1789c98d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.26
+      value: 0.73
       objectReference: {fileID: 0}
     - target: {fileID: 3339971459748285951, guid: fc0be9a7b8e12e94da411aae1789c98d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.03
+      value: 0.97
       objectReference: {fileID: 0}
     - target: {fileID: 3339971459748285951, guid: fc0be9a7b8e12e94da411aae1789c98d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -423,15 +415,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc0be9a7b8e12e94da411aae1789c98d, type: 3}
---- !u!4 &1900458165239323120 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3339971459748285951, guid: fc0be9a7b8e12e94da411aae1789c98d, type: 3}
-  m_PrefabInstance: {fileID: 3748752979464410127}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3101793822559787923 stripped
+--- !u!114 &5647807812426128471 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2237717222242160540, guid: fc0be9a7b8e12e94da411aae1789c98d, type: 3}
-  m_PrefabInstance: {fileID: 3748752979464410127}
+  m_PrefabInstance: {fileID: 5867342303652303819}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -439,3 +426,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9af586f37ca38b84fb8ce0a211170b4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &9166244598919208500 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3339971459748285951, guid: fc0be9a7b8e12e94da411aae1789c98d, type: 3}
+  m_PrefabInstance: {fileID: 5867342303652303819}
+  m_PrefabAsset: {fileID: 0}

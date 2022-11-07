@@ -36,15 +36,37 @@ public sealed class EnemyObjectPooling : MonoBehaviour
         //GenerateEnemies(_defaultPoolSize);
     }
 
-    public List<GameObject> GenerateEnemies(int amount, GameObject enemyPrefab)
+    // public List<GameObject> GenerateEnemies(int amount, GameObject enemyPrefab)
+    // {
+    //     Debug.Log("In GeneratingEnemies"); 
+    //     for (int i = 0; i < amount; i++)
+    //     {
+    //         GameObject enemy = Instantiate(enemyPrefab);
+
+    //         Debug.Log(enemy.name + (i+1) + " Was instantiated"); 
+
+    //         enemy.SetActive(false);
+
+    //         _enemyPool.Add(enemy);
+    //         Debug.Log(enemy.name + (i+1) + " Was added to pool"); 
+    //     }
+        
+    //     Debug.Log(" Current Enemy Pool Size: " + _enemyPool.Count); 
+
+    //     //spawner.enabled = true;
+    //     return _enemyPool;
+    // }
+
+    public List<GameObject> GenerateEnemies(int amount, List <GameObject> enemyPrefabs)
     {
         Debug.Log("In GeneratingEnemies"); 
         for (int i = 0; i < amount; i++)
         {
-            GameObject enemy = Instantiate(enemyPrefab);
+            int randNum = Random.Range(0,enemyPrefabs.Count);
+            GameObject enemy = Instantiate(enemyPrefabs[randNum]);
 
             Debug.Log(enemy.name + (i+1) + " Was instantiated"); 
-            //enemy.transform.position = new Vector3(Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0);
+
             enemy.SetActive(false);
 
             _enemyPool.Add(enemy);
@@ -72,22 +94,6 @@ public sealed class EnemyObjectPooling : MonoBehaviour
                 return enemy;
             }
         }
-        // for(int i = 0; i < _enemyPool.Count; i++)
-        // {
-        //     Debug.Log("In RequestEnemy for loop"); 
-        //     if (_enemyPool[i].activeInHierarchy == false)
-        //     {
-        //         Debug.Log("In RequestEnemy for loop if block"); 
-        //         _enemyPool[i].SetActive(true);
-        //         Debug.Log(_enemyPool[i].name + " Was set active"); 
-        //         return _enemyPool[i];
-        //     }
-        // }
-
-        // GameObject newEnemy = Instantiate(_enemyPrefab);
-        // _enemyPool.Add(newEnemy);
-
-        // return newEnemy;
         return null;
     }
 
@@ -105,33 +111,3 @@ public sealed class EnemyObjectPooling : MonoBehaviour
 
 // To use DespawnEnemy, in the Enemy script we go to wherever we would normally be destroying the instance and replace that destruction with the following line:
 // PoolManager.Instance.DespawnEnemy(gameObject);
-
-// using UnityEngine;
-// using UnityEngine.Pool;
-// public class SpawnUsingPool : MonoBehaviour
-// {
-//     public GameObject objectPrefab;
-//     ObjectPool<GameObject> objectPool;
-//     void Awake()
-//     {
-//         objectPool = new ObjectPool<GameObject>(OnObjectCreate, OnTake, OnRelease, OnObjectDestroy);
-//     }
-//     GameObject OnObjectCreate()
-//     {
-//         GameObject newObject = Instantiate(objectPrefab);
-//         newObject.AddComponent<PoolObject>().myPool = objectPool;
-//         return newObject;
-//     }
-//     void OnTake(GameObject poolObject)
-//     {
-//         poolObject.SetActive(true);
-//     }
-//     void OnRelease(GameObject poolObject)
-//     {
-//         poolObject.SetActive(false);
-//     }
-//     void OnObjectDestroy(GameObject poolObject)
-//     {
-//         Destroy(poolObject);
-//     }
-// }
