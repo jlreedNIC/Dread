@@ -7,24 +7,6 @@ using Random = UnityEngine.Random;
 
 public class BoardManager : MonoBehaviour
 {
-    // Singleton instantiation of the board
-    public static BoardManager Instance
-    {
-        get
-        {
-            return Nested.Instance;
-        }
-    }
-
-    private class Nested
-    {
-        static Nested() {}
-        internal static readonly BoardManager Instance = new BoardManager();
-    }
-
-
-    // Board Manager Begin
-
     // Set fields to be visible in the inspector
     [Serializable]
     public class Count
