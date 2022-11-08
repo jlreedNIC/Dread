@@ -6,10 +6,7 @@ public class EnemyPrefabSpawner : MonoBehaviour
 {
     [SerializeField] public List<GameObject> enemyTypes; 
 
-    // [SerializeField] public List<Transform> spawnPoints; 
-
-    [SerializeField] public GameObject enemyPrefab; 
-
+    // [SerializeField] public List<Transform> spawnPoints;  
 
     [SerializeField] public float baseEnemySpawnRate = 3.5f; 
 
@@ -62,6 +59,7 @@ public class EnemyPrefabSpawner : MonoBehaviour
             // GameObject enemy = EnemyObjectPooling.Instance.GetEnemyFromPool();
             GameObject enemy = EnemyObjectPooling.Instance.RequestEnemy();
             enemy.transform.position = new Vector3(Random.Range(-5f, 5), Random.Range(-6f, 6f), 0);
+            currentNumEnemies++;
             yield return new WaitForSeconds(1f);
         }
         yield return new WaitForSeconds(1f);

@@ -35,6 +35,7 @@ public class BoardManager : MonoBehaviour
     public GameObject[] wallTiles;
     public GameObject[] outerWallTiles;
 
+    public GameObject playerPrefab; 
 
 
     private Transform boardHolder;
@@ -135,5 +136,7 @@ public class BoardManager : MonoBehaviour
          
         // Calculate all graphs
         AstarPath.active.Scan();
+        Instantiate(playerPrefab, new Vector3(0,0,0), Quaternion.identity);
+
     }
 }

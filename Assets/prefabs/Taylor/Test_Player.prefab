@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8794072403301634479}
   - component: {fileID: 8794072403301634478}
   - component: {fileID: 999118244}
+  - component: {fileID: 367775969}
   m_Layer: 0
   m_Name: Test_Player
   m_TagString: Player
@@ -74,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1279825743
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
   m_Color: {r: 0, g: 0.7249196, b: 0.8773585, a: 1}
@@ -100,12 +101,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d9c977dc0d0fc41a04f2ab87892217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageable: {fileID: 367775969}
   _playerMovementSpeed: 5
   activeMoveSpeed: 0
   _playerDashSpeed: 10
   _playerDashCounter: 0
   _playerDashCooldownCounter: 0
-  _playerDashCooldown: 1
+  _playerDashCooldown: 0.5
   _playerDashLength: 0.5
   camera: {fileID: 0}
   _playerCollider: {fileID: 0}
@@ -148,6 +150,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &367775969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8794072403301634483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49a06155034c25240b4be49eecfec365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseHealth: 100
+  currentHealth: 0
 --- !u!1001 &1152243456
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -155,6 +171,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8794072403301634481}
     m_Modifications:
+    - target: {fileID: 1388237061504491130, guid: de550358e11194e4e887d8da206dca15, type: 3}
+      propertyPath: fire_range
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 3554467850779648886, guid: de550358e11194e4e887d8da206dca15, type: 3}
       propertyPath: m_RootOrder
       value: 0

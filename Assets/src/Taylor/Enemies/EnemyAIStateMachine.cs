@@ -183,7 +183,8 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
     {
         if(enemyEyes.target != null)
         {
-            target = enemyEyes.target; 
+            target = enemyEyes.target;
+            aiDestinationSetter.target = target;
             SetAIState(EnemyAIStates.Chase); 
         }
     }
@@ -219,6 +220,9 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
         {
             if(CheckIfCoolDownElapsed(_enemyStats.attackRate))
             {
+                target = enemyEyes.target;
+                aiDestinationSetter.target = target;
+
                 //prints string to console. for debugging. 
                 Debug.Log("Enemy Ranged Attacking");
                 
@@ -239,7 +243,8 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
         
         if(enemyEyes.target != null)
         {
-            target = enemyEyes.target; 
+            target = enemyEyes.target;
+            aiDestinationSetter.target = target;
             SetAIState(EnemyAIStates.Chase); 
         }
         else

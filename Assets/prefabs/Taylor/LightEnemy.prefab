@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8276153317007012235}
   - component: {fileID: 8276153317007012232}
   - component: {fileID: 8276153317007012233}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 8276153317174102066}
   - component: {fileID: 8276153317174102067}
   - component: {fileID: 8276153317174102064}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LightEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -161,8 +161,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1279825743
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.056959715, g: 0.9433962, b: 0.086801335, a: 1}
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OriginPoint: {x: 0, y: 0, z: 0}
-  enemyStats: {fileID: 11400000, guid: 5c4143de2ea578e408f16fba6fa727d4, type: 2}
+  enemyStats: {fileID: 11400000, guid: 6d2a19459b3c13c4190e5260599334c0, type: 2}
 --- !u!114 &8276153317174102060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,6 +369,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemy_base_weapon
       objectReference: {fileID: 0}
+    - target: {fileID: 3339971459748285939, guid: fc0be9a7b8e12e94da411aae1789c98d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3339971459748285951, guid: fc0be9a7b8e12e94da411aae1789c98d, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -420,6 +424,10 @@ PrefabInstance:
     - target: {fileID: 3339971459748285951, guid: fc0be9a7b8e12e94da411aae1789c98d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3339971459756170524, guid: fc0be9a7b8e12e94da411aae1789c98d, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc0be9a7b8e12e94da411aae1789c98d, type: 3}

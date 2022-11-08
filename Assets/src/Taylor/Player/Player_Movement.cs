@@ -42,7 +42,7 @@ public sealed class Player_Movement : MonoBehaviour
     [SerializeField] private float _playerDashLength= 0.5f; 
  
     private Vector2 _moveDirection; 
-    public Camera camera; 
+    public Camera camera;
     private Vector2 _mousePosition; 
 
     [SerializeField] private Collider2D _playerCollider;  
@@ -62,7 +62,7 @@ public sealed class Player_Movement : MonoBehaviour
         //grab the RigidBody2D component for movement
         _playerRB = GetComponent<Rigidbody2D>(); 
         _playerCollider = GetComponent<Collider2D>(); 
-
+        camera = Camera.main;
         activeMoveSpeed = _playerMovementSpeed; 
 
         //null game object check

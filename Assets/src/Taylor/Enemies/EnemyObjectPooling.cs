@@ -22,7 +22,6 @@ public sealed class EnemyObjectPooling : MonoBehaviour
     }
 
     [SerializeField] public int _defaultPoolSize = 10;
-    [SerializeField] private GameObject _enemyPrefab;
     [SerializeField] private List<GameObject> _enemyPool = new List<GameObject>();
 
     //[SerializeField] EnemyPrefabSpawner spawner;
