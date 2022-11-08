@@ -26,32 +26,48 @@ using TMPro;
  */
 public sealed class NotificationManager : MonoBehaviour
 {
+    // for this singleton implementation to work, need to call it before first item is picked up
     // singleton implementation
     private NotificationManager() {}
-    
-    public static NotificationManager Instance { get; private set; }
-
-    private void Awake()
+    public static NotificationManager Instance
     {
-        if(Instance != null && Instance != this)
+        get
         {
-            Debug.Log("tried creating new instance");
-            Destroy(this);
-        }
-        else
-        {
-            Debug.Log("new instance");
-            Instance = this;
-            DontDestroyOnLoad(this.gameObject); // when do we actually need to use this?
+            return Nested.instance;
         }
     }
+
+    private class Nested
+    {
+        static Nested() {}
+        internal static readonly NotificationManager instance = new GameObject().AddComponent<NotificationManager>();
+    }
+    // // singleton implementation
+    // private NotificationManager() {}
+    
+    // public static NotificationManager Instance { get; private set; }
+
+    // private void Awake()
+    // {
+    //     if(Instance != null && Instance != this)
+    //     {
+    //         Debug.Log("tried creating new instance");
+    //         Destroy(this);
+    //     }
+    //     else
+    //     {
+    //         Debug.Log("new instance");
+    //         Instance = this;
+    //         DontDestroyOnLoad(this.gameObject); // when do we actually need to use this?
+    //     }
+    // }
 
     [SerializeField] private GameObject notificationScreenPrefab;     // contains text mesh pro and image background
     private GameObject screenInstance;                          // an instance of the prefab
     private TMP_Text screenText;                                // tmp text object
     private Image background;                                   // background image object 
     [SerializeField] private bool isScreenActive;               // bool value to hold whether or not the screen is shown on screen
-    [SerializeField] private float delay;                       // amount of time to show notification
+    [SerializeField] private float delay = 5;                       // amount of time to show notification
     int numScreensActive = 0;                                   // number of notifications called, used to ensure screen is shown for full delay time
 
     /*
@@ -60,6 +76,7 @@ public sealed class NotificationManager : MonoBehaviour
      */
     void Start()
     {
+        notificationScreenPrefab = Resources.Load<GameObject>("NotificationScreen");
         screenInstance = Instantiate(notificationScreenPrefab);
         screenText = screenInstance.transform.GetChild(0).GetComponent<TMP_Text>();
         background = screenInstance.transform.GetChild(1).GetComponent<Image>();

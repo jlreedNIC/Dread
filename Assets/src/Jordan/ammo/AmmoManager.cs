@@ -29,36 +29,36 @@ public sealed class AmmoManager : MonoBehaviour
 {
     // singleton implementation
     private AmmoManager() {}
-    // public static AmmoManager Instance
-    // {
-    //     get
-    //     {
-    //         return Nested.instance;
-    //     }
-    // }
-
-    // private class Nested
-    // {
-    //     static Nested() {}
-    //     // internal static readonly AmmoManager instance = new AmmoManager();
-    //     internal static readonly AmmoManager instance = new GameObject().AddComponent<AmmoManager>();
-    // }
-    public static AmmoManager Instance { get; private set; }
-
-    private void Awake()
+    public static AmmoManager Instance
     {
-        if(Instance != null && Instance != this)
+        get
         {
-            Debug.Log("tried creating new instance");
-            Destroy(this);
-        }
-        else
-        {
-            Debug.Log("new instance");
-            Instance = this;
-            DontDestroyOnLoad(this.gameObject); // when do we actually need to use this?
+            return Nested.instance;
         }
     }
+
+    private class Nested
+    {
+        static Nested() {}
+        // internal static readonly AmmoManager instance = new AmmoManager();
+        internal static readonly AmmoManager instance = new GameObject().AddComponent<AmmoManager>();
+    }
+    // public static AmmoManager Instance { get; private set; }
+
+    // private void Awake()
+    // {
+    //     if(Instance != null && Instance != this)
+    //     {
+    //         Debug.Log("tried creating new instance");
+    //         Destroy(this);
+    //     }
+    //     else
+    //     {
+    //         Debug.Log("new instance");
+    //         Instance = this;
+    //         DontDestroyOnLoad(this.gameObject); // when do we actually need to use this?
+    //     }
+    // }
 
     [SerializeField] private int totalAmmo;             // total amount of ammo available
     [SerializeField] private int maxTotal;              // total amount of ammo able to be carried
@@ -73,6 +73,7 @@ public sealed class AmmoManager : MonoBehaviour
         // initial ammo inventory set to 40
         totalAmmo = maxTotal = 40;
         ammoDamage = 1;
+        bulletType = Resources.Load<GameObject>("Bullet");      // sets the prefab for the bullet so singleton can instantiate it
     }
 
     /*
