@@ -11,6 +11,7 @@ TagManager:
   - Exit
   - Weapon
   - weapon_upgrade
+  - items
   layers:
   - Default
   - TransparentFX
