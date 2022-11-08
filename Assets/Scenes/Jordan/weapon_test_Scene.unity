@@ -1423,6 +1423,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NotificationManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7131137426662825087, guid: c9b389c80b245ee40b8401958bfc8766, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9b389c80b245ee40b8401958bfc8766, type: 3}
 --- !u!1001 &8032252670123380130
@@ -1536,6 +1540,10 @@ PrefabInstance:
     - target: {fileID: 8360299512957326947, guid: 02cc14c74acae8c49a0c6010e5572ce1, type: 3}
       propertyPath: m_Name
       value: AmmoManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8360299512957326947, guid: 02cc14c74acae8c49a0c6010e5572ce1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02cc14c74acae8c49a0c6010e5572ce1, type: 3}
