@@ -130,6 +130,7 @@ public class BoardManager : MonoBehaviour
         LayoutObjectAtRandom(wallTiles, wallCount.minimum, wallCount.maximum);
         /* Spawn # of enemies based on the level's number IE: level 1 spawn 1 enemy; 2 spawn 2,..etc.
          * int enemyCount = (int)Mathf.Log(level, 2f);
+         
          * LayoutObjectAtRandom(enemyTiles, enemyCount, enemyCount);
          */
          Instantiate(exit, new Vector3(columns - 1, rows - 1, 0F), Quaternion.identity);

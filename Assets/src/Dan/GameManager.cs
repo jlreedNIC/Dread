@@ -6,12 +6,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
 
-
-
     public BoardManager boardScript;
 
     // test level
-    private int level = 3;
+    private int level = 1;
 
     // Start is called before the first frame update
     void Awake()
@@ -34,7 +32,9 @@ public class GameManager : MonoBehaviour
     void InitGame()
     {
         boardScript.SetupScene(level);
+        // any other game objects go below here
     }
+
     // Update is called once per frame
     void Update()
     {
