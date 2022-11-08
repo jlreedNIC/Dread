@@ -28,6 +28,7 @@ using UnityEngine;
 public sealed class AmmoManager : MonoBehaviour
 {
     // singleton implementation
+    // find way to find object if it exists
     private AmmoManager() {}
     public static AmmoManager Instance
     {
@@ -73,7 +74,7 @@ public sealed class AmmoManager : MonoBehaviour
         // initial ammo inventory set to 40
         totalAmmo = maxTotal = 40;
         ammoDamage = 1;
-        bulletType = Resources.Load<GameObject>("Bullet");      // sets the prefab for the bullet so singleton can instantiate it
+        if(bulletType == null) bulletType = Resources.Load<GameObject>("Bullet");      // sets the prefab for the bullet so singleton can instantiate it
     }
 
     /*
