@@ -2,11 +2,7 @@
  * @file    NotificationManager.cs
  * @author  Jordan Reed
  *
- * @brief   This class will manage all screens.
- *              - item screens
- *              - pause screens
- *              - not HUD
- *              - Death screens
+ * @brief   This class will show the notification screens.
  *
  * @date    October 2022
  */
@@ -24,7 +20,7 @@ using TMPro;
  */
 
 /*
- * ScreenManager:
+ * ScreenManager: Shows a notification. Creates a single notification screen and updates the text as called.
  *
  * member variables:
  */
@@ -51,14 +47,16 @@ public sealed class NotificationManager : MonoBehaviour
     }
 
     [SerializeField] private GameObject notificationScreenPrefab;     // contains text mesh pro and image background
-    private GameObject screenInstance;
+    private GameObject screenInstance;                          // an instance of the prefab
     private TMP_Text screenText;                                // tmp text object
     private Image background;                                   // background image object 
-    [SerializeField] private bool isScreenActive;
-    [SerializeField] private float delay;
+    [SerializeField] private bool isScreenActive;               // bool value to hold whether or not the screen is shown on screen
+    [SerializeField] private float delay;                       // amount of time to show notification
+    int numScreensActive = 0;                                   // number of notifications called, used to ensure screen is shown for full delay time
 
     /*
-     * @brief 
+     * @brief Create an instance of notification screen prefab on start. Set variables
+     *        of text and background in script to modify as needed
      */
     void Start()
     {
@@ -99,22 +97,34 @@ public sealed class NotificationManager : MonoBehaviour
         backgroundSize.sizeDelta = new Vector2((textSize.sizeDelta.x + 2)/.25f, (textSize.sizeDelta.y + 20)/.25f);
     }
 
-    // show screen
+    /*
+     * @brief Populates the screen with the given text and makes sure the background fits the amount of text given.
+     *        Then makes sure the screen is called and number of notifications has been updated
+     *
+     * @param string sText text to show on the notification screen
+     */
     public void showScreen(string sText)
     {
         setScreenText(sText);
         setBackgroundSize();
 
         isScreenActive = true;
+        numScreensActive++;
         StartCoroutine(screenDelay(delay));
     }
 
-    // start cooldown
-    public IEnumerator screenDelay(float rate)
+    /*
+     * @brief Makes sure that the notification is shown for the full amount of time. It will not deactivate the screen
+     *        until all notifications have run their time down.
+     *
+     * @param float rate amount of time to show the screen
+     */
+    private IEnumerator screenDelay(float rate)
     {
         // Debug.Log("starting cooldown");
         yield return new WaitForSeconds(rate);
-        isScreenActive = false;
+        numScreensActive--;
+        if(numScreensActive == 0) isScreenActive = false;
         // Debug.Log("ending cooldown");
         yield break;
     }

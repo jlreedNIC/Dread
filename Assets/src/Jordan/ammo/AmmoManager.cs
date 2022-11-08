@@ -17,6 +17,7 @@ using UnityEngine;
 /*
     TO DO:
         make sure this is not creating more than one instance
+        this singleton does not handle multithreading
  */
 
 /*
