@@ -2,7 +2,7 @@
  * @file    Base_Weapon.cs
  * @author  Jordan Reed
  *
- * @brief   
+ * @brief   This is the base parent class for all weapons. It defines functions for firing the weapon as well as switching between weapons.
  *
  * @date    September 2022
  */
@@ -13,14 +13,11 @@ using UnityEngine;
 
 /*
     TO DO:
-        look into scriptable object for the stats
         fix switch weapon action
-
-        look at creating weapon class and a weapon object/behavior class
-            in essence, a weapon class that we can do the decorator on
-            and an object class that will handle the gameobject behavior (spawning bullets and whatnot)
         
         need to create an enemy base weapon class that won't be tied to the ammo manager
+
+        add a way to view the stats of each weapon
  */
 
 public class Base_Weapon : MonoBehaviour
@@ -38,10 +35,6 @@ public class Base_Weapon : MonoBehaviour
     public bool canFire;
     public bool canBePickedUp;
     // when canbepickedup is false, turn collider off
-
-    // audio manager
-    // should we have this? or just call the script Dan is making???
-    // [SerializeField] private AudioManager AudioMan;
 
     virtual public int GetWeaponDamage()
     {
@@ -66,16 +59,6 @@ public class Base_Weapon : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        // set audio manager variable to play the correct sounds
-        // AudioMan = FindObjectOfType<AudioManager>();
-        // if(AudioMan)
-        // {
-        //     Debug.Log("Found audio manager");
-        // }
-        // else
-        // {
-        //     Debug.Log("Did not find audio manager");
-        // }
 
         // get firepoint if not set
         if(firePoint == null)
@@ -117,16 +100,6 @@ public class Base_Weapon : MonoBehaviour
         if(canFire)
         {
             // play pewpew sound
-            // FindObjectOfType<AudioManager>().Play("Pew");
-            // if(AudioMan)
-            // {
-            //     Debug.Log("Playing pewpew sound!");
-            //     AudioMan.Play("Pew");
-            // }
-            // else
-            // {
-            //     Debug.Log("can't play pewpew");
-            // }
 
             int curDmg = GetWeaponDamage();
             float curRate = GetWeaponFireRate();
@@ -145,6 +118,7 @@ public class Base_Weapon : MonoBehaviour
 
                 StartCoroutine(FireCooldown(curRate));
             }
+            // else show notification("no more ammo");
         }
         else
         {
@@ -182,6 +156,7 @@ public class Base_Weapon : MonoBehaviour
             // remove the parent and rotation of the old weapon
             oldWeapon.transform.parent = null;
             oldWeapon.transform.rotation = new Quaternion(0,0,0,0);
+            oldWeapon.GetComponent<Base_Weapon>().canBePickedUp = true; // set old weapon able to be picked up
 
             // return the new weapon to be set in the player script
             return this.gameObject;
@@ -191,14 +166,5 @@ public class Base_Weapon : MonoBehaviour
             Debug.Log("can't switch with this weapon right now");
             return oldWeapon;
         }        
-    }
-
-    // when player leaves the old weapon behind, then it can be picked up again
-    void OnCollisionExit2D(Collision2D other)
-    {
-        if(other.gameObject.tag == "Player")
-        {
-            canBePickedUp = true;
-        }
     }
 }
