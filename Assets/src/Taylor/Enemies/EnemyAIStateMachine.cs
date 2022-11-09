@@ -40,19 +40,10 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
     protected EnemyAIStates _currentState;
     
     //references Enemy Stats SO. Holds _enemyStats. 
-    [SerializeField] protected EnemyStatsConfigSO _enemyStats; 
-    
-    //The origin point of our enemy spawn
-    [SerializeField] public Vector3  OriginPoint; 
-    
-    //the next random waypoint generated that the enemy will move too. 
-    [SerializeField] public Vector3 nextRandomWaypoint;    
+    [SerializeField] protected EnemyStatsConfigSO _enemyStats;     
     
     //the target we want the enemy AI focus on. 
     [SerializeField] public Transform target; 
-    
-    //square of the maxspeed
-    [SerializeField] protected float _maxSpeedSqr; 
     
     //rigid body component for movement. 
     protected Rigidbody _selfRB; 
@@ -60,7 +51,7 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
     //Reference to A* pathfinding package AIDestinationSetter script. 
     //used for turning script componenet on and off
     [SerializeField] public AIDestinationSetter aiDestinationSetter; 
-    [SerializeField] public IStarAI aiPath; 
+    [SerializeField] public AIPath aiPath; 
 
 
     //Reference to EnemyPatrolAI script. 
@@ -76,26 +67,15 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
     // [SerializeField] AudioClipSO _audioClipSO;
 
     // Start is called before the first frame update
-    void OnEnable()
+    public virtual void OnEnable()
     {
         //gets the rigid body component from game object
         _selfRB = GetComponent<Rigidbody>();
 
-        aiPath = GetComponent<IAstarAI>();
-        
-        // stores the square of enemy move speed
-        _maxSpeedSqr = _enemyStats.moveSpeed * _enemyStats.moveSpeed;
-        
-        //stores the origin point of enemy game object
-        OriginPoint = transform.position; 
+        aiPath = GetComponent<AIPath>();
         
         //sets the current state to the base state of patrolling 
         SetAIState(EnemyAIStates.Patrol);
-        
-
-        //starts the check distance co routine to make sure the point 
-        //generate is within the enemy stats distanceToWaypoint. 
-        // StartCoroutine(checkDistance(0.2f));
     }
 
     // Update is called once per frame

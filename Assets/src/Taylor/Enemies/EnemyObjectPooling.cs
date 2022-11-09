@@ -24,37 +24,11 @@ public sealed class EnemyObjectPooling : MonoBehaviour
     [SerializeField] public int _defaultPoolSize = 10;
     [SerializeField] private List<GameObject> _enemyPool = new List<GameObject>();
 
-    //[SerializeField] EnemyPrefabSpawner spawner;
-
-    //[SerializeField] private List<GameObject> _enemyTypes = new List<GameObject>();
-
 
     void Start()
     {
-        //spawner.enabled = false;
-        //GenerateEnemies(_defaultPoolSize);
+
     }
-
-    // public List<GameObject> GenerateEnemies(int amount, GameObject enemyPrefab)
-    // {
-    //     Debug.Log("In GeneratingEnemies"); 
-    //     for (int i = 0; i < amount; i++)
-    //     {
-    //         GameObject enemy = Instantiate(enemyPrefab);
-
-    //         Debug.Log(enemy.name + (i+1) + " Was instantiated"); 
-
-    //         enemy.SetActive(false);
-
-    //         _enemyPool.Add(enemy);
-    //         Debug.Log(enemy.name + (i+1) + " Was added to pool"); 
-    //     }
-        
-    //     Debug.Log(" Current Enemy Pool Size: " + _enemyPool.Count); 
-
-    //     //spawner.enabled = true;
-    //     return _enemyPool;
-    // }
 
     public List<GameObject> GenerateEnemies(int amount, List <GameObject> enemyPrefabs)
     {

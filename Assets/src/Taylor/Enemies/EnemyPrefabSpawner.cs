@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class EnemyPrefabSpawner : MonoBehaviour
 {
-    [SerializeField] public List<GameObject> enemyTypes; 
-
-    // [SerializeField] public List<Transform> spawnPoints;  
+    [SerializeField] public List<GameObject> enemyTypes;  
 
     [SerializeField] public float baseEnemySpawnRate = 3.5f; 
 
