@@ -23,7 +23,7 @@ MonoBehaviour:
   attackRange: 10
   attackForce: 0
   attackDamage: 0
-  attackCooldown: 3.6399972
-  searchDuration: 0
-  searchingTurnSpeed: 0
+  attackCooldown: 0.13999999
+  searchDuration: 3
+  searchingTurnSpeed: 5
   stateTimeElapsed: 0

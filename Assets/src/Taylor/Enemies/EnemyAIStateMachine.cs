@@ -67,7 +67,8 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
 
     [SerializeField] public EnemyEyes enemyEyes; 
 
-    [SerializeField] public Base_Weapon weaponSpawner; 
+    [SerializeField] public Base_Weapon weaponSpawner;
+     
 
     // [SerializeField] AudioSource _audioSource;
     // [SerializeField] AudioClipSO _audioClipSO;
@@ -133,13 +134,15 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
             // then leaves the look range of the enemy. 
             case EnemyAIStates.Search:
                                     {
+                                        
+                                        ChangeObjectComponents(false, false); 
                                         //print searching string to console
                                         //for debugging 
                                         // Debug.Log("Light Enemy Searching"); 
                                         //call enemy state machine search function. 
                                         //rotates enemy and searches for the player target. 
                                         //for a set time duration. 
-                                        Search(); 
+                                        Search();
                                     }
                                     break; 
             //Enemy Chase State. 
@@ -194,8 +197,10 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
     {
         if(enemyEyes.target == null)
         {
-            target = null; 
-            SetAIState(EnemyAIStates.Patrol);
+            target = null;
+            aiDestinationSetter.target = target;
+            // SetAIState(EnemyAIStates.Patrol);
+            SetAIState(EnemyAIStates.Search);
         }
         if(target != null)
         {
@@ -212,25 +217,37 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
     {
         if(enemyEyes.target == null)
         {
-            target = null; 
-            SetAIState(EnemyAIStates.Patrol);
+            target = null;
+            aiDestinationSetter.target = target;
+            // SetAIState(EnemyAIStates.Patrol);
+            SetAIState(EnemyAIStates.Search);
         }
 
         if(target != null)
         {
-            if(CheckIfCoolDownElapsed(_enemyStats.attackRate))
+            if(Vector2.Distance(transform.position, target.transform.position) < _enemyStats.attackRange)
+            {
+                if(CheckIfCoolDownElapsed(_enemyStats.attackRate))
+                {
+                    target = enemyEyes.target;
+                    aiDestinationSetter.target = target;
+
+                    //prints string to console. for debugging. 
+                    Debug.Log("Enemy Ranged Attacking");
+                    
+                    //calls on our weapon spawner class method fire
+                    //launches a missle prefab from 
+                    //the weapon spawner prefab on the enemy game object
+                    weaponSpawner.Fire(); 
+                    _enemyStats.attackCooldown = 0;
+                }
+            }
+            else
             {
                 target = enemyEyes.target;
                 aiDestinationSetter.target = target;
-
-                //prints string to console. for debugging. 
-                Debug.Log("Enemy Ranged Attacking");
-                
-                //calls on our weapon spawner class method fire
-                //launches a missle prefab from 
-                //the weapon spawner prefab on the enemy game object
-                weaponSpawner.Fire(); 
-                _enemyStats.attackCooldown = 0;
+                // SetAIState(EnemyAIStates.Patrol);
+                SetAIState(EnemyAIStates.Chase);
             }
         }
     }
@@ -238,34 +255,42 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
     //Search State Function
     protected virtual void Search() 
     {
-        // Spin the object around the target at 20 degrees/second.
-        transform.RotateAround(target.transform.position, Vector3.up, 20 * Time.deltaTime);
-        
-        if(enemyEyes.target != null)
+        if(!CheckIfCountDownElapsed(_enemyStats.searchDuration))
         {
-            target = enemyEyes.target;
-            aiDestinationSetter.target = target;
-            SetAIState(EnemyAIStates.Chase); 
+            Debug.Log("Enemy Searching");
+
+            // Spin the object around the target at 20 degrees/second.
+            transform.RotateAround(transform.position, Vector3.forward, _enemyStats.searchingTurnSpeed * Time.deltaTime);
         }
         else
         {
-            SetAIState(EnemyAIStates.Patrol); 
+            if(enemyEyes.target != null)
+            {
+                target = enemyEyes.target;
+                aiDestinationSetter.target = target;
+                SetAIState(EnemyAIStates.Chase); 
+            }
+            else
+            {
+                SetAIState(EnemyAIStates.Patrol); 
+            }
+
         }
     }
 
     //Change Object Components Function
     //takes 2 parameters
-    //bool isEnemyComponentOn
-    //bool isNavigatorComponentOn
+    //bool isEnemyPatrolComponentOn
+    //bool isAiDestinationSetterOn
     //true will turn on the component
     //false will turn off the component
-    public void ChangeObjectComponents(bool isEnemyComponentOn, bool isNavigatorComponentOn)
+    public void ChangeObjectComponents(bool isEnemyPatrolComponentOn, bool isAiDestinationSetterOn)
     {
         //sets enemyPatrolAI.enabled to true or false depending on what is sent in 
-        enemyPatrolAI.enabled = isEnemyComponentOn; 
+        enemyPatrolAI.enabled = isEnemyPatrolComponentOn; 
 
         //sets aiDestinationSetter.enabled to true or false depending on what is sent in 
-        aiDestinationSetter.enabled = isNavigatorComponentOn;
+        aiDestinationSetter.enabled = isAiDestinationSetterOn;
     }
 
     //SetAIState() function
@@ -285,6 +310,13 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
 	{
 		_enemyStats.attackCooldown += Time.deltaTime;
 		return _enemyStats.attackCooldown >= duration;
+	}
+    
+    //checks if search duration exceeded
+    public bool CheckIfCountDownElapsed(float duration)
+	{
+		_enemyStats.stateTimeElapsed += Time.deltaTime;
+		return _enemyStats.stateTimeElapsed >= duration;
 	}
 
     public void OnDrawGizmos()

@@ -589,6 +589,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8360299512957326946, guid: 02cc14c74acae8c49a0c6010e5572ce1, type: 3}
+      propertyPath: totalAmmo
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8360299512957326946, guid: 02cc14c74acae8c49a0c6010e5572ce1, type: 3}
+      propertyPath: ammoDamage
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8360299512957326947, guid: 02cc14c74acae8c49a0c6010e5572ce1, type: 3}
       propertyPath: m_Name
       value: AmmoManager
@@ -769,7 +777,7 @@ MonoBehaviour:
   showSearchTree: 0
   unwalkableNodeDebugSize: 0.3
   logPathResults: 1
-  maxNearestNodeDistance: 100
+  maxNearestNodeDistance: 20
   scanOnStartup: 0
   fullGetNearestSearch: 0
   prioritizeGraphs: 0
