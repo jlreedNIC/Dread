@@ -103,7 +103,7 @@ public sealed class AmmoManager : MonoBehaviour
      */
     public string GetCurrentBulletName()
     {
-        return bulletType.GetComponent<bullet>().getName();
+        return bulletType.GetComponent<Bullet>().getName();
     }
 
     /*
@@ -136,7 +136,7 @@ public sealed class AmmoManager : MonoBehaviour
     public void SetNewAmmoType(GameObject bullet)
     {
         bulletType = bullet;
-        ammoDamage = bulletType.GetComponent<bullet>().getDamage();
+        ammoDamage = bulletType.GetComponent<Bullet>().getDamage();
     }
     
     /*
@@ -166,8 +166,8 @@ public sealed class AmmoManager : MonoBehaviour
             }
 
             // set max bullet dist and bullet damage
-            bullet.GetComponent<bullet>().setFireRange(range);
-            bullet.GetComponent<bullet>().setTotalDamage(damage*ammoDamage);
+            bullet.GetComponent<Bullet>().setFireRange(range);
+            bullet.GetComponent<Bullet>().setTotalDamage(damage*ammoDamage);
 
             // subtract from ammo count
             updateAmmoCount(-1);

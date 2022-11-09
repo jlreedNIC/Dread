@@ -47,8 +47,8 @@ public class EnemyBaseWeapon : Base_Weapon
             GameObject bullet = Instantiate(bullet_type, firePoint.position, firePoint.rotation);
 
             // // set max bullet dist and bullet damage
-            bullet.GetComponent<bullet>().setFireRange(curRange);
-            bullet.GetComponent<bullet>().setTotalDamage(curDmg);
+            bullet.GetComponent<Bullet>().setFireRange(curRange);
+            bullet.GetComponent<Bullet>().setTotalDamage(curDmg);
 
             // apply force to bullet to move
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();

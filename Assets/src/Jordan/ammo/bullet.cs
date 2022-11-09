@@ -1,5 +1,5 @@
 /**
- * @file    bullet.cs
+ * @file    Bullet.cs
  * @author  Jordan Reed
  *
  * @brief   This class manages the bullet gameobjects that are created in game.
@@ -17,7 +17,7 @@ using UnityEngine;
         fix friendly fire issue
 */
 
-public class bullet : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
     [SerializeField] private int total_damage;          // damage bullet will do to enemy/player
     [SerializeField] private Vector3 starting_point;    // initial position of bullet
