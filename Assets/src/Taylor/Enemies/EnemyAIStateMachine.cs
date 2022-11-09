@@ -60,6 +60,8 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
     //Reference to A* pathfinding package AIDestinationSetter script. 
     //used for turning script componenet on and off
     [SerializeField] public AIDestinationSetter aiDestinationSetter; 
+    [SerializeField] public IStarAI aiPath; 
+
 
     //Reference to EnemyPatrolAI script. 
     //used for randompoint patrolling 
@@ -78,6 +80,8 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
     {
         //gets the rigid body component from game object
         _selfRB = GetComponent<Rigidbody>();
+
+        aiPath = GetComponent<IAstarAI>();
         
         // stores the square of enemy move speed
         _maxSpeedSqr = _enemyStats.moveSpeed * _enemyStats.moveSpeed;
@@ -258,9 +262,9 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
         if(!CheckIfCountDownElapsed(_enemyStats.searchDuration))
         {
             Debug.Log("Enemy Searching");
-
+            aiPath.canMove = false; 
             // Spin the object around the target at 20 degrees/second.
-            transform.RotateAround(transform.position, Vector3.forward, _enemyStats.searchingTurnSpeed * Time.deltaTime);
+            transform.RotateAround(transform.position, Vector3.forward, _enemyStats.searchingTurnSpeed);
         }
         else
         {
@@ -268,10 +272,12 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
             {
                 target = enemyEyes.target;
                 aiDestinationSetter.target = target;
+                aiPath.canMove = true; 
                 SetAIState(EnemyAIStates.Chase); 
             }
             else
             {
+                aiPath.canMove = true; 
                 SetAIState(EnemyAIStates.Patrol); 
             }
 
