@@ -39,7 +39,7 @@ public class AmmoItem : BaseItem
         return "Ammo pickup: " + ammo;
     }
 
-    override protected void ApplyUpgrade()
+    override protected void ApplyUpgrade(Collision2D col)
     {
         // virtual
         // does different things based on the class

@@ -32,12 +32,15 @@ public class HUD : MonoBehaviour
     private float maxWidth, curWidth;                   // float values to hold the width of the health bar
     private RectTransform imageRect;                    // holds the width and height of the health image bar
 
+    [SerializeField] private GameObject playerRef;
+
 
     // Start is called before the first frame update
     void Start()
     {
         imageRect = healthBar.GetComponent<RectTransform>();
         maxWidth = imageRect.rect.width;
+        // playerRef = GameObject.Find("Test_Player");
     }
 
     // Update is called once per frame
@@ -56,11 +59,11 @@ public class HUD : MonoBehaviour
         objectText.text = curVal + "/" + maxVal;
 
         // get current health and update health bar
-        // curHealth = getPlayerHealth();
-        curHealth = 1;
-        maxHealth = 1;
-        // maxHealth = getPlayerMaxHealth();
+        curHealth = playerRef.GetComponent<Player_Movement>().damageable.currentHealth;
+        maxHealth = playerRef.GetComponent<Player_Movement>().damageable.baseHealth;
         curWidth = (curHealth/maxHealth) * maxWidth;
+        
+        // Debug.Log(curHealth + "/" + maxHealth + "*" + maxWidth + "=" + curWidth);
         imageRect.sizeDelta = new Vector2( curWidth, imageRect.sizeDelta.y);
 
         // Debug.Log("health: " + curHealth + "/" + maxHealth);

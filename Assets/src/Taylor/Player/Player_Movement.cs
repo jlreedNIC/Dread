@@ -30,7 +30,7 @@ public sealed class Player_Movement : MonoBehaviour
     }
     //these will be our base player movement speed and jump height. 
     //serialized field lets us have private variables vieded and edited in Unity editor 
-    [SerializeField] private Damageable damageable; 
+    [SerializeField] public Damageable damageable; 
     [SerializeField] private float _playerMovementSpeed = 5.0f; 
     [SerializeField] float activeMoveSpeed; 
     [SerializeField] private float _playerDashSpeed;

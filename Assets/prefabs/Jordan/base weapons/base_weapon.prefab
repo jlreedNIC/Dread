@@ -128,7 +128,7 @@ MonoBehaviour:
   firePoint: {fileID: 3554467850788582290}
   bulletForce: 20
   weapon_name: basic
-  fire_rate: 3
+  fire_rate: 2
   weapon_dmg_mod: 0
   fire_range: 6
   canFire: 0

@@ -39,11 +39,12 @@ public class HealthItem : BaseItem
         return "Health pickup: " + healthMod;
     }
 
-    override protected void ApplyUpgrade()
+    override protected void ApplyUpgrade(Collision2D col)
     {
         // virtual
         // does different things based on the class
         Debug.Log("health pickup. added " + healthMod + " health to player");
+        col.gameObject.GetComponent<Player_Movement>().damageable.GainHealth(healthMod);
         // call player.addHealth(healthMod);
         // to be added after player health added
     }

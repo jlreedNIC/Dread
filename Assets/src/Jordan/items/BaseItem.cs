@@ -37,7 +37,7 @@ public class BaseItem : MonoBehaviour
         return "base item: 0";
     }
 
-    protected virtual void ApplyUpgrade()
+    protected virtual void ApplyUpgrade(Collision2D col)
     {
         // virtual
         // does different things based on the class
@@ -51,7 +51,7 @@ public class BaseItem : MonoBehaviour
             Debug.Log("player collided with item");
             
             NotificationManager.Instance.showScreen(GetItemStats());
-            ApplyUpgrade();
+            ApplyUpgrade(col);
             Destroy(gameObject);
         }
         
