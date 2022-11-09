@@ -176,10 +176,10 @@ public sealed class AmmoManager : MonoBehaviour
             {
                 damage++;
             }
+            // Debug.Log("setting ammo damage = " + damage + " * " + ammoDamage);
 
             // set max bullet dist and bullet damage
             bullet.GetComponent<bullet>().setFireRange(range);
-            Debug.Log("setting ammo damage = " + damage + " * " + ammoDamage);
             bullet.GetComponent<bullet>().setTotalDamage(damage*ammoDamage);
 
             updateAmmoCount(-1);
