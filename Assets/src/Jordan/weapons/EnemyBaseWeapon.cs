@@ -2,7 +2,9 @@
  * @file    EnemyBaseWeapon.cs
  * @author  Jordan Reed
  *
- * @brief   
+ * @brief   This class manages the enemy weapons. It inherits from Base_Weapon and overrides
+ *          the Fire and SwitchWeapon functions. Enemy weapons do not interact with the ammo manager
+ *          and are not currently able to switch their active weapon.
  *
  * @date    October 2022
  */
@@ -14,28 +16,25 @@ using UnityEngine;
 /*
     TO DO:
         look at implementing enemy weapon decorators
+
+        look at implementing weapon switching
  */
 
 public class EnemyBaseWeapon : Base_Weapon
 {
     [SerializeField] private GameObject bullet_type;    // can set what bullet an enemy has
 
-    // fires a bullet from enemy gun
+    /*
+     * @brief Handles the firing mechanism of the enemy weapon. Overrides the Fire in Base_Weapon.
+     *        If a weapon can be fired, get the damage, fire rate, and fire range of the current weapon.
+     *        Create a new bullet with the range and damage. Enemies have infinite ammo so no interaction with ammo manager.
+     *        Apply force to bullet and start the cool down for firing.
+     */
     override public void Fire()
     {
         if(canFire)
         {
             // play pewpew sound
-            // FindObjectOfType<AudioManager>().Play("Pew");
-            // if(AudioMan)
-            // {
-            //     Debug.Log("Playing pewpew sound!");
-            //     AudioMan.Play("Pew");
-            // }
-            // else
-            // {
-            //     Debug.Log("can't play pewpew");
-            // }
 
             int curDmg = GetWeaponDamage();
             float curRate = GetWeaponFireRate();
@@ -43,7 +42,9 @@ public class EnemyBaseWeapon : Base_Weapon
 
             canFire = !canFire;
 
-            // spawn bullet
+            // create a bullet
+            // enemy doesn't have to worry about ammo management
+            // they have infinite bullets
             GameObject bullet = Instantiate(bullet_type, firePoint.position, firePoint.rotation);
 
             // // set max bullet dist and bullet damage
@@ -62,6 +63,8 @@ public class EnemyBaseWeapon : Base_Weapon
         }
     }
 
+    // code needed in enemy script for enemy to be able to switch weapons
+    // not implemented yet
     override public GameObject SwitchActiveWeapon(GameObject oldWeapon)
     {
         Debug.Log("Enemy cannot currently switch weapons.");
