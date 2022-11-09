@@ -3,6 +3,7 @@
  * @author  Jordan Reed
  *
  * @brief   This class manages the bullet gameobjects that are created in game.
+ *          It will apply damage upon collision and will destroy the bullet after it has traveled its max distance.
  *
  * @date    September 2022
  */
@@ -16,11 +17,6 @@ using UnityEngine;
         fix friendly fire issue
 */
 
-/*
- * bullet: class to manage bullet gameobjects in game
- *
- * member variables:
- */
 public class bullet : MonoBehaviour
 {
     [SerializeField] private int total_damage;          // damage bullet will do to enemy/player
@@ -47,7 +43,6 @@ public class bullet : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
         Debug.Log("damage: " + total_damage);
-        // Debug.Log("not deleting bullets just for test purposes");
 
         // check if object is damageable, then deal damage
         if(other.gameObject.TryGetComponent<Damageable>(out Damageable damageableComponent))

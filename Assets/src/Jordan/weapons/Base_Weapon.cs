@@ -13,50 +13,80 @@ using UnityEngine;
 
 /*
     TO DO:
-        fix switch weapon action
+        X fix switch weapon action
         
         need to create an enemy base weapon class that won't be tied to the ammo manager
 
         add a way to view the stats of each weapon
+
+        IEnumerator ??
  */
 
 public class Base_Weapon : MonoBehaviour
 {
-    public Transform firePoint; // where bullets spawn from
+    protected Transform firePoint;                         // where bullets spawn from
 
-    public float bulletForce = 20f;
+    protected float bulletForce = 20f;                    // what force to apply to bullets after being created
 
-    [SerializeField] protected string weapon_name;
-    [SerializeField] private float fire_rate;
-    [SerializeField] private int weapon_dmg_mod;
-    [SerializeField] private int fire_range;    
+    [SerializeField] protected string weapon_name;      // weapon name to print to screen
+    [SerializeField] private float fire_rate;           // how fast a weapon can fire it's bullets
+    [SerializeField] private int weapon_dmg_mod;        // damage a weapon can multiply to the bullets
+    [SerializeField] private int fire_range;            // how far a weapon can shoot
 
-    // made public for inheritance purposes
-    public bool canFire;
-    public bool canBePickedUp;
-    // when canbepickedup is false, turn collider off
-
+    protected bool canFire;                             // whether or not a weapon is able to be fired
+                                                        // really only used to implement a delay in firing
+                                                        // i.e. weapon can be fired every 3 seconds
+    
+    protected bool canBePickedUp;                       // whether or not a weapon can be picked up
+                                                        // this allows for the player to switch between weapons
+                                                        // manages the weapon collider so the weapon won't collide when the player is holding it
+    
+    /*
+     * @brief Returns the damage a weapon modifies the bullets by. 
+     *        Virtual so the decorator classes can implement recursive calls for the upgrades.
+     *
+     * @returns int weapon damage modifier
+     */
     virtual public int GetWeaponDamage()
     {
         return weapon_dmg_mod;
     }
 
+    /*
+     * @brief Returns the fire rate a weapon has. 
+     *        Virtual so the decorator classes can implement recursive calls for the upgrades.
+     *
+     * @returns int weapon fire rate
+     */
     virtual public float GetWeaponFireRate()
     {
         return fire_rate;
     }
 
+    /*
+     * @brief Returns the fire range a weapon has. 
+     *        Virtual so the decorator classes can implement recursive calls for the upgrades.
+     *
+     * @returns int weapon fire range
+     */
     virtual public int GetWeaponFireRange()
     {
         return fire_range;
     }
 
+    /*
+     * @brief Returns the name a weapon has. 
+     *        Virtual so the decorator classes can implement their own name.
+     *
+     * @returns int weapon fire rate
+     */
     virtual public string getWeaponName()
     {
         return weapon_name;
     }
     
     // Start is called before the first frame update
+    // initialize variables at the start
     public void Start()
     {
 
@@ -67,8 +97,9 @@ public class Base_Weapon : MonoBehaviour
             firePoint = this.gameObject.transform.GetChild(0);
         }
 
+        // weapon starts out being able to be fired no matter what
         canFire = true;
-        // canBePickedUp = true;
+
         // weapon can be picked up only if it's not held by an enemy or the player
         if(this.transform.parent != null)
         {
@@ -94,19 +125,23 @@ public class Base_Weapon : MonoBehaviour
         }
     }
 
+    /*
+     * @brief Handles the firing mechanism of a weapon. Virtual so the player and enemy classes can override it.
+     *        If a weapon can be fired, get the damage, fire rate, and fire range of the current weapon.
+     *        Create a new bullet with the range and damage. Apply force to bullet and start the cool down for firing.
+     */
     virtual public void Fire()
     {
-        // Debug.Log("base decorator fire");
         if(canFire)
         {
-            // play pewpew sound
+            // play pewpew sound when audio manager implemented
 
             int curDmg = GetWeaponDamage();
             float curRate = GetWeaponFireRate();
             int curRange = GetWeaponFireRange();
-            // Debug.Log("weapon damage: " + curDmg + " fire rate: " + curRate + " fire range: " + curRange);
 
-            // bullet info will be set in ammo manager class
+            // bullet created by ammo manager for player
+            // if no ammo left, bullet is not created
             GameObject bullet = AmmoManager.Instance.createBullet(curRange, curDmg, firePoint);
             if(bullet != null)
             {
@@ -123,11 +158,17 @@ public class Base_Weapon : MonoBehaviour
         else
         {
             Debug.Log("can't fire yet");
+            // show animation here?
         }
     }
 
-    // weapon can only be fired so often
-    // this function operates as the cooldown and will not let weapon be fired until ready
+    /*
+     * @brief Function runs (designed to run as coroutine) for the designated amount of time then lets the weapon fire again.
+     *
+     * @param float rate Amount of time to wait until letting the weapon fire again
+     *
+     * @returns IEnumerator
+     */
     public IEnumerator FireCooldown(float rate)
     {
         yield return new WaitForSeconds(rate);
@@ -135,12 +176,24 @@ public class Base_Weapon : MonoBehaviour
         yield break;
     }
 
-    // switch which weapon the player is carrying
-    // takes a GameObject parameter (must be of type base_class (which may be changed) )
-    // returns the new weapon GameObject
-
-    // need to work on canBePickedUp
-    // if enemies are loaded with prefab, player will end up picking up the enemy weapon
+    /*
+     * @brief This function will allow the player to pick up and switch their weapons. 
+     *
+     *        If a weapon can be picked up (this excludes weapons being held by something), the function will
+     *        move the new weapon to be a child of the the player (or enemy), as well as placing the weapon in the
+     *        same orientation as the old weapon. 
+     *
+     *        The old weapon then will no longer have a parent and will be placed
+     *        in the upright position. It will also be allowed to be picked up again.
+     *
+     *        If a weapon cannot be picked up, the old weapon will still be the current weapon held.
+     *
+     *        This function is called from an OnCollision2D function.
+     *
+     * @param GameObject oldWeapon The weapon (of type base_weapon) that the current player (or enemy) is holding.
+     *
+     * @returns GameObject The new current weapon that will need to be set in the player/enemy script.
+     */
     virtual public GameObject SwitchActiveWeapon(GameObject oldWeapon)
     {
         if(canBePickedUp)

@@ -3,8 +3,8 @@
  * @author  Jordan Reed
  *
  * @brief   This class will keep track of the ammunition the player is allowed to use.
- *          It will keep track of the ammo type, the amount of ammo, and it will create the ammo
- *          at a specified position (ie at the end of the gun).
+ *          It will keep track of the ammo type, the amount of ammo, the damage the ammo will do,
+ *          and it will create the ammo at a specified position (ie at the end of the gun).
  *
  * @date    October 2022
  */
@@ -18,15 +18,9 @@ using UnityEngine;
  *   TO DO:
  */
 
-/*
- * AmmoManager: class to manage every aspect of the players ammo
- *
- * member variables:
- */
 public sealed class AmmoManager : MonoBehaviour
 {
     // singleton implementation
-    // find way to find object if it exists
     private AmmoManager() {}
     public static AmmoManager Instance
     {
@@ -42,23 +36,14 @@ public sealed class AmmoManager : MonoBehaviour
         // internal static readonly AmmoManager instance = new AmmoManager();
         internal static readonly AmmoManager instance = new GameObject().AddComponent<AmmoManager>();
     }
-    // public static AmmoManager Instance { get; private set; }
 
+    // not sure if we need this for scene transitions
     // private void Awake()
     // {
-    //     if(Instance != null && Instance != this)
-    //     {
-    //         Debug.Log("tried creating new instance");
-    //         Destroy(this);
-    //     }
-    //     else
-    //     {
-    //         Debug.Log("new instance");
-    //         Instance = this;
-    //         DontDestroyOnLoad(this.gameObject); // when do we actually need to use this?
-    //     }
+    //     DontDestroyOnLoad(this.gameObject);
     // }
 
+    // variables are serialized to allow for seeing them in unity
     [SerializeField] private int totalAmmo;             // total amount of ammo available
     [SerializeField] private int maxTotal;              // total amount of ammo able to be carried
     [SerializeField] private int ammoDamage;            // ammount of damage that the ammo can do
@@ -71,8 +56,10 @@ public sealed class AmmoManager : MonoBehaviour
     {
         // initial ammo inventory set to 40
         totalAmmo = maxTotal = 40;
-        // ammoDamage = 1;
-        if(bulletType == null)  // sets the prefab for the bullet so singleton can instantiate it
+
+        // sets the prefab for the bullet so singleton can instantiate it the first time
+        // this will also set the damage each bullet does
+        if(bulletType == null)  
         {
             bulletType = Resources.Load<GameObject>("Bullet");
             SetNewAmmoType(bulletType);      
@@ -142,7 +129,7 @@ public sealed class AmmoManager : MonoBehaviour
     }
 
     /*
-     * @brief Updates the ammo type to create for the player
+     * @brief Updates the ammo type to create for the player. Also sets the base damage each bullet will do.
      *
      * @param GameObject intended to be a bullet prefab that is new ammo type
      */
@@ -154,7 +141,7 @@ public sealed class AmmoManager : MonoBehaviour
     
     /*
      * @brief Creates a bullet with the given information. Returns the bullet back to the method that
-     *        called it so it can apply force in the right direction.
+     *        called it so it can apply force in the right direction. If there is not enough ammo, it will return null.
      *
      * @param int range The range the bullet is allowed to travel
      * @param int damage The amount of damage a single bullet will do after weapon modifiers have been applied
@@ -172,16 +159,17 @@ public sealed class AmmoManager : MonoBehaviour
             // create a bullet here with the range, damage, position, rotation
             GameObject bullet = Instantiate(bulletType, firePoint.position, firePoint.rotation);
 
+            // if a weapon's base damage is 0, then make it 1 for the purpose of multiplying down below
             if(damage == 0)
             {
                 damage++;
             }
-            // Debug.Log("setting ammo damage = " + damage + " * " + ammoDamage);
 
             // set max bullet dist and bullet damage
             bullet.GetComponent<bullet>().setFireRange(range);
             bullet.GetComponent<bullet>().setTotalDamage(damage*ammoDamage);
 
+            // subtract from ammo count
             updateAmmoCount(-1);
 
             return bullet;
