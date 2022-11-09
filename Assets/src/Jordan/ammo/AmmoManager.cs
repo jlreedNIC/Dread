@@ -15,9 +15,7 @@ using UnityEngine;
 
 
 /*
-    TO DO:
-        make sure this is not creating more than one instance
-        this singleton does not handle multithreading
+ *   TO DO:
  */
 
 /*
@@ -73,8 +71,12 @@ public sealed class AmmoManager : MonoBehaviour
     {
         // initial ammo inventory set to 40
         totalAmmo = maxTotal = 40;
-        ammoDamage = 1;
-        if(bulletType == null) bulletType = Resources.Load<GameObject>("Bullet");      // sets the prefab for the bullet so singleton can instantiate it
+        // ammoDamage = 1;
+        if(bulletType == null)  // sets the prefab for the bullet so singleton can instantiate it
+        {
+            bulletType = Resources.Load<GameObject>("Bullet");
+            SetNewAmmoType(bulletType);      
+        }
     }
 
     /*
@@ -147,8 +149,7 @@ public sealed class AmmoManager : MonoBehaviour
     public void SetNewAmmoType(GameObject bullet)
     {
         bulletType = bullet;
-        // need to look into where to set bullet damage
-        // probably in prefab
+        ammoDamage = bulletType.GetComponent<bullet>().getDamage();
     }
     
     /*
@@ -171,8 +172,14 @@ public sealed class AmmoManager : MonoBehaviour
             // create a bullet here with the range, damage, position, rotation
             GameObject bullet = Instantiate(bulletType, firePoint.position, firePoint.rotation);
 
+            if(damage == 0)
+            {
+                damage++;
+            }
+
             // set max bullet dist and bullet damage
             bullet.GetComponent<bullet>().setFireRange(range);
+            Debug.Log("setting ammo damage = " + damage + " * " + ammoDamage);
             bullet.GetComponent<bullet>().setTotalDamage(damage*ammoDamage);
 
             updateAmmoCount(-1);

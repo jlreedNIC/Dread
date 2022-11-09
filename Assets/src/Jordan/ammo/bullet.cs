@@ -78,6 +78,17 @@ public class bullet : MonoBehaviour
         total_damage = dmg;
     }
 
+    /*
+     * @brief Returns the amount of the total damage of the bullet. 
+     *        This is intended to be used only by the ammo manager class to get the starting damage of a bullet.
+     *
+     * @return int the amount of damage a single bullet will do
+     */
+    public int getDamage()
+    {
+        return total_damage;
+    }
+
     // really only used for testing, otherwise could go in fixed update above
     /*
      * @brief Checks to see how far the bullet has traveled. If it's past the max distance
@@ -87,7 +98,7 @@ public class bullet : MonoBehaviour
     {
         if(dist_traveled >= max_distance)
         {
-            // Debug.Log("destroyed bullet at dist " + dist_traveled);
+            // Debug.Log("destroyed bullet at dist " + dist_traveled + "/" + max_distance);
             Destroy(gameObject);
         }
     }
