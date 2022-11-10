@@ -8,19 +8,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Jordan/StartScreen.unity
     guid: de59b37fff6967c47bb95a4e7483a62b
+  - enabled: 1
+    path: Assets/Scenes/Dan/Proc_Gen_Test.unity
+    guid: f534710c2e3d705448ec58be4d00fea7
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Taylor/Taylor_Testing.unity
     guid: a0af4b1df82b7604da166814e8e358fb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Jordan/weapon_stress_test_scene.unity
     guid: 2cdcfc32985e46040a8c5990e7525e81
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Dan/level_stress_test.unity
     guid: 3100cc0e43ca36a46835f3ee186179a9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Dan/Start_Scene.unity
     guid: 3f9b132fbf414a542b9edf74faa616d6
   m_configObjects: {}
