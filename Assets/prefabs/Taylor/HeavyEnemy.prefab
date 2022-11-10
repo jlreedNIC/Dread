@@ -266,7 +266,7 @@ MonoBehaviour:
   radius: 0.5
   height: 2
   canMove: 1
-  maxSpeed: 2
+  maxSpeed: 1
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
@@ -361,7 +361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2237717222242160540, guid: fc0be9a7b8e12e94da411aae1789c98d, type: 3}
       propertyPath: weapon_dmg_mod
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3339971459748285939, guid: fc0be9a7b8e12e94da411aae1789c98d, type: 3}
       propertyPath: m_Name
