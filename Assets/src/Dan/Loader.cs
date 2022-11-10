@@ -13,5 +13,8 @@ public class Loader : MonoBehaviour
         {
             Instantiate(gameManager);
         }
+
+        // instantiate notification manager if it's not already to avoid errors
+        NotificationManager newref = NotificationManager.Instance;
     }
 }

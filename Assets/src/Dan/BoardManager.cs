@@ -35,6 +35,13 @@ public class BoardManager : MonoBehaviour
     public GameObject[] wallTiles;
     public GameObject[] outerWallTiles;
 
+    // jordan's items and weapons
+    public GameObject[] ammoPickUps;
+    public GameObject[] healthPickUps;
+    public GameObject[] weaponUpgrades;
+    public GameObject[] ammoUpgrades;
+    public GameObject[] shipParts;
+
     public GameObject playerPrefab; 
 
 
@@ -138,6 +145,18 @@ public class BoardManager : MonoBehaviour
         // Calculate all graphs
         AstarPath.active.Scan();
         Instantiate(playerPrefab, new Vector3(0,0,0), Quaternion.identity);
+
+        // items instantiated after level scanned so as not to interfere with enemy paths
+        // regular health and ammo pickups
+        LayoutObjectAtRandom(ammoPickUps, 1, 3);
+        LayoutObjectAtRandom(healthPickUps, 1, 3);
+
+        // upgrades
+        LayoutObjectAtRandom(weaponUpgrades, 1, 3);
+        LayoutObjectAtRandom(ammoUpgrades, 1, 1);
+
+        // ship parts
+        LayoutObjectAtRandom(shipParts, 1, 1);
 
     }
 }
