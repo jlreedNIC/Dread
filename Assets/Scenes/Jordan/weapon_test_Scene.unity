@@ -203,8 +203,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1388237062656493946, guid: af190c5737564b24890069065f455657, type: 3}
+      propertyPath: fire_rate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388237062656493946, guid: af190c5737564b24890069065f455657, type: 3}
       propertyPath: fire_range
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388237062656493946, guid: af190c5737564b24890069065f455657, type: 3}
+      propertyPath: weapon_dmg_mod
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8794072403301634479, guid: af190c5737564b24890069065f455657, type: 3}
       propertyPath: camera
@@ -1272,7 +1280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3339971459748285939, guid: fc0be9a7b8e12e94da411aae1789c98d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3339971459748285951, guid: fc0be9a7b8e12e94da411aae1789c98d, type: 3}
       propertyPath: m_RootOrder

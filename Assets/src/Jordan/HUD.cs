@@ -40,7 +40,11 @@ public class HUD : MonoBehaviour
     {
         imageRect = healthBar.GetComponent<RectTransform>();
         maxWidth = imageRect.rect.width;
-        // playerRef = GameObject.Find("Test_Player");
+        if(playerRef == null)
+        {
+            playerRef = GameObject.FindWithTag("Player");
+            // playerRef = GameObject.Find("Test_Player");  // may be needed if player is going to be instantiated in script
+        }
     }
 
     // Update is called once per frame
@@ -62,7 +66,7 @@ public class HUD : MonoBehaviour
         curHealth = playerRef.GetComponent<Player_Movement>().damageable.currentHealth;
         maxHealth = playerRef.GetComponent<Player_Movement>().damageable.baseHealth;
         curWidth = (curHealth/maxHealth) * maxWidth;
-        
+
         // Debug.Log(curHealth + "/" + maxHealth + "*" + maxWidth + "=" + curWidth);
         imageRect.sizeDelta = new Vector2( curWidth, imageRect.sizeDelta.y);
 

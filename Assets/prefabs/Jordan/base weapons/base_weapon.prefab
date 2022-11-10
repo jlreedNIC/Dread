@@ -125,14 +125,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40766579fdcd7134ead6c934fab41e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 3554467850788582290}
-  bulletForce: 20
   weapon_name: basic
   fire_rate: 2
-  weapon_dmg_mod: 0
+  weapon_dmg_mod: 1
   fire_range: 6
-  canFire: 0
-  canBePickedUp: 0
 --- !u!1 &3554467850788582293
 GameObject:
   m_ObjectHideFlags: 0
