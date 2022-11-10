@@ -653,7 +653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -696,3 +696,4 @@ MonoBehaviour:
   AmmoCount: {fileID: 7627696869580646971}
   PartCount: {fileID: 85288566022972636}
   healthBar: {fileID: 8975827634510914616}
+  playerRef: {fileID: 0}

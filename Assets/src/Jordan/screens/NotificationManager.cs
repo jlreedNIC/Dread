@@ -47,20 +47,10 @@ public sealed class NotificationManager : MonoBehaviour
     
     // public static NotificationManager Instance { get; private set; }
 
-    // private void Awake()
-    // {
-    //     if(Instance != null && Instance != this)
-    //     {
-    //         Debug.Log("tried creating new instance");
-    //         Destroy(this);
-    //     }
-    //     else
-    //     {
-    //         Debug.Log("new instance");
-    //         Instance = this;
-    //         DontDestroyOnLoad(this.gameObject); // when do we actually need to use this?
-    //     }
-    // }
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject); // when do we actually need to use this?
+    }
 
     [SerializeField] private GameObject notificationScreenPrefab;     // contains text mesh pro and image background
     private GameObject screenInstance;                          // an instance of the prefab

@@ -38,10 +38,10 @@ public sealed class AmmoManager : MonoBehaviour
     }
 
     // not sure if we need this for scene transitions
-    // private void Awake()
-    // {
-    //     DontDestroyOnLoad(this.gameObject);
-    // }
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
 
     // variables are serialized to allow for seeing them in unity
     [SerializeField] private int totalAmmo;             // total amount of ammo available
