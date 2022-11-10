@@ -25,5 +25,5 @@ MonoBehaviour:
   attackDamage: 0
   attackCooldown: 0.71999985
   searchDuration: 3
-  searchingTurnSpeed: 20
-  stateTimeElapsed: 0
+  searchingTurnSpeed: 5
+  stateTimeElapsed: 10.440049

@@ -79,7 +79,7 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void FixedUpdate()
+    public virtual void FixedUpdate()
     {
         //calls AIStateMachine function to handle 
         //and transition between states. 

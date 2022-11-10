@@ -56,7 +56,7 @@ public class EnemyPrefabSpawner : MonoBehaviour
             Debug.Log(" Currently Requesting Enemy: " + (i+1)); 
             // GameObject enemy = EnemyObjectPooling.Instance.GetEnemyFromPool();
             GameObject enemy = EnemyObjectPooling.Instance.RequestEnemy();
-            enemy.transform.position = new Vector3(Random.Range(-5f, 5), Random.Range(-6f, 6f), 0);
+            enemy.transform.position = new Vector3(Random.Range(0f, 20f), Random.Range(0f, 20f), 0);
             currentNumEnemies++;
             yield return new WaitForSeconds(1f);
         }

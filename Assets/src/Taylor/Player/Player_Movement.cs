@@ -138,7 +138,7 @@ public sealed class Player_Movement : MonoBehaviour
         //transform.position += _moveDirection * dashDistance; 
 
         //_playerRB = new Vector2(_moveDirection.x * dashDistance, _moveDirection.y * dashDistance); 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetButtonDown("Fire2"))
         {
             if(_playerDashCooldownCounter <= 0 && _playerDashCounter <= 0)
             {
