@@ -13,7 +13,7 @@ public class AutoTurretEnemySubclass : EnemyAIStateMachine
 
         aiPath = GetComponent<AIPath>();
 
-        aiPath.canMove = false; 
+        // aiPath.isStopped = true; 
         
         //sets the current state to the base state of patrolling 
         SetAIState(EnemyAIStates.Search);
@@ -81,12 +81,14 @@ public class AutoTurretEnemySubclass : EnemyAIStateMachine
 
         if(target != null)
         {
+            target = enemyEyes.target;
+            aiDestinationSetter.target = target;
+            rotateTowardsTarget(target.position); 
+
             if(Vector2.Distance(transform.position, target.transform.position) < _enemyStats.attackRange)
             {
                 if(CheckIfCoolDownElapsed(_enemyStats.attackRate))
                 {
-                    target = enemyEyes.target;
-                    aiDestinationSetter.target = target;
 
                     //prints string to console. for debugging. 
                     Debug.Log("Enemy Ranged Attacking");
@@ -109,13 +111,13 @@ public class AutoTurretEnemySubclass : EnemyAIStateMachine
         {
             target = enemyEyes.target;
             aiDestinationSetter.target = target;
-            aiPath.canMove = false; 
+            aiPath.isStopped = true;  
             SetAIState(EnemyAIStates.Attack); 
         }
         if(!CheckIfCountDownElapsed(_enemyStats.searchDuration))
         {
             Debug.Log("Enemy Searching");
-            aiPath.canMove = false; 
+            // aiPath.isStopped = true;  
             // Spin the object around the target at 20 degrees/second.
             transform.RotateAround(transform.position, Vector3.forward, _enemyStats.searchingTurnSpeed);
 
@@ -123,9 +125,13 @@ public class AutoTurretEnemySubclass : EnemyAIStateMachine
             {
                 target = enemyEyes.target;
                 aiDestinationSetter.target = target;
-                aiPath.canMove = false; 
+                // aiPath.isStopped = true;  
                 SetAIState(EnemyAIStates.Attack); 
             }
+        }
+        else
+        {
+            SetAIState(EnemyAIStates.Search);
         } 
     }
 }

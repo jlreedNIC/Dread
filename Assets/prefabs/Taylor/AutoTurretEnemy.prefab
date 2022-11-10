@@ -188,11 +188,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyStats: {fileID: 11400000, guid: 890a227728c81d4419b5055804c138ca, type: 2}
-  OriginPoint: {x: 0, y: 0, z: 0}
-  nextRandomWaypoint: {x: 0, y: 0, z: 0}
   target: {fileID: 0}
-  _maxSpeedSqr: 0
   aiDestinationSetter: {fileID: 8276153317174102066}
+  aiPath: {fileID: 0}
   enemyPatrolAI: {fileID: 8276153317174102063}
   enemyEyes: {fileID: 8276153317007012233}
   weaponSpawner: {fileID: 5647807812426128471}
@@ -223,7 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OriginPoint: {x: 0, y: 0, z: 0}
-  enemyStats: {fileID: 11400000, guid: 760330e62fe03aa4298d6dc8fe99a446, type: 2}
+  enemyStats: {fileID: 11400000, guid: 890a227728c81d4419b5055804c138ca, type: 2}
 --- !u!114 &8276153317174102060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,7 +266,7 @@ MonoBehaviour:
   radius: 0.5
   height: 2
   canMove: 1
-  maxSpeed: 2
+  maxSpeed: 0
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2

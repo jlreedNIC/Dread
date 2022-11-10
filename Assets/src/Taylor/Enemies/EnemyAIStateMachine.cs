@@ -172,6 +172,7 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
         {
             target = enemyEyes.target;
             aiDestinationSetter.target = target;
+            // rotateTowardsTarget(target.position); 
             SetAIState(EnemyAIStates.Chase); 
         }
     }
@@ -209,16 +210,18 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
 
         if(target != null)
         {
+            target = enemyEyes.target;
+            aiDestinationSetter.target = target;
+            // rotateTowardsTarget(target.position); 
+
             if(Vector2.Distance(transform.position, target.transform.position) < _enemyStats.attackRange)
             {
                 if(CheckIfCoolDownElapsed(_enemyStats.attackRate))
                 {
-                    target = enemyEyes.target;
-                    aiDestinationSetter.target = target;
 
                     //prints string to console. for debugging. 
                     Debug.Log("Enemy Ranged Attacking");
-                    
+                    rotateTowardsTarget(target.position); 
                     //calls on our weapon spawner class method fire
                     //launches a missle prefab from 
                     //the weapon spawner prefab on the enemy game object
@@ -262,6 +265,13 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
             }
 
         }
+    }
+
+    public void rotateTowardsTarget(Vector3 pointToLookAt)
+    {
+        Vector3 current = transform.up;
+        Vector3 targetDirection = pointToLookAt - transform.position;
+        transform.up = Vector3.RotateTowards(current, targetDirection, 360, _enemyStats.rotationSpeed * Time.deltaTime);
     }
 
     //Change Object Components Function

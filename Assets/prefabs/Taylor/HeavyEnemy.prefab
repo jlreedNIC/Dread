@@ -188,11 +188,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyStats: {fileID: 11400000, guid: 760330e62fe03aa4298d6dc8fe99a446, type: 2}
-  OriginPoint: {x: 0, y: 0, z: 0}
-  nextRandomWaypoint: {x: 0, y: 0, z: 0}
   target: {fileID: 0}
-  _maxSpeedSqr: 0
   aiDestinationSetter: {fileID: 8276153317174102066}
+  aiPath: {fileID: 0}
   enemyPatrolAI: {fileID: 8276153317174102063}
   enemyEyes: {fileID: 8276153317007012233}
   weaponSpawner: {fileID: 5647807812426128471}
@@ -248,7 +246,7 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 4294967295
     useGraphRaycasting: 0
-  traversableTags: -7
+  traversableTags: -31
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
@@ -279,17 +277,17 @@ MonoBehaviour:
   orientation: 1
   enableRotation: 1
   autoRepath:
-    mode: 2
-    interval: 0.5
+    mode: 1
+    interval: 0.25
     sensitivity: 10
     maximumInterval: 0.5
     visualizeSensitivity: 0
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
-  slowdownDistance: 0.6
-  pickNextWaypointDist: 0.5
-  endReachedDistance: 0.2
+  slowdownDistance: 5
+  pickNextWaypointDist: 1
+  endReachedDistance: 3
   alwaysDrawGizmos: 1
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 1
