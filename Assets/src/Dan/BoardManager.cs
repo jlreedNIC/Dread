@@ -38,8 +38,7 @@ public class BoardManager : MonoBehaviour
     // jordan's items and weapons
     public GameObject[] ammoPickUps;
     public GameObject[] healthPickUps;
-    public GameObject[] weaponUpgrades;
-    public GameObject[] ammoUpgrades;
+    public GameObject[] upgrades;
     public GameObject[] shipParts;
 
     public GameObject playerPrefab; 
@@ -148,12 +147,11 @@ public class BoardManager : MonoBehaviour
 
         // items instantiated after level scanned so as not to interfere with enemy paths
         // regular health and ammo pickups
-        LayoutObjectAtRandom(ammoPickUps, 1, 3);
-        LayoutObjectAtRandom(healthPickUps, 1, 3);
+        LayoutObjectAtRandom(ammoPickUps, 1, 2);
+        LayoutObjectAtRandom(healthPickUps, 1, 2);
 
         // upgrades
-        LayoutObjectAtRandom(weaponUpgrades, 1, 3);
-        LayoutObjectAtRandom(ammoUpgrades, 1, 1);
+        LayoutObjectAtRandom(upgrades, 1, 2);
 
         // ship parts
         LayoutObjectAtRandom(shipParts, 1, 1);

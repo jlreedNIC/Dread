@@ -77,13 +77,14 @@ MonoBehaviour:
   - {fileID: 8032252671202864366, guid: 41432d4428634ef4ba5f591903379238, type: 3}
   healthPickUps:
   - {fileID: 1863494788137307523, guid: e3b2afa3c9f311c43bcee2bdddfcf49f, type: 3}
-  weaponUpgrades:
+  upgrades:
+  - {fileID: 4824554201464491548, guid: 09c8ad8cb3a634c43acdea7f95833459, type: 3}
+  - {fileID: 7734073454430188434, guid: ce4d55fb8514a704a909769df4517dad, type: 3}
+  - {fileID: 4856970017139388924, guid: 76ba3301713c55f49a5019788e1b02d8, type: 3}
+  - {fileID: 3236087865762290070, guid: 12c007be5244b184ca4bf27c3ccdb698, type: 3}
   - {fileID: 2909376917460479937, guid: abd12cc9b0767ad40bf1d3feb171192b, type: 3}
   - {fileID: 585845933342158575, guid: dea2782795c7a084ba800dd2a2e83984, type: 3}
   - {fileID: 5468727948891929851, guid: c53667e64c6afb94f895681069b70892, type: 3}
-  ammoUpgrades:
-  - {fileID: 4856970017139388924, guid: 76ba3301713c55f49a5019788e1b02d8, type: 3}
-  - {fileID: 3236087865762290070, guid: 12c007be5244b184ca4bf27c3ccdb698, type: 3}
   shipParts:
   - {fileID: 2193309401080065092, guid: 74fa6c3932de03945b1df9ce779ced16, type: 3}
   playerPrefab: {fileID: 8794072403301634483, guid: af190c5737564b24890069065f455657, type: 3}
