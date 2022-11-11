@@ -4,17 +4,16 @@
 /// Project D.R.E.A.D.
 /// University of Idaho
 /// Created: June 21 2022
-/// FILE: BaseEnemyAIStateMachine.cs
-/// BaseEnemyAIStateMachine
-/// This State Machine will be used for the Base Enemy type. 
-/// This state machine has the base 5 states
-/// Patrol, Chase, Attack, Search, and Flee. 
+/// FILE: EnemyAIStateMachine.cs
+/// EnemyAIStateMachine
+/// This State Machine will be used for the EnemyAI Superclass. 
+/// This state machine has the base 4 states
+/// Patrol, Chase, Attack, and Search. 
 /// The enemy type will in default patrol around the map within its givin patrol radius.
-/// Once the player ship is seen, the enemy will chase the player ship.
-/// once targeted and in attack range, the enemy will fire missles at the player ship.
-/// If the player ship is lost, the enemy will rotate and search for the player ship. 
+/// Once the player is seen, the enemy will chase the player.
+/// once targeted and in attack range, the enemy will fire missles at the player.
+/// If sight of the player is lost, the enemy will rotate and search for the player. 
 /// If the player is not found, go back to patrolling. 
-/// If the enemy ship health is low, Flee. 
 /// </summary>
 using System.Collections;
 using System.Collections.Generic;
@@ -25,6 +24,7 @@ using UnityEngine.AI;
 //needed for A* pathfinding package
 using Pathfinding;
 
+//EnemyAIStateMachine Superclass
 public abstract class EnemyAIStateMachine : MonoBehaviour
 {
 
@@ -200,6 +200,7 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
     //Attack State Function
     protected virtual void Attack() 
     {
+        //if the enemy eyes has lost sight of target
         if(enemyEyes.target == null)
         {
             target = null;
@@ -207,13 +208,14 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
             // SetAIState(EnemyAIStates.Patrol);
             SetAIState(EnemyAIStates.Search);
         }
-
+        //if the enemy eyes has sight of target
         if(target != null)
         {
+            //set target
             target = enemyEyes.target;
             aiDestinationSetter.target = target;
-            // rotateTowardsTarget(target.position); 
 
+            //attack if target is with attack range
             if(Vector2.Distance(transform.position, target.transform.position) < _enemyStats.attackRange)
             {
                 if(CheckIfCoolDownElapsed(_enemyStats.attackRate))
@@ -231,35 +233,41 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
             }
             else
             {
+                //chase target if not yet within attack range
                 target = enemyEyes.target;
                 aiDestinationSetter.target = target;
-                // SetAIState(EnemyAIStates.Patrol);
                 SetAIState(EnemyAIStates.Chase);
             }
         }
     }
 
     //Search State Function
+    //Searches for the player after leaving view of enemy
     protected virtual void Search() 
     {
         if(!CheckIfCountDownElapsed(_enemyStats.searchDuration))
         {
             Debug.Log("Enemy Searching");
+            //disable movement to stand still and rotate
             aiPath.canMove = false; 
-            // Spin the object around the target at 20 degrees/second.
+            // Spin the object around the target at x degrees/second.
             transform.RotateAround(transform.position, Vector3.forward, _enemyStats.searchingTurnSpeed);
         }
         else
         {
+            //if player is seen
             if(enemyEyes.target != null)
             {
+                //set target 
                 target = enemyEyes.target;
                 aiDestinationSetter.target = target;
                 aiPath.canMove = true; 
+                //switch state
                 SetAIState(EnemyAIStates.Chase); 
             }
             else
             {
+                //go back to patrol if player is not seen
                 aiPath.canMove = true; 
                 SetAIState(EnemyAIStates.Patrol); 
             }
@@ -267,7 +275,10 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
         }
     }
 
-    public void rotateTowardsTarget(Vector3 pointToLookAt)
+    //RotateTowardsTarget() 
+    //rotates the enemy to face
+    //sent in vector3 point
+    public void RotateTowardsTarget(Vector3 pointToLookAt)
     {
         Vector3 current = transform.up;
         Vector3 targetDirection = pointToLookAt - transform.position;
@@ -301,6 +312,7 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
         _enemyStats.stateTimeElapsed = 0;
     }
 
+    //CheckIfCoolDownElapsed
     //checks if attack duration exceeded
     public bool CheckIfCoolDownElapsed(float duration)
 	{
@@ -308,13 +320,15 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
 		return _enemyStats.attackCooldown >= duration;
 	}
     
+    //CheckIfCountDownElapsed
     //checks if search duration exceeded
     public bool CheckIfCountDownElapsed(float duration)
 	{
 		_enemyStats.stateTimeElapsed += Time.deltaTime;
 		return _enemyStats.stateTimeElapsed >= duration;
 	}
-
+    //OnDrawGizmos
+    //for debugging purposes
     public void OnDrawGizmos()
     {
 

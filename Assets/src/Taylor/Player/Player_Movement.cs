@@ -133,40 +133,49 @@ public sealed class Player_Movement : MonoBehaviour
         //animator.SetFloat("speed", Mathf.Abs(_playerRB.velocity.x));
     }
 
+    //HandlePlayerDash()
+    //Allows the player to dash in the current direction of movement 
     public void HandlePlayerDash()
     { 
-    
+        //holds current health, for I frames. 
         tempHealthHolder = damageable.currentHealth;
+        //unity right mouse click 
         if(Input.GetButtonDown("Fire2"))
         {
+            //if the player is currently able to dash
             if(_playerDashCooldownCounter <= 0 && _playerDashCounter <= 0)
             {
+                //greatly increase the movement speed for a short time
                 activeMoveSpeed = _playerDashSpeed; 
                 _playerDashCounter = _playerDashLength;
+                //take off health and give I frames to the player
                 damageable.enabled = false; 
             }
         }
-
+        //Logic to handle dash length
         if(_playerDashCounter > 0)
         {
             _playerDashCounter -= Time.deltaTime;
 
             if(_playerDashCounter <= 0)
             {
+                //reset back to base movement speed
                 activeMoveSpeed = _playerMovementSpeed; 
+                // reset dashcooldown
                 _playerDashCooldownCounter = _playerDashCooldown;
+                //put health back on player
                 damageable.enabled = true;
                 damageable.currentHealth = tempHealthHolder;
             }
         }
-
+        //decrement dashcooldown time, for next dash
         if(_playerDashCooldownCounter > 0)
         {
             _playerDashCooldownCounter -= Time.deltaTime;
         }
     }
 
-    //for testing
+    //for collision testing
     public void OnCollisionEnter2D(Collision2D col)
     {
         Debug.Log("OnCollisionEnter2D");

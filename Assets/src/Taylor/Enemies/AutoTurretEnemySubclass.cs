@@ -12,8 +12,6 @@ public class AutoTurretEnemySubclass : EnemyAIStateMachine
         _selfRB = GetComponent<Rigidbody>();
 
         aiPath = GetComponent<AIPath>();
-
-        // aiPath.isStopped = true; 
         
         //sets the current state to the base state of patrolling 
         SetAIState(EnemyAIStates.Search);
@@ -83,7 +81,7 @@ public class AutoTurretEnemySubclass : EnemyAIStateMachine
         {
             target = enemyEyes.target;
             aiDestinationSetter.target = target;
-            rotateTowardsTarget(target.position); 
+            RotateTowardsTarget(target.position); 
 
             if(Vector2.Distance(transform.position, target.transform.position) < _enemyStats.attackRange)
             {
@@ -117,15 +115,13 @@ public class AutoTurretEnemySubclass : EnemyAIStateMachine
         if(!CheckIfCountDownElapsed(_enemyStats.searchDuration))
         {
             Debug.Log("Enemy Searching");
-            // aiPath.isStopped = true;  
-            // Spin the object around the target at 20 degrees/second.
+            // Spin the object around the target at x degrees/second.
             transform.RotateAround(transform.position, Vector3.forward, _enemyStats.searchingTurnSpeed);
 
             if(enemyEyes.target != null)
             {
                 target = enemyEyes.target;
                 aiDestinationSetter.target = target;
-                // aiPath.isStopped = true;  
                 SetAIState(EnemyAIStates.Attack); 
             }
         }
