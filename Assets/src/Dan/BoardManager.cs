@@ -1,3 +1,11 @@
+/* BoardManager.cs
+ * 
+ * This script defines the board prefabs, assets, and procedural generation
+ * of the level. Exterior walls are placed first, then the floor terrain tiles,
+ * and last the interior walls and game objects. 
+ */
+
+
 using System.Collections;
 using System;
 using System.Collections.Generic;

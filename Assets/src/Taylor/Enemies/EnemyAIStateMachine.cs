@@ -223,7 +223,7 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
 
                     //prints string to console. for debugging. 
                     Debug.Log("Enemy Ranged Attacking");
-                    rotateTowardsTarget(target.position); 
+                    RotateTowardsTarget(target.position); 
                     //calls on our weapon spawner class method fire
                     //launches a missle prefab from 
                     //the weapon spawner prefab on the enemy game object
