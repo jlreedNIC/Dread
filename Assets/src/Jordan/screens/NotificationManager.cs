@@ -49,6 +49,7 @@ public sealed class NotificationManager : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("notification awake called");
         DontDestroyOnLoad(this.gameObject); // when do we actually need to use this?
     }
 
@@ -66,8 +67,24 @@ public sealed class NotificationManager : MonoBehaviour
      */
     void Start()
     {
+        // Debug.Log("notification start called");
+        // notificationScreenPrefab = Resources.Load<GameObject>("NotificationScreen");
+        // if(notificationScreenPrefab == null) Debug.Log("prefab not loaded");
+        // screenInstance = Instantiate(notificationScreenPrefab);
+        // if(screenInstance == null) Debug.Log("prefab instance not loaded");
+        // screenText = screenInstance.transform.GetChild(0).GetComponent<TMP_Text>();
+        // background = screenInstance.transform.GetChild(1).GetComponent<Image>();
+        // instantiateNotifications();
+    }
+
+
+    public void instantiateNotifications()
+    {
+        Debug.Log("notification instantiate called");
         notificationScreenPrefab = Resources.Load<GameObject>("NotificationScreen");
+        if(notificationScreenPrefab == null) Debug.Log("prefab not loaded");
         screenInstance = Instantiate(notificationScreenPrefab);
+        if(screenInstance == null) Debug.Log("prefab instance not loaded");
         screenText = screenInstance.transform.GetChild(0).GetComponent<TMP_Text>();
         background = screenInstance.transform.GetChild(1).GetComponent<Image>();
     }
@@ -75,7 +92,7 @@ public sealed class NotificationManager : MonoBehaviour
     void Update()
     {
         // show item pop up or not
-        if(isScreenActive)
+        if(screenInstance != null && isScreenActive)
         {
             screenInstance.SetActive(true);
             // Debug.Log("showing item screen");
