@@ -21,6 +21,7 @@ using TMPro;
 
 public class HUD : MonoBehaviour
 {
+    [SerializeField] private GameObject mainCanvas;
     [SerializeField] private GameObject AmmoCount;      // holds the text mesh pro object for the ammo count
     [SerializeField] private GameObject PartCount;      // holds the text mesh pro object for the part count
     [SerializeField] private Image healthBar;           // holds the progress bar image for the health bar
@@ -38,6 +39,7 @@ public class HUD : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("start for HUD called");
         imageRect = healthBar.GetComponent<RectTransform>();
         maxWidth = imageRect.rect.width;
         if(playerRef == null)
