@@ -1,6 +1,6 @@
 # 513 Studios 
 
-![513 Studios Logo](Dread/Assets/CompanyLogo/Company_Logo.png)
+![513 Studios Logo](Dread/CompanyLogo/Company_Logo.png)
 
 # Dread
 513 Studios debut 2D sci-fi shooter. 
