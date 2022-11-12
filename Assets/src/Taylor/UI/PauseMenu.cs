@@ -18,7 +18,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     
     //this will be implemented after HUD is created
-    //public GameObject hud;
+    public GameObject hud;
 
     public void awake()
     {
@@ -43,7 +43,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
-        //hud.SetActive(false);
+        hud.SetActive(false);
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f; 
         gameIsPaused = true;
@@ -52,7 +52,7 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
-        //hud.SetActive(true);
+        hud.SetActive(true);
         Time.timeScale = 1f; 
         gameIsPaused = false;
     }
