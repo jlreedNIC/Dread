@@ -1,6 +1,6 @@
 # 513 Studios 
 
-![513 Studios Logo](CompanyLogo/Company_Logo.png)
+![513 Studios Logo](Dread/Assets/CompanyLogo/Company_Logo.png)
 
 # Dread
 513 Studios debut 2D sci-fi shooter. 
@@ -16,6 +16,9 @@ Light Enemy Prefab<br />
 - Is a subclass of EnemyAIStateMachine superclass. Inherits all of its member variables and methods.<br />
 - Has a RigidBody 2D<br />
 - Has a Circle Collider<br />
+- Has a Enemy Eyes Component<br />
+    -Enemy Eyes has a circle collider 
+    -Enemy Eyes Script to control collider and send target info to enemy.
 - Has A Damageable Script component, for health and damage<br />
 - Has a EnemyStatsSO for Enemy stats<br />
 - Uses A* Pathfinding Package<br />
