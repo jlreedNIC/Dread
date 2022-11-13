@@ -113,19 +113,8 @@ public sealed class NotificationManager : MonoBehaviour
         screenText.text = sText;
     }
 
-    // fix background image size to match text size
-    private void setBackgroundSize()
-    {
-        // get sizes of background and text objects
-        RectTransform backgroundSize = background.GetComponent<RectTransform>();
-        RectTransform textSize = screenText.GetComponent<RectTransform>();
-
-        // set size of background to slightly bigger than text size
-        backgroundSize.sizeDelta = new Vector2((textSize.sizeDelta.x + 2)/.25f, (textSize.sizeDelta.y + 20)/.25f);
-    }
-
     /*
-     * @brief Populates the screen with the given text and makes sure the background fits the amount of text given.
+     * @brief Populates the screen with the given text.
      *        Then makes sure the screen is called and number of notifications has been updated
      *
      * @param string sText text to show on the notification screen
@@ -133,7 +122,6 @@ public sealed class NotificationManager : MonoBehaviour
     public void showScreen(string sText)
     {
         setScreenText(sText);
-        setBackgroundSize();
 
         isScreenActive = true;
         numScreensActive++;
