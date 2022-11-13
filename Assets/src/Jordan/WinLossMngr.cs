@@ -22,16 +22,14 @@ public class WinLossMngr : MonoBehaviour
 {
     [SerializeField] GameObject deathScreen;        // holds prefab
     [SerializeField] GameObject winScreen;          // holds prefab
-    // [SerializeField] GameObject hud;             // to deactivate hud upon death
-    [SerializeField] GameObject playerRef;
+    [SerializeField] GameObject playerRef;          // reference to the player object in the scene
     
-    // private bool isDead = true;                    // keeps track of if the death screen is active and player is dead
-
+    static private int shipParts;                          // how many ship repair parts the player has
 
     // Start is called before the first frame update
     void Start()
     {
-        // make sure deathScreen is inactive
+        // make sure deathScreen is created and inactive
         deathScreen = GameObject.Instantiate(deathScreen);
         deathScreen.SetActive(false);
 
@@ -41,6 +39,7 @@ public class WinLossMngr : MonoBehaviour
             playerRef = GameObject.FindWithTag("Player");
         }
 
+        // create win screen and deactivate
         winScreen = GameObject.Instantiate(winScreen);
         winScreen.SetActive(false);
     }
@@ -48,13 +47,22 @@ public class WinLossMngr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // get player health
+        // check to see if the player has died, and show the death screen if they have
         if(playerRef == null)
         {
             triggerDeathScreen();
         }
+
+        if(shipParts >= 7)
+        {
+            triggerWinScreen();
+        }
     }
 
+    /*
+     * @brief   This function will show the death screen on top of the current game and give options
+     *          to restart the game or quit the game.
+     */
     public void triggerDeathScreen()
     {
         Debug.Log("death screen triggered");
@@ -62,10 +70,40 @@ public class WinLossMngr : MonoBehaviour
         // Time.timeScale = 0f; 
     }
 
+    /*
+     * @brief   This function will show the win screen on top of the current game and give options
+     *          to restart the game or quit the game.
+     */
     public void triggerWinScreen()
     {
         Debug.Log("win screen triggered");
         winScreen.SetActive(true);
         // Time.timeScale = 0f; 
+    }
+
+    /*
+     * @brief   This function will reset the ship parts back to 0.
+     */
+    public static void resetShipParts()
+    {
+        shipParts = 0;
+    }
+
+    /*
+     * @brief   This function will return the number of ship parts
+     *
+     * @return  int current number of ship parts
+     */
+    public static int getShipParts()
+    {
+        return shipParts;
+    }
+
+    /*
+     * @brief   This function will add 1 to the number of ship parts held by the player
+     */
+    public static void addShipPart()
+    {
+        shipParts++;
     }
 }

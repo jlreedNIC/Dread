@@ -60,7 +60,7 @@ public class HUD : MonoBehaviour
 
         // set current part counts
         objectText = PartCount.GetComponent<TMP_Text>();
-        curVal = 4;
+        curVal = WinLossMngr.getShipParts();
         maxVal = 7;
         objectText.text = curVal + "/" + maxVal;
 

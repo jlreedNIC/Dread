@@ -44,6 +44,7 @@ public class ShipPart : BaseItem
         // virtual
         // does different things based on the class
         Debug.Log("ship part picked up");
+        WinLossMngr.addShipPart();
         // figure out where to store ship part variable
     }
 
