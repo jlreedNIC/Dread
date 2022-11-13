@@ -1054,6 +1054,22 @@ PrefabInstance:
       propertyPath: playerRef
       value: 
       objectReference: {fileID: 2132285880}
+    - target: {fileID: 8975827633389035453, guid: b68db55c1b361cd43a7418d705d9edc6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8975827634510914616, guid: b68db55c1b361cd43a7418d705d9edc6, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8975827634510914616, guid: b68db55c1b361cd43a7418d705d9edc6, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8975827634510914616, guid: b68db55c1b361cd43a7418d705d9edc6, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8975827634520624835, guid: b68db55c1b361cd43a7418d705d9edc6, type: 3}
       propertyPath: m_Pivot.x
       value: 0
