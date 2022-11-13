@@ -66,6 +66,13 @@ public sealed class AmmoManager : MonoBehaviour
         }
     }
 
+    public void resetAmmoMan()
+    {
+        bulletType = Resources.Load<GameObject>("Bullet");
+        SetNewAmmoType(bulletType); 
+        totalAmmo = maxTotal = 40;
+    }
+
     /*
      * @brief returns the current amount of ammo player has
      *

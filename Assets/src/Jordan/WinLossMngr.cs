@@ -29,6 +29,13 @@ public class WinLossMngr : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        initWinLoss();
+    }
+
+    // needs to be called somewhere to be reset
+    // maybe in pause menu? when loading start scene?
+    public void initWinLoss()
+    {
         // make sure deathScreen is created and inactive
         deathScreen = GameObject.Instantiate(deathScreen);
         deathScreen.SetActive(false);
@@ -42,6 +49,8 @@ public class WinLossMngr : MonoBehaviour
         // create win screen and deactivate
         winScreen = GameObject.Instantiate(winScreen);
         winScreen.SetActive(false);
+
+        resetShipParts();
     }
 
     // Update is called once per frame
@@ -67,6 +76,7 @@ public class WinLossMngr : MonoBehaviour
     {
         Debug.Log("death screen triggered");
         deathScreen.SetActive(true);
+        resetShipParts();
         // Time.timeScale = 0f; 
     }
 
@@ -78,6 +88,7 @@ public class WinLossMngr : MonoBehaviour
     {
         Debug.Log("win screen triggered");
         winScreen.SetActive(true);
+        resetShipParts();
         // Time.timeScale = 0f; 
     }
 
