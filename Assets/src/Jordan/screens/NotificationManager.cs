@@ -92,15 +92,18 @@ public sealed class NotificationManager : MonoBehaviour
     void Update()
     {
         // show item pop up or not
-        if(screenInstance != null && isScreenActive)
+        if(screenInstance != null)
         {
-            screenInstance.SetActive(true);
-            // Debug.Log("showing item screen");
-        }
-        else
-        {
-            screenInstance.SetActive(false);
-            // Debug.Log("hiding item screen");
+            if(isScreenActive)
+            {
+                screenInstance.SetActive(true);
+                // Debug.Log("showing item screen");
+            }
+            else
+            {
+                screenInstance.SetActive(false);
+                // Debug.Log("hiding item screen");
+            }
         }
     }
 

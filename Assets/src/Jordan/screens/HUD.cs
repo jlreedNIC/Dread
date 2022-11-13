@@ -64,15 +64,14 @@ public class HUD : MonoBehaviour
         maxVal = 7;
         objectText.text = curVal + "/" + maxVal;
 
-        // get current health and update health bar
-        curHealth = playerRef.GetComponent<Player_Movement>().damageable.currentHealth;
-        maxHealth = playerRef.GetComponent<Player_Movement>().damageable.baseHealth;
-        curWidth = (curHealth/maxHealth) * maxWidth;
+        if(playerRef != null)
+        {
+            // get current health and update health bar
+            curHealth = playerRef.GetComponent<Player_Movement>().damageable.currentHealth;
+            maxHealth = playerRef.GetComponent<Player_Movement>().damageable.baseHealth;
+            curWidth = (curHealth/maxHealth) * maxWidth;
 
-        // Debug.Log(curHealth + "/" + maxHealth + "*" + maxWidth + "=" + curWidth);
-        imageRect.sizeDelta = new Vector2( curWidth, imageRect.sizeDelta.y);
-
-        // Debug.Log("health: " + curHealth + "/" + maxHealth);
-        // Debug.Log("rect width: " + curWidth + "/" + maxWidth);
+            imageRect.sizeDelta = new Vector2( curWidth, imageRect.sizeDelta.y);
+        }
     }
 }
