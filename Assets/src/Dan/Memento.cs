@@ -30,16 +30,16 @@ namespace MementoPattern
          public Memento LevelMarker;
       }
       //'Originator' Class
-      public class Player
+      public class Originator
       {
         public int Level;
         public string Health;
-      
-         public Memento CreateMarker(Player player)
+         // Saves values in the memento class
+         public Memento CreateMarker(Originator player)
          {
             return new Memento(player.Level, player.Health);
          }
-
+         // Restores values from the memento class (getter)
          public void RestoreLevel(Memento playerMemento)
          {
             this.Level = playerMemento.Level;
