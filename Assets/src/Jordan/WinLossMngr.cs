@@ -29,7 +29,19 @@ public class WinLossMngr : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        initWinLoss();
+        // make sure deathScreen is created and inactive
+        deathScreen = GameObject.Instantiate(deathScreen);
+        deathScreen.SetActive(false);
+
+        // find player object
+        if(playerRef == null)
+        {
+            playerRef = GameObject.FindWithTag("Player");
+        }
+
+        // create win screen and deactivate
+        winScreen = GameObject.Instantiate(winScreen);
+        winScreen.SetActive(false);
     }
 
     // needs to be called somewhere to be reset

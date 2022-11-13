@@ -38,10 +38,8 @@ public class exitTile : MonoBehaviour
         {
             Debug.Log("player collided with exit tile");
             SceneManager.LoadScene(1); 
-            NotificationManager.Instance.instantiateNotifications();
+            // NotificationManager.Instance.instantiateNotifications();
             // Destroy(NotificationManager.Instance);
-            
-            
         }
         
     }

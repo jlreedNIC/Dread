@@ -972,8 +972,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1108911420971951536}
-        m_TargetAssemblyTypeName: PauseMenu, scripts
+      - m_Target: {fileID: 5755310380242554175}
+        m_TargetAssemblyTypeName: PauseScreen, scripts
         m_MethodName: Resume
         m_Mode: 1
         m_Arguments:
@@ -1106,8 +1106,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1108911420971951536}
-        m_TargetAssemblyTypeName: PauseMenu, scripts
+      - m_Target: {fileID: 5755310380242554175}
+        m_TargetAssemblyTypeName: PauseScreen, scripts
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
@@ -1375,8 +1375,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1108911420971951536}
-        m_TargetAssemblyTypeName: PauseMenu, scripts
+      - m_Target: {fileID: 5755310380242554175}
+        m_TargetAssemblyTypeName: PauseScreen, scripts
         m_MethodName: LoadMainMenu
         m_Mode: 1
         m_Arguments:
@@ -1607,7 +1607,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8471770319316943600}
-  - component: {fileID: 1108911420971951536}
+  - component: {fileID: 5755310380242554175}
   m_Layer: 0
   m_Name: PauseController
   m_TagString: Untagged
@@ -1630,7 +1630,7 @@ Transform:
   m_Father: {fileID: 1474011753182185859}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1108911420971951536
+--- !u!114 &5755310380242554175
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1639,7 +1639,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8928020561230751704}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aa3602c5a7ee7946b48d1fe256053bf, type: 3}
+  m_Script: {fileID: 11500000, guid: d72ae078e0f854c468e2f2881860cc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 729741086540238564}
