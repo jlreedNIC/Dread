@@ -30,14 +30,14 @@ public class BoardManager : MonoBehaviour
     }
 
     // initialize gameboard size to default values for an 8 x 8 matrix
-    // NOTE: STATIC ONLY FOR TESTING PURPOSES!! REMOVE AFTER TO RE-SERIALIZE IN INTERPRETER MODE
+    // NOTE: STATIC DECLARATION SHOULD ONLY BE USED FOR TESTING PURPOSES!! REMOVE AFTER TO RE-SERIALIZE IN INTERPRETER MODE
     public int columns = 8;
     public int rows = 8;
 
     // Instantiate wall boundaries min = 5 walls, max = 9 walls
     public Count wallCount = new Count (5,9);
 
-    // Prefab Variables
+    // Prefab Level Tile Variables
     public GameObject exit;
     public GameObject[] floorTiles;
     public GameObject[] wallTiles;
@@ -135,18 +135,24 @@ public class BoardManager : MonoBehaviour
     {
         BoardSetup();
         InitializeList();
+        // guard code to ensure that instantiation of a board with less than the optimal dimensions
+        // does not occur and crash the game
         if(columns < 8 || rows < 8)
         {
             Debug.Log("Out of Bounds Error: dimensional value entered for a row or col is less than 8");
             Application.Quit();
         }
         else
+        // place all tiles and walls in the scene
         LayoutObjectAtRandom(wallTiles, wallCount.minimum, wallCount.maximum);
-        /* Spawn # of enemies based on the level's number IE: level 1 spawn 1 enemy; 2 spawn 2,..etc.
+        /* [Place holder For Any Enemy instantiation if needed]
+         * Spawn # of enemies based on the level's number IE: level 1 spawn 1 enemy; 2 spawn 2,..etc.
          * int enemyCount = (int)Mathf.Log(level, 2f);
          
          * LayoutObjectAtRandom(enemyTiles, enemyCount, enemyCount);
          */
+
+         // spawn the exit tile in the upper right hand corner of the map (guaranteed)
          Instantiate(exit, new Vector3(columns - 1, rows - 1, 0F), Quaternion.identity);
          
         // Calculate all graphs
