@@ -27,7 +27,7 @@ public class WinLossMngr : MonoBehaviour
     static private int shipParts;                           // how many ship repair parts the player has
     static private int bcDeathCount = 0;                        // how many times bc has died in bc mode
 
-    static public bool bcMode = true;
+    static public bool bcMode = false;
 
     // Start is called before the first frame update
     void Start()
@@ -131,6 +131,12 @@ public class WinLossMngr : MonoBehaviour
     public static void addShipPart()
     {
         shipParts++;
+    }
+
+    public static void setBCMode(bool enabled)
+    {
+        Debug.Log("bc mode set to " + enabled);
+        bcMode = enabled;
     }
 
     public static void resetBCMode()
