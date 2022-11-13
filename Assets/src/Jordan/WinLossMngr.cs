@@ -24,8 +24,8 @@ public class WinLossMngr : MonoBehaviour
     [SerializeField] GameObject winScreen;          // holds prefab
     [SerializeField] GameObject playerRef;          // reference to the player object in the scene
     
-    static private int shipParts;                           // how many ship repair parts the player has
-    static private int bcDeathCount = 0;                        // how many times bc has died in bc mode
+    static private int shipParts;                   // how many ship repair parts the player has
+    static private int bcDeathCount = 0;            // how many times bc has died in bc mode
 
     static public bool bcMode = false;
 

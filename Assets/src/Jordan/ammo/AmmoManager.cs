@@ -66,6 +66,10 @@ public sealed class AmmoManager : MonoBehaviour
         }
     }
 
+    /*
+     * @brief   This function will reset the static variables the ammo manager has in order to
+     *          restart the game fresh.
+     */
     public void resetAmmoMan()
     {
         bulletType = Resources.Load<GameObject>("Bullet");
@@ -104,9 +108,9 @@ public sealed class AmmoManager : MonoBehaviour
     }
 
     /*
-     * @brief returns the name of a bullet type. For use in item screens
+     * @brief   returns the name of a bullet type. For use in item screens
      *
-     * @return string bullet name
+     * @return  string bullet name
      */
     public string GetCurrentBulletName()
     {
@@ -114,7 +118,7 @@ public sealed class AmmoManager : MonoBehaviour
     }
 
     /*
-     * @brief Updates the total ammo the player has. Checks upper and lower bounds
+     * @brief   Updates the total ammo the player has. Checks upper and lower bounds
      *
      * @param int amount of bullets to add to current total
      */
@@ -147,12 +151,12 @@ public sealed class AmmoManager : MonoBehaviour
     }
     
     /*
-     * @brief Creates a bullet with the given information. Returns the bullet back to the method that
-     *        called it so it can apply force in the right direction. If there is not enough ammo, it will return null.
+     * @brief   Creates a bullet with the given information. Returns the bullet back to the method that
+     *          called it so it can apply force in the right direction. If there is not enough ammo, it will return null.
      *
-     * @param int range The range the bullet is allowed to travel
-     * @param int damage The amount of damage a single bullet will do after weapon modifiers have been applied
-     * @param Transform firePoint The object that has the starting position and rotation for the new bullet
+     * @param   int range The range the bullet is allowed to travel
+     * @param   int damage The amount of damage a single bullet will do after weapon modifiers have been applied
+     * @param   Transform firePoint The object that has the starting position and rotation for the new bullet
      *
      * @returns GameObject new bullet with specified parameters
      *          null if not enough ammo
