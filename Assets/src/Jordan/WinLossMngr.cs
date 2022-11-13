@@ -24,7 +24,10 @@ public class WinLossMngr : MonoBehaviour
     [SerializeField] GameObject winScreen;          // holds prefab
     [SerializeField] GameObject playerRef;          // reference to the player object in the scene
     
-    static private int shipParts;                          // how many ship repair parts the player has
+    static private int shipParts;                           // how many ship repair parts the player has
+    static private int bcDeathCount = 0;                        // how many times bc has died in bc mode
+
+    static public bool bcMode = true;
 
     // Start is called before the first frame update
     void Start()
@@ -128,5 +131,20 @@ public class WinLossMngr : MonoBehaviour
     public static void addShipPart()
     {
         shipParts++;
+    }
+
+    public static void resetBCMode()
+    {
+        bcDeathCount = 0;
+    }
+    
+    public static void addBCDeath()
+    {
+        bcDeathCount++;
+    }
+
+    public static int getBCDeath()
+    {
+        return bcDeathCount;
     }
 }

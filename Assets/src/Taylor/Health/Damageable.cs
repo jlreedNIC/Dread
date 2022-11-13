@@ -29,7 +29,16 @@ public class Damageable : MonoBehaviour
         {
             if(this.gameObject.tag == "Player")
             {
-                Destroy(this.gameObject);
+                if(WinLossMngr.bcMode)
+                {
+                    WinLossMngr.addBCDeath();
+                    currentHealth = baseHealth;
+                }
+                else
+                {
+                    Destroy(this.gameObject);
+                }
+                
             }
             if(this.gameObject.tag == "Enemy")
             {

@@ -25,6 +25,7 @@ public class HUD : MonoBehaviour
     [SerializeField] private GameObject AmmoCount;      // holds the text mesh pro object for the ammo count
     [SerializeField] private GameObject PartCount;      // holds the text mesh pro object for the part count
     [SerializeField] private Image healthBar;           // holds the progress bar image for the health bar
+    [SerializeField] private GameObject bcModeScreen;   // screen for bcmode
 
     private TMP_Text objectText;                        // Text object to update the text mesh pro objects on screen
     private int curVal, maxVal;                         // ints to hold the current and maximum values to update on screen text
@@ -72,6 +73,20 @@ public class HUD : MonoBehaviour
             curWidth = (curHealth/maxHealth) * maxWidth;
 
             imageRect.sizeDelta = new Vector2( curWidth, imageRect.sizeDelta.y);
+        }
+
+        if(WinLossMngr.bcMode)
+        {
+            // update screen
+            bcModeScreen.SetActive(true);
+
+            objectText = bcModeScreen.transform.GetChild(0).GetComponent<TMP_Text>();
+            curVal = WinLossMngr.getBCDeath();
+            objectText.text = "bc death count: " + curVal;
+        }
+        else
+        {
+            bcModeScreen.SetActive(false);
         }
     }
 }
