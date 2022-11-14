@@ -2,6 +2,9 @@
 
 ![513 Studios Logo](Dread/CompanyLogo/Company_Logo.png)
 
+## Light Enemy Prefab Demo:
+https://youtu.be/YD6-Y_WTV9I
+
 # Dread
 513 Studios debut 2D sci-fi shooter. 
 

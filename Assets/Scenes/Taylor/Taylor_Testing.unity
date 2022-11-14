@@ -319,6 +319,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeavyEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8276153317174102065, guid: 980657bee2c31d4468fe7c6d375b9a9b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 980657bee2c31d4468fe7c6d375b9a9b, type: 3}
 --- !u!4 &308517775 stripped
@@ -973,6 +977,10 @@ PrefabInstance:
     - target: {fileID: 8276153317174102065, guid: 439310aba87dc0c4ba957722ac8bc955, type: 3}
       propertyPath: m_Name
       value: AutoTurretEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8276153317174102065, guid: 439310aba87dc0c4ba957722ac8bc955, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 439310aba87dc0c4ba957722ac8bc955, type: 3}
