@@ -14,6 +14,16 @@ Light Enemy Prefab<br />
 ## Light Enemy Prefab Components:
 -------------------
 - Is a subclass of EnemyAIStateMachine superclass. Inherits all of its member variables and methods.<br />
+    -Has a AIStateMachine() function that is used to handle the state actions and transitions
+    -Has a SetAIState() function to set the state of the enemy
+    -Has a Attack() function that is used to shoot at the target once in attack range
+    -Has a Patrol() function that will call my AIPatrol script to generate movement graph and wander in level
+    -Has a Chase() function that will call the seeker and AIDestinationSetter script to chase set target
+    -Has a search function once the enemy loses sight of the target and will rotate and look around for the lost target
+    -Has a RotateTowards() function that is used to rotate the enemy towards the target
+    -Has a ChangeObjectComponents() function that is used to turn on and off the AIDestinationSetter and AIPatrol scripts when needed
+    -Has a CheckIfCoolDownElapsed() function for checking attack cooldown
+    -Has a CheckIfCountDownElapsed() function for checking Search duration
 - Has a RigidBody 2D<br />
 - Has a Circle Collider<br />
 - Has a Enemy Eyes Component<br />
