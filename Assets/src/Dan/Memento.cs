@@ -12,12 +12,12 @@ using UnityEngine;
 
 namespace MementoPattern
 {
-   public class Memento : MonoBehaviour
+   public class Memento
    {
       public int Level;
-      public string Health;
+      public int Health;
 
-      public Memento(int level, string health)
+      public Memento(int level, int health)
       {
          this.Level = level;
          this.Health = health;
@@ -26,14 +26,15 @@ namespace MementoPattern
       //'CareTaker' class
       public class CareTaker
       {
-         // store a checkpoint for already crossed level
+         // store a checkpoint for a successfully completed level
          public Memento LevelMarker;
+         public Memento PlayerHealth;
       }
       //'Originator' Class
       public class Originator
       {
         public int Level;
-        public string Health;
+        public int Health;
          // Saves values in the memento class
          public Memento CreateMarker(Originator player)
          {
