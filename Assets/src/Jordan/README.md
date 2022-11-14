@@ -1,6 +1,6 @@
-# README for Base Weapon Prefab
+# What is the Basic Weapon Prefab
 
-The Base Weapon prefab is a basic gun for a player in a 2D top-down shooter. The base weapon prefab uses the script PlayerBaseWeapon, which inherits from the Base_Weapon class. This allows for potential weapon upgrades to be implemented through a decorator pattern.
+The Basic Weapon prefab is a basic gun object for a player in a 2D top-down shooter. The prefab is a base implementation that you can then apply your own graphics to customize it. It also can be implemented with weapon upgrades using a decorator design pattern.
 
 ## Includes
 
@@ -23,7 +23,8 @@ You will need the following scripts/prefabs before you can use the prefab.
 ## To Use
 
 - Place prefab as a child of your player gameobject in the orientation you choose
-- Weapon will detect when the default fire button is pressed
+- Place the weapon 'fire' controls in your player input script
+- When Fire() is called:
   - It will trigger a bullet to be spawned by the ammo manager
   - Bullet will then have force applied to move in the direction of the fire point
 - Bullet will apply damage if able, and be destroyed upon collision
