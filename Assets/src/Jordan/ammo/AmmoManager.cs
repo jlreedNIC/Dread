@@ -34,7 +34,7 @@ public sealed class AmmoManager : MonoBehaviour
     {
         static Nested() {}
         // internal static readonly AmmoManager instance = new AmmoManager();
-        internal static readonly AmmoManager instance = new GameObject().AddComponent<AmmoManager>();
+        internal static readonly AmmoManager instance = new GameObject("AmmoManager").AddComponent<AmmoManager>();
     }
 
     // not sure if we need this for scene transitions

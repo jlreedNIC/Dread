@@ -40,7 +40,7 @@ public sealed class NotificationManager : MonoBehaviour
     private class Nested
     {
         static Nested() {}
-        internal static readonly NotificationManager instance = new GameObject().AddComponent<NotificationManager>();
+        internal static readonly NotificationManager instance = new GameObject("NotificationManager").AddComponent<NotificationManager>();
     }
     // // singleton implementation
     // private NotificationManager() {}
@@ -83,7 +83,7 @@ public sealed class NotificationManager : MonoBehaviour
         Debug.Log("notification instantiate called");
         notificationScreenPrefab = Resources.Load<GameObject>("NotificationScreen");
         if(notificationScreenPrefab == null) Debug.Log("prefab not loaded");
-        screenInstance = Instantiate(notificationScreenPrefab);
+        if(screenInstance == null) screenInstance = Instantiate(notificationScreenPrefab);
         if(screenInstance == null) Debug.Log("prefab instance not loaded");
         screenText = screenInstance.transform.GetChild(0).GetComponent<TMP_Text>();
         background = screenInstance.transform.GetChild(1).GetComponent<Image>();
