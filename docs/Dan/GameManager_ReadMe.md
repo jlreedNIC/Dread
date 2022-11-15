@@ -80,9 +80,10 @@
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Functions
    - public void InitializeList()
-     - Clears the board anda mananges tiles, objects/items, and enemy spawn positions.
+     - Clears the board and manages tiles, objects/items, and enemy spawn positions.
    - public void boardSetup()
-     - Intstantiates the tile array types and prepares them to randomly be placed on the tile map and generates a guaranteed exit in the upper right hand corner.
+     - Intstantiates the tile array types and prepares them to randomly be placed on the tile map. 
+     - Generates a guaranteed exit in the upper right hand corner of the grid.
      - Spawns all outer wall tiles based on the room dimensions
    - Vector3 RandomPosition()
      - Randomizes level tiles and positions(coordinate tuple values) for them to be placed on the gameboard.
