@@ -1,17 +1,14 @@
 # GameManager.cs Prefab Overview
 
-# Glossary
-## - Instatiate: Represent as or by an instance.
-## - Spawn: To generate or instantiate (see above) a game object, item, or rendered graphic into the game scene (environment).  
+## Glossary
+### - Instatiate: Represent as or by an instance.
+### - Spawn: To generate or instantiate (see above) a game object, item, or rendered graphic into the game scene (environment).  
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-
-
-# **Class Role**
+## **Class Role**
 - The GameManager class is meant to act as a "middle man" for the board manager and other fucntionality in our game. The class relies on a singleton implementation as a preventative measure to avoid multi-instantiation of the prefab tiles and procedural generation of the level.
-# **Class Heirarchy**
+## **Class Heirarchy**
 1. Loader.cs
 2. GameManager.cs
 3. BoardManager.cs
@@ -19,12 +16,12 @@
 # Demonstration of GameManager.cs Video Link:
 YouTube Link: [Game Manager Demo](https://youtu.be/ESsWxhA1P00)
 
-# **Loader Class Script**
+## **Loader Class Script**
 1. Checks to see if the GameManager instance is set to null.
 2. If the instance is set to null, loader.cs calls for the GameManager to instantiate.
 3. If the instance is not set to null, then the singleton implmentation will keep one instance of GameManager preserved and destroy any other instances trying to be created.
 
-# **Functions**
+## **Functions**
 1. void Awake( ) 
    - with if statement for singleton verification.
 
