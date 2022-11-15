@@ -8,6 +8,9 @@
 
 ## **Class Role**
 - The GameManager class is meant to act as a "middle man" for the board manager and other fucntionality in our game. The class relies on a singleton implementation as a preventative measure to avoid multi-instantiation of the prefab tiles and procedural generation of the level.
+
+## Updated Class Diagram
+![updated diagram](https://github.com/jlreedNIC/Dread/blob/main/docs/Dan/Class%20Diagram.png)
 ## **Class Heirarchy**
 1. Loader.cs
 2. GameManager.cs
