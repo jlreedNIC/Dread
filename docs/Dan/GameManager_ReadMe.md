@@ -12,7 +12,7 @@ YouTube Link: [Game Manager Demo](https://youtu.be/ESsWxhA1P00)
 
 # **Loader Class Script**
 1. Checks to see if the GameManager instance is set to null.
-2. If the instance is set to null, loader.cs calls for the GameManager to instantiate
+2. If the instance is set to null, loader.cs calls for the GameManager to instantiate.
 3. If the instance is not set to null, then the singleton implmentation will keep one instance of GameManager preserved and destroy any other instances trying to be created.
 
 # **Functions**
@@ -22,10 +22,10 @@ YouTube Link: [Game Manager Demo](https://youtu.be/ESsWxhA1P00)
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # **Game Manager Class Script**
-1. Singleton instantiation of the GameMananger class
+1. Singleton instantiation of the GameMananger class.
 2. Inititates Level Generation via BoardManager.cs if singleton parameters are met.
 ## Variables
-- public static GameManager instance = null
+- public static GameManager instance.
 - public BoardManager boardScript (BoardManagger object)
 - private int level = 1 (sets default value of level progression tracker to 1)
 ## Functions
@@ -39,3 +39,38 @@ YouTube Link: [Game Manager Demo](https://youtu.be/ESsWxhA1P00)
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Board Manager Class Script
+## Additional Unity Libraries
+  - UnityEngine.Random
+  - System 
+## Sub Classes
+  - public class Count
+       * public int minimum
+       * public int maximum
+       * public Count (int min, int max)
+## Variables
+   - public int columns
+   - public int rows
+   - public Count interiorWallCount
+   - public GameObject exit
+   - public GameObject[] floorTiles
+   - public GameObject[] wallTiles
+   - public GameObject[] outerWallTiles
+## GameObjects
+   - public GameObject playerPrefab
+## Transform
+   - private Transform boardHolder
+## List - Vector3
+   - private List<Vector3> gridPositions
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Board Mananger Functions
+   - public void InitializeList()
+     - Clears the board anda mananges tiles, objects/items, and enemy spawn positions.
+   - public void boardSetup()
+     - Intstantiates the tile array types and prepares them to randomly be placed on the tile map and generates a guaranteed exit in the upper right hand corner.
+     - Spawns all outer wall tiles based on the room dimensions
+   - Vector3 RandomPosition()
+     - Randomizes level tiles and positions(coordinate tuple values) for them to be placed on the gameboard.
+   - public int LayoutObjectsAtRandom(GameObject[], int, int)
+     - This function spawns the tiles based on the min and max values assigned to the board dimensions.
+   - public void SetupScene(int)
+     - This function is responsible for generating everything else and placing them on the interior tiles and items.
