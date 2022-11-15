@@ -1,5 +1,14 @@
 # GameManager.cs Prefab Overview
 
+# Glossary
+## - Instatiate: Represent as or by an instance.
+## - Spawn: To generate or instantiate (see above) a game object, item, or rendered graphic into the game scene (environment).  
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
 # **Class Role**
 - The GameManager class is meant to act as a "middle man" for the board manager and other fucntionality in our game. The class relies on a singleton implementation as a preventative measure to avoid multi-instantiation of the prefab tiles and procedural generation of the level.
 # **Class Heirarchy**
