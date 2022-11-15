@@ -2,7 +2,7 @@
  * @file    BaseItem.cs
  * @author  Jordan Reed
  *
- * @brief   
+ * @brief   Base Item class for other items to inherit from. Describes what to do upon collision
  *
  * @date    November 2022
  */
@@ -11,7 +11,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
-// using TMPro;
 
 /*
  * TO DO:
@@ -20,30 +19,31 @@ using UnityEngine;
 
 public class BaseItem : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    /*
+     * @brief   This function returns the 'stats' of the item in a string form
+     *          so it can be shown on the screen what the player just picked up.
+     *          This is the virtual function, not intended to be called. 
+     */
     protected virtual string GetItemStats()
     {
         return "base item: 0";
     }
 
-    protected virtual void ApplyUpgrade(Collision2D col)
+    /*
+     * @brief   This function 'applies the upgrade'. 
+     *          This is the virtual function, not intended to be called.
+     */
+    protected virtual void ApplyUpgrade()
     {
-        // virtual
-        // does different things based on the class
         Debug.Log("base item apply upgrade. does nothing!");
     }
 
+    /*
+     * @brief   When the item is collided with by the player: 
+     *              - it will send a message to the notification screen based on what the item is
+     *              - then it will apply whatever upgrade it needs to
+     *              - it will be destroyed.
+     */
     public void OnCollisionEnter2D(Collision2D col)
     {
         if(col.gameObject.tag == "Player")
@@ -51,7 +51,7 @@ public class BaseItem : MonoBehaviour
             Debug.Log("player collided with item");
             
             NotificationManager.Instance.showScreen(GetItemStats());
-            ApplyUpgrade(col);
+            ApplyUpgrade();
             Destroy(gameObject);
         }
         

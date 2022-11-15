@@ -11,7 +11,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
-// using TMPro;
 
 /*
  * TO DO:
@@ -20,32 +19,30 @@ using UnityEngine;
 
 public class PermaHealth : BaseItem
 {
-    [SerializeField] private int healthMod = 5;
+    [SerializeField] private int healthMod = 5;     // ammount to permanently increase the player's health
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    /*
+     * @brief   This function returns the 'stats' of the item in a string form
+     *          so it can be shown on the screen what the player just picked up.
+     */
     override protected string GetItemStats()
     {
         return "Maximum health increased by " + healthMod;
     }
 
-    override protected void ApplyUpgrade(Collision2D col)
+    /*
+     * @brief   This function 'applies the upgrade'. 
+     *          Overridden function that adds to the player's maximum health as well as the current amount of health.
+     */
+    override protected void ApplyUpgrade()
     {
-        // virtual
-        // does different things based on the class
         Debug.Log("health pickup. added " + healthMod + " max health to player");
-        col.gameObject.GetComponent<Player_Movement>().damageable.baseHealth += healthMod;
-        col.gameObject.GetComponent<Player_Movement>().damageable.GainHealth(healthMod);
+
+        // find the player object and get the class reference
+        Player_Movement playerRef = GameObject.FindWithTag("Player").GetComponent<Player_Movement>();
+        // add maximum health
+        playerRef.damageable.baseHealth += healthMod;
+        playerRef.damageable.GainHealth(healthMod);
     }
 
 }

@@ -33,14 +33,9 @@ public class AmmoItem : BaseItem
     /*
      * @brief   This function 'applies the upgrade'. Overridden function that adds
      *          ammo to the players total ammo count.
-     *
-     * @param   Collision2D The object that the item has collided with (should be player). 
-     *          This is not needed in this function, but another class that 
-     *          inherits from the same base class.
      */
-    override protected void ApplyUpgrade(Collision2D col)
+    override protected void ApplyUpgrade()
     {
-        // does different things based on the class
         Debug.Log("ammo pickup. added " + ammo + " ammo to player");
         AmmoManager.Instance.updateAmmoCount(ammo);
     }

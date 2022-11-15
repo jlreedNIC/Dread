@@ -11,7 +11,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
-// using TMPro;
 
 /*
  * TO DO:
@@ -20,30 +19,25 @@ using UnityEngine;
 
 public class PermaAmmo : BaseItem
 {
-    [SerializeField] private int ammo = 5;
+    [SerializeField] private int ammo = 5;  // ammount to increase the permanent ammo total by
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    /*
+     * @brief   This function returns the 'stats' of the item in a string form
+     *          so it can be shown on the screen what the player just picked up.
+     */
     override protected string GetItemStats()
     {
         return "Maximum ammo increased by " + ammo;
     }
 
-    override protected void ApplyUpgrade(Collision2D col)
+    /*
+     * @brief   This function 'applies the upgrade'. 
+     *          Overridden function that adds to the max ammo total as well as increasing the current total by the same amount.
+     */
+    override protected void ApplyUpgrade()
     {
-        // virtual
-        // does different things based on the class
         Debug.Log("ammo pickup. added " + ammo + " max ammo to player");
+        // increase max total and pick up same amount of ammo
         AmmoManager.Instance.updateMaxTotal(ammo);
         AmmoManager.Instance.updateAmmoCount(ammo);
     }
