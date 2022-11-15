@@ -7,6 +7,9 @@
 2. GameManager.cs
 3. BoardManager.cs
 
+# Demonstration of GameManager.cs Video Link:
+YouTube Link: [Game Manager Demo](https://youtu.be/ESsWxhA1P00)
+
 # **Loader Class Script**
 1. Checks to see if the GameManager instance is set to null.
 2. If the instance is set to null, loader.cs calls for the GameManager to instantiate
