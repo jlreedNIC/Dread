@@ -15,53 +15,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-<<<<<<< Updated upstream
-    public static GameManager instance = null;
-
-    public BoardManager boardScript;
-
-    // test level
-    public int level = 1;
-
-    // Start is called before the first frame update
-    void Awake()
-    {   
-        //Singleton implementation
-        if (instance = null)
-        {
-            instance = this;
-        }
-        else if (instance != this)
-        {
-            Destroy(gameObject);
-        }
-        // if it is the first instantiation be sure to preserve
-        // the current instance of a level.
-        DontDestroyOnLoad(gameObject);
-        
-        // generate a level
-        boardScript = GetComponent<BoardManager>();
-        InitGame();
-    }
-
-    void InitGame()
-    {
-        boardScript.SetupScene(level);
-        // any other game objects go below here
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-=======
    public static GameManager instance = null;
 
    public BoardManager boardScript;
 
    // test level
-   private int level = 1;
+   public int level = 1;
 
    // Start is called before the first frame update
    void Awake()
@@ -95,5 +54,4 @@ public class GameManager : MonoBehaviour
    {
 
    }
->>>>>>> Stashed changes
 }

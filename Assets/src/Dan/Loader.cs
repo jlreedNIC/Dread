@@ -27,26 +27,21 @@ public class Loader : MonoBehaviour
          Instantiate(gameManager);
       }
 
-<<<<<<< Updated upstream
-        // instantiate notification manager if it's not already to avoid errors
-        NotificationManager.Instance.instantiateNotifications();
-    }
-
-    public void initialize()
-    {
-        Debug.Log("re initialize----------------------------------");
-        if (GameManager.instance == null)
-        {
-            Debug.Log("game man begin instantiated");
-            Instantiate(gameManager);
-        }
-
-        // instantiate notification manager if it's not already to avoid errors
-        NotificationManager.Instance.instantiateNotifications();
-    }
-=======
       // instantiate notification manager if it's not already to avoid errors
       NotificationManager.Instance.instantiateNotifications();
    }
->>>>>>> Stashed changes
+
+   public void initialize()
+   {
+      // checks if the singleton in GameManager is set to null
+      // if so it makes a call to the GameManager script for instantiation
+      // of the level to be created.
+      if (GameManager.instance == null)
+      {
+         Instantiate(gameManager);
+      }
+
+      // instantiate notification manager if it's not already to avoid errors
+      NotificationManager.Instance.instantiateNotifications();
+   }
 }

@@ -92,90 +92,6 @@ public class BoardManager : MonoBehaviour
             {
                toInstantiate = outerWallTiles[Random.Range(0, outerWallTiles.Length)];
             }
-<<<<<<< Updated upstream
-        }
-    }
-    
-    // Randomizes level tiles and postions for them to be placed onto the game board
-    Vector3 RandomPosition()
-    {
-        int randomIndex = Random.Range(0, gridPositions.Count);
-        Vector3 randomPosition = gridPositions[randomIndex];
-        gridPositions.RemoveAt(randomIndex);
-        // use this value to spawn an object in a random location
-        return randomPosition;
-    }
-
-    // tile spawner function
-    public int LayoutObjectAtRandom(GameObject[] tileArray, int minimum, int maximum)
-    {
-        if( minimum != 0 && maximum != 0)
-        {   
-            // controls the number of objects spawned in the level
-            int objectCount = Random.Range(minimum, maximum + 1);
-
-            // spawn the number of objects specified by object count
-            for(int i = 0; i < objectCount; i++)
-            {
-                // choose a random position to start spawning [call to randoms position function]
-                Vector3 randomPosition = RandomPosition();
-                GameObject tileChoice = tileArray[Random.Range(0, tileArray.Length)];
-                // Do Not Rotate Tiles On Instantiation
-                GameObject instance = Instantiate(tileChoice, randomPosition, Quaternion.identity);
-
-                instance.transform.parent = boardHolder;
-                // instance.transform.SetParent(boardHolder);
-                
-            }
-        }
-        return (maximum);
-    }
-    
-    // Generates the board and initilizes the arrays with between 5 - 9 interior wall tiles,
-    // a perimeter wall, and a guaranteed exit tile.
-    public void SetupScene(int level)
-    {
-        BoardSetup();
-        InitializeList();
-        // guard code to ensure that instantiation of a board with less than the optimal dimensions
-        // does not occur and crash the game
-        if(columns < 8 || rows < 8)
-        {
-            Debug.Log("Out of Bounds Error: dimensional value entered for a row or col is less than 8");
-            Application.Quit();
-        }
-        else
-        // place all tiles and walls in the scene
-        LayoutObjectAtRandom(wallTiles, wallCount.minimum, wallCount.maximum);
-        /* [Place holder For Any Enemy instantiation if needed]
-         * Spawn # of enemies based on the level's number IE: level 1 spawn 1 enemy; 2 spawn 2,..etc.
-         * int enemyCount = (int)Mathf.Log(level, 2f);
-         
-         * LayoutObjectAtRandom(enemyTiles, enemyCount, enemyCount);
-         */
-
-         // spawn the exit tile in the upper right hand corner of the map (guaranteed)
-         Instantiate(exit, new Vector3(columns - 1, rows - 1, 0F), Quaternion.identity);
-         exit.transform.parent = boardHolder;
-         
-        // Calculate all graphs
-        AstarPath.active.Scan();
-        // Instantiate(playerPrefab, new Vector3(0,0,0), Quaternion.identity);
-        GameObject.FindWithTag("Player").transform.position = new Vector3(0,0,0);
-
-        // items instantiated after level scanned so as not to interfere with enemy paths
-        // regular health and ammo pickups
-        LayoutObjectAtRandom(ammoPickUps, 1, 2);
-        LayoutObjectAtRandom(healthPickUps, 1, 2);
-
-        // upgrades
-        LayoutObjectAtRandom(upgrades, 1, 2);
-
-        // ship parts
-        LayoutObjectAtRandom(shipParts, 1, 1);
-
-    }
-=======
 
             GameObject instance = Instantiate(toInstantiate, new Vector3(x, y, 0f), Quaternion.identity) as GameObject;
 
@@ -257,5 +173,4 @@ public class BoardManager : MonoBehaviour
       LayoutObjectAtRandom(shipParts, 1, 1);
 
    }
->>>>>>> Stashed changes
 }
