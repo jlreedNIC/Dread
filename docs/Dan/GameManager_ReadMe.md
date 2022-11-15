@@ -17,20 +17,23 @@
 3. BoardManager.cs
 
 # Demonstration of GameManager.cs Video Link:
-YouTube Link: [Game Manager Demo](https://youtu.be/ESsWxhA1P00)
+- YouTube Link: [Game Manager Demo](https://youtu.be/ESsWxhA1P00)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## **Loader Class Script**
+# **Loader Class Script**
+## What This Class Does:
 1. Checks to see if the GameManager instance is set to null.
 2. If the instance is set to null, loader.cs calls for the GameManager to instantiate.
 3. If the instance is not set to null, then the singleton implmentation will keep one instance of GameManager preserved and destroy any other instances trying to be created.
 
 ## **Functions**
 1. void Awake( ) 
-   - with if statement for singleton verification.
+   - If statement in the function checks for singleton instatiation of GameManager to null or not null.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # **Game Manager Class Script**
+## What This Class Does:
 1. Singleton instantiation of the GameMananger class.
 2. Inititates Level Generation via BoardManager.cs if singleton parameters are met.
 ## Variables
@@ -48,7 +51,11 @@ YouTube Link: [Game Manager Demo](https://youtu.be/ESsWxhA1P00)
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Board Manager Class Script
-## Additional Unity Libraries
+## What This Class Does
+1. Sets up random placement for tile prefabs.
+2. Generates a level based on dimensions defined its serialized fields.
+3. Places obstacles and items within the interior boundaries of the level.
+## Additional Unity Libraries Used For This Class Implementation
   - UnityEngine.Random
   - System 
 ## Sub Classes
@@ -71,7 +78,7 @@ YouTube Link: [Game Manager Demo](https://youtu.be/ESsWxhA1P00)
 ## List - Vector3
    - private List<Vector3> gridPositions
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# Board Mananger Functions
+## Functions
    - public void InitializeList()
      - Clears the board anda mananges tiles, objects/items, and enemy spawn positions.
    - public void boardSetup()
