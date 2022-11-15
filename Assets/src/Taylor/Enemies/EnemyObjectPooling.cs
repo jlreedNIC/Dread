@@ -27,7 +27,7 @@ public sealed class EnemyObjectPooling : MonoBehaviour
 
     void Start()
     {
-
+        
     }
 
     public List<GameObject> GenerateEnemies(int amount, List <GameObject> enemyPrefabs)
