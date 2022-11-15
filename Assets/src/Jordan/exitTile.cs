@@ -2,7 +2,7 @@
  * @file    exitTile.cs
  * @author  Jordan Reed
  *
- * @brief   This class handles the bullet upgrades. Generalized script to use for any bullet upgrade
+ * @brief   This class handles the scene transitioning. What happens when the player reaches the exit tile in the level
  *
  * @date    November 2022
  */
@@ -14,23 +14,12 @@ using UnityEngine.SceneManagement;
 
 public class exitTile : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     /*
-     * @brief When a collision is detected with the item, a notification screen is called and the 
-     *        upgrade is applied. The item is then destroyed.
+     * @brief   When the player runs into the exit tile, reload the current scene so the player can keep playing the game
      *
-     * @param Collision2D col The collider that has been detected and can now be acted on
+     *          Will need to handle reseting some variables
+     *
+     * @param   Collision2D col The collider that has been detected and can now be acted on
      */
     public void OnCollisionEnter2D(Collision2D col)
     {
@@ -38,8 +27,6 @@ public class exitTile : MonoBehaviour
         {
             Debug.Log("player collided with exit tile");
             SceneManager.LoadScene(1); 
-            // NotificationManager.Instance.instantiateNotifications();
-            // Destroy(NotificationManager.Instance);
         }
         
     }
