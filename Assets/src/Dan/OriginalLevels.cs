@@ -12,8 +12,13 @@
  */
 
  /*
-  * 
-    
+    After reflecting on the process, the level generation would not truely be dynamic during execution
+    of the game. Because it relies on the checkpoint as a trigger, it is event based and is not polymorphic.
+
+    I was trying to redesign an implementation did for a game long ago
+    in the implementation, the player class was the parent class and had a virtual contructor
+
+    I made a virtual vector
 
 
   */
