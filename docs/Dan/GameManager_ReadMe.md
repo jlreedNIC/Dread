@@ -1,8 +1,8 @@
 # GameManager.cs Prefab Overview
 
 ## Glossary
-### - Instatiate: Represent as or by an instance.
-### - Spawn: To generate or instantiate (see above) a game object, item, or rendered graphic into the game scene (environment).  
+### * Instantiate: Represent as or by an instance.
+### * Spawn: To generate or instantiate (see above) a game object, item, or rendered graphic into the game scene (environment).  
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
