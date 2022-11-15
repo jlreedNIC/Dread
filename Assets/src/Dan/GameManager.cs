@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public BoardManager boardScript;
 
     // test level
-    private int level = 1;
+    public int level = 1;
 
     // Start is called before the first frame update
     void Awake()

@@ -29,4 +29,17 @@ public class Loader : MonoBehaviour
         // instantiate notification manager if it's not already to avoid errors
         NotificationManager.Instance.instantiateNotifications();
     }
+
+    public void initialize()
+    {
+        Debug.Log("re initialize----------------------------------");
+        if (GameManager.instance == null)
+        {
+            Debug.Log("game man begin instantiated");
+            Instantiate(gameManager);
+        }
+
+        // instantiate notification manager if it's not already to avoid errors
+        NotificationManager.Instance.instantiateNotifications();
+    }
 }

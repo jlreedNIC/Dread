@@ -123,7 +123,11 @@ public class BoardManager : MonoBehaviour
                 Vector3 randomPosition = RandomPosition();
                 GameObject tileChoice = tileArray[Random.Range(0, tileArray.Length)];
                 // Do Not Rotate Tiles On Instantiation
-                Instantiate(tileChoice, randomPosition, Quaternion.identity);
+                GameObject instance = Instantiate(tileChoice, randomPosition, Quaternion.identity);
+
+                instance.transform.parent = boardHolder;
+                // instance.transform.SetParent(boardHolder);
+                
             }
         }
         return (maximum);
@@ -154,10 +158,12 @@ public class BoardManager : MonoBehaviour
 
          // spawn the exit tile in the upper right hand corner of the map (guaranteed)
          Instantiate(exit, new Vector3(columns - 1, rows - 1, 0F), Quaternion.identity);
+         exit.transform.parent = boardHolder;
          
         // Calculate all graphs
         AstarPath.active.Scan();
-        Instantiate(playerPrefab, new Vector3(0,0,0), Quaternion.identity);
+        // Instantiate(playerPrefab, new Vector3(0,0,0), Quaternion.identity);
+        GameObject.FindWithTag("Player").transform.position = new Vector3(0,0,0);
 
         // items instantiated after level scanned so as not to interfere with enemy paths
         // regular health and ammo pickups
