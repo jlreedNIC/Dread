@@ -6,25 +6,27 @@
  *
  * @date    November 2022
  */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement; 
 using UnityEngine.UI;
 
+
 public class StartScreen : MonoBehaviour
 {
 
-    [SerializeField] private GameObject startMenu;
-    [SerializeField] private GameObject settingsMenu;
-    [SerializeField] private Toggle mToggle;
+    [SerializeField] private GameObject startMenu;      // holds the reference to the canvas with the start menu
+    [SerializeField] private GameObject settingsMenu;   // reference to the canvas with the settings menu
+    [SerializeField] private Toggle mToggle;            // reference to the toggle button for bc mode
 
+    // Runs once when started
+    // makes sure the start menu is active and the settings menu is inactive
     public void Start()
     {
         startMenu.SetActive(true);
         settingsMenu.SetActive(false);
-
-        // mToggle.onValueChanged.AddListener(delegate { ToggleValueChanged(mToggle); } );
     }
 
     // Update is called once per frame
@@ -54,24 +56,33 @@ public class StartScreen : MonoBehaviour
         Application.Quit();
     }
 
+    /*
+     * @brief   Function to show the settings screen and hide the start menu.
+     *
+     *          Added by Jordan.
+     */
     public void Settings()
     {
         startMenu.SetActive(false);
         settingsMenu.SetActive(true);
     }
 
+    /*
+     * @brief   Function to show the start menu and hide the settings screen.
+     *
+     *          Added by Jordan.
+     */
     public void MainMenu()
     {
         startMenu.SetActive(true);
         settingsMenu.SetActive(false);
     }
 
-    void ToggleValueChanged(Toggle change)
-    {
-        Debug.Log("value changed " + change.isOn);
-        // setBCMode(change.isOn);
-    }
-
+    /*
+     * @brief   Function to set the BC mode based on if the toggle switch in the settings is on or off
+     *
+     *          Added by Jordan
+     */
     public void setBCMode()
     {
         Debug.Log("toggle value " + mToggle.isOn);

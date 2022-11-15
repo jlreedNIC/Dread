@@ -74,7 +74,7 @@ public sealed class NotificationManager : MonoBehaviour
         // if(screenInstance == null) Debug.Log("prefab instance not loaded");
         // screenText = screenInstance.transform.GetChild(0).GetComponent<TMP_Text>();
         // background = screenInstance.transform.GetChild(1).GetComponent<Image>();
-        // instantiateNotifications();
+        instantiateNotifications();
     }
 
 

@@ -33,13 +33,12 @@ public sealed class AmmoManager : MonoBehaviour
     private class Nested
     {
         static Nested() {}
-        // internal static readonly AmmoManager instance = new AmmoManager();
         internal static readonly AmmoManager instance = new GameObject("AmmoManager").AddComponent<AmmoManager>();
     }
 
-    // not sure if we need this for scene transitions
     private void Awake()
     {
+        // this way we don't lose the game object reference
         DontDestroyOnLoad(this.gameObject);
     }
 

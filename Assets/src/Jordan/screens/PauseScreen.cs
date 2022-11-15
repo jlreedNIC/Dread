@@ -17,16 +17,11 @@ public class PauseScreen : MonoBehaviour
     public static bool gameIsPaused = false;        // is the game paused or not
     public GameObject pauseMenuUI;                  // holds the ui gameobject to modify
     public GameObject hud;                          // holds the hud gameobject to modify
-    // private WinLossMngr winLoss;
 
     // make sure pause screen is inactive at start
     public void Start()
     {
         pauseMenuUI.SetActive(false); 
-
-        // Debug.Log("finding objects");
-        // winLoss = GameObject.Find("WinLossMngr").GetComponent<WinLossMngr>();
-        // hud = GameObject.Find("HUD");
     }
 
     // Update is called once per frame
@@ -48,7 +43,7 @@ public class PauseScreen : MonoBehaviour
     }
 
     /*
-     * @brief   Function will pause the time on the game and show the pause menu
+     * @brief   Function will pause the time on the game and show the pause menu while not showing the HUD
      */
     public void Pause()
     {
@@ -59,7 +54,7 @@ public class PauseScreen : MonoBehaviour
     }
 
     /*
-     * @brief   Function will resume the time on the game and hide the pause menu
+     * @brief   Function will resume the time on the game and hide the pause menu and resume showing the HUD
      */
     public void Resume()
     {
@@ -72,6 +67,8 @@ public class PauseScreen : MonoBehaviour
     /*
      * @brief   Function will make sure time is resumed for the game, reset the ammo manager
      *          to have basic bullets again, and reset the winloss manager. Then load the main screen.
+     *
+     *          Only function modified by Jordan.
      */
     public void LoadMainMenu()
     {
