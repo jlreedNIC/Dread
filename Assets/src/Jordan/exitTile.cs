@@ -17,26 +17,21 @@ public class exitTile : MonoBehaviour
     [SerializeField] private GameObject CamWLoader;
     private Loader loaderRef;
     private GameManager gameRef;
-    [SerializeField] private GameObject winloss;
+    [SerializeField] private GameObject board;
+    public GameObject loadScreen;
 
     // Start is called before the first frame update
     void Start()
     {
-        winloss = GameObject.Find("WinLossMngr");
-
+        // find the board and game manager references in the scene
         CamWLoader = GameObject.Find("Main Camera");
         loaderRef = CamWLoader.GetComponent<Loader>();
         gameRef = loaderRef.gameManager.GetComponent<GameManager>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        board = GameObject.Find("Board");
     }
 
     /*
-     * @brief When a collision is detected with the exit tile, increase the level and load the next scene.
+     * @brief When a collision is detected with the exit tile, increase the level and reinstantiate the scene.
      *
      * @param Collision2D col The collider that has been detected and can now be acted on
      */
@@ -45,25 +40,29 @@ public class exitTile : MonoBehaviour
         if(col.gameObject.tag == "Player")
         {
             Debug.Log("player collided with exit tile");
-            if(gameRef.level >= 7) // last level
-            {
-                int shipparts = WinLossMngr.getShipParts();
-                // check if gathered enough ship parts
-                if( shipparts< 7)
-                {
-                    winloss.GetComponent<WinLossMngr>().triggerDeathScreen();
-                }
-                else
-                {
-                    winloss.GetComponent<WinLossMngr>().triggerWinScreen();
-                }
-            }
-            
-            // not last level, load next level
-            gameRef.level++;
-            SceneManager.LoadScene(gameRef.level); 
+            // SceneManager.LoadScene(1); 
 
+            // set bpard inactive
+            board.SetActive(false);
+            this.gameObject.SetActive(false);
+
+            // find all enemies and despawn them
+            GameObject enemy;
+            while(enemy = GameObject.FindWithTag("Enemy"))
+            {
+                EnemyObjectPooling.Instance.DespawnEnemy(enemy);
+            }
+
+            // increase level
+            gameRef.level++;
+
+            // reload the board
+            loaderRef.initialize();
+            // load enemies = level + 10
+            for(int i=0; i<gameRef.level+10; i++)
+            {
+                EnemyObjectPooling.Instance.RequestEnemy();
+            }
         }
-        
     }
 }

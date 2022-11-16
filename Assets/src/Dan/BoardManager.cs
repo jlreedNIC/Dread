@@ -125,7 +125,9 @@ public class BoardManager : MonoBehaviour
             Vector3 randomPosition = RandomPosition();
             GameObject tileChoice = tileArray[Random.Range(0, tileArray.Length)];
             // Do Not Rotate Tiles On Instantiation
-            Instantiate(tileChoice, randomPosition, Quaternion.identity);
+            GameObject instance = Instantiate(tileChoice, randomPosition, Quaternion.identity);
+
+            instance.transform.parent = boardHolder;
          }
       }
       return (maximum);
@@ -164,8 +166,8 @@ public class BoardManager : MonoBehaviour
 
       // items instantiated after level scanned so as not to interfere with enemy paths
       // regular health and ammo pickups
-      LayoutObjectAtRandom(ammoPickUps, 1, 2);
-      LayoutObjectAtRandom(healthPickUps, 1, 2);
+      LayoutObjectAtRandom(ammoPickUps, 1, 5);
+      LayoutObjectAtRandom(healthPickUps, 1, 3);
 
       // upgrades
       LayoutObjectAtRandom(upgrades, 1, 2);
