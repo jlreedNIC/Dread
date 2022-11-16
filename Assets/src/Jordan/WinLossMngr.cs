@@ -20,8 +20,8 @@ using TMPro;
 
 public class WinLossMngr : MonoBehaviour
 {
-    [SerializeField] GameObject deathScreen;        // holds prefab of death screen
-    [SerializeField] GameObject winScreen;          // holds prefab of win screen
+    [SerializeField] private GameObject deathScreen;        // holds prefab of death screen
+    [SerializeField] private GameObject winScreen;          // holds prefab of win screen
     [SerializeField] GameObject playerRef;          // reference to the player object in the scene
     
     [SerializeField] static private int shipParts;                   // how many ship repair parts the player has
@@ -40,6 +40,7 @@ public class WinLossMngr : MonoBehaviour
         winScreen = GameObject.Instantiate(winScreen);
         winScreen.SetActive(false);
 
+        Debug.Log("finding player");
         // find player object
         if(playerRef == null)
         {
@@ -91,7 +92,6 @@ public class WinLossMngr : MonoBehaviour
     {
         Debug.Log("death screen triggered");
         deathScreen.SetActive(true);
-        resetShipParts();
     }
 
     /*

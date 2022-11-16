@@ -17,15 +17,16 @@ public class exitTile : MonoBehaviour
     [SerializeField] private GameObject CamWLoader;
     private Loader loaderRef;
     private GameManager gameRef;
-    [SerializeField] private GameObject board;
+    [SerializeField] private GameObject winloss;
 
     // Start is called before the first frame update
     void Start()
     {
+        winloss = GameObject.Find("WinLossMngr");
+
         CamWLoader = GameObject.Find("Main Camera");
         loaderRef = CamWLoader.GetComponent<Loader>();
         gameRef = loaderRef.gameManager.GetComponent<GameManager>();
-        board = GameObject.Find("Board");
     }
 
     // Update is called once per frame
@@ -35,8 +36,7 @@ public class exitTile : MonoBehaviour
     }
 
     /*
-     * @brief When a collision is detected with the item, a notification screen is called and the 
-     *        upgrade is applied. The item is then destroyed.
+     * @brief When a collision is detected with the exit tile, increase the level and load the next scene.
      *
      * @param Collision2D col The collider that has been detected and can now be acted on
      */
@@ -45,29 +45,24 @@ public class exitTile : MonoBehaviour
         if(col.gameObject.tag == "Player")
         {
             Debug.Log("player collided with exit tile");
-            // SceneManager.LoadScene(1); 
-
-
-            board.SetActive(false);
-            this.gameObject.SetActive(false);
-
-            GameObject enemy;
-            while(enemy = GameObject.FindWithTag("Enemy"))
+            if(gameRef.level >= 7) // last level
             {
-                EnemyObjectPooling.Instance.DespawnEnemy(enemy);
-            }
-
-            gameRef.level++;
-
-            loaderRef.initialize();
-            for(int i=0; i<gameRef.level+10; i++)
-            {
-                EnemyObjectPooling.Instance.RequestEnemy();
+                int shipparts = WinLossMngr.getShipParts();
+                // check if gathered enough ship parts
+                if( shipparts< 7)
+                {
+                    winloss.GetComponent<WinLossMngr>().triggerDeathScreen();
+                }
+                else
+                {
+                    winloss.GetComponent<WinLossMngr>().triggerWinScreen();
+                }
             }
             
-            // GameManager.instance.InitGame();
-            // NotificationManager.Instance.instantiateNotifications();
-            // Destroy(NotificationManager.Instance);
+            // not last level, load next level
+            gameRef.level++;
+            SceneManager.LoadScene(gameRef.level); 
+
         }
         
     }

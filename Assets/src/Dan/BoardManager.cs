@@ -159,7 +159,8 @@ public class BoardManager : MonoBehaviour
 
       // Calculate all graphs
       AstarPath.active.Scan();
-      Instantiate(playerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+      // Instantiate(playerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+      GameObject.FindWithTag("Player").transform.position = new Vector3(0,0,0);
 
       // items instantiated after level scanned so as not to interfere with enemy paths
       // regular health and ammo pickups

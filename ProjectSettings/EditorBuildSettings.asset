@@ -9,6 +9,27 @@ EditorBuildSettings:
     path: Assets/Scenes/Jordan/StartScreen.unity
     guid: de59b37fff6967c47bb95a4e7483a62b
   - enabled: 1
+    path: Assets/Scenes/Dan/levels/level 1.unity
+    guid: 849e956fb1801ac4eb8a37f442089eb2
+  - enabled: 1
+    path: Assets/Scenes/Dan/levels/level 2.unity
+    guid: a29aa6b645ba1ba4380a38794f1ceacb
+  - enabled: 1
+    path: Assets/Scenes/Dan/levels/level 3.unity
+    guid: 6ce818042d6003e469ffc0678b0ca9a1
+  - enabled: 1
+    path: Assets/Scenes/Dan/levels/level 4.unity
+    guid: d6b869759bffdb94fa7c8d4e63fd56f5
+  - enabled: 1
+    path: Assets/Scenes/Dan/levels/level 5.unity
+    guid: f12e4f625527847488efe4ba0a6b9f38
+  - enabled: 1
+    path: Assets/Scenes/Dan/levels/level 6.unity
+    guid: f1a7c76b559c9144fba8b08002a74a5f
+  - enabled: 1
+    path: Assets/Scenes/Dan/levels/level 7.unity
+    guid: f0773b09670d801428baaa6825cdbf7a
+  - enabled: 0
     path: Assets/Scenes/Dan/Proc_Gen_Test.unity
     guid: f534710c2e3d705448ec58be4d00fea7
   - enabled: 0

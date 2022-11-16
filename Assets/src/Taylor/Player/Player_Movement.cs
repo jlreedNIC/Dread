@@ -71,12 +71,17 @@ public sealed class Player_Movement : MonoBehaviour
         {
             Debug.Log("Player is Missing RigidBody2D");
         }
+        DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame
     //great for processing inputs
     private void Update()
     {
+        if(camera == null)
+        {
+            camera = Camera.main;
+        }
         //processing player user inputs
         ProcessInputs(); 
     }
