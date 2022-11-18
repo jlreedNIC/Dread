@@ -20,7 +20,7 @@ public class EnemyPrefabSpawner : MonoBehaviour
         StartCoroutine(spawnEnemy());
     }
 
-    private IEnumerator spawnEnemy()
+    public IEnumerator spawnEnemy()
     {
         for(int i = 0; i < maxNumEnemies; i++)
         {

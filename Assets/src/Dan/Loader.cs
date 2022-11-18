@@ -43,5 +43,8 @@ public class Loader : MonoBehaviour
 
       // instantiate notification manager if it's not already to avoid errors
       NotificationManager.Instance.instantiateNotifications();
+
+      // spawn enemies not all at once
+      StartCoroutine(GameObject.Find("EnemySpawner").GetComponent<EnemyPrefabSpawner>().spawnEnemy());
    }
 }

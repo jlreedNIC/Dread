@@ -58,11 +58,6 @@ public class exitTile : MonoBehaviour
 
             // reload the board
             loaderRef.initialize();
-            // load enemies = level + 10
-            for(int i=0; i<gameRef.level+10; i++)
-            {
-                EnemyObjectPooling.Instance.RequestEnemy();
-            }
         }
     }
 }
