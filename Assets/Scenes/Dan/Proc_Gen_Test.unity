@@ -912,10 +912,9 @@ MonoBehaviour:
   - {fileID: 8276153317174102065, guid: 59b37695a9106c846b9c2d313722e5ea, type: 3}
   - {fileID: 8276153317174102065, guid: 980657bee2c31d4468fe7c6d375b9a9b, type: 3}
   - {fileID: 8276153317174102065, guid: 439310aba87dc0c4ba957722ac8bc955, type: 3}
-  baseEnemySpawnRate: 3.5
+  baseEnemySpawnRate: 1
   maxNumEnemies: 1
   currentNumEnemies: 0
-  isAbleToSpawn: 1
 --- !u!4 &1901774792
 Transform:
   m_ObjectHideFlags: 0
@@ -1095,7 +1094,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2113299226
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -336,4 +336,9 @@ public abstract class EnemyAIStateMachine : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, _enemyStats.patrolRadius);
 
     }
+
+    public void OnDestroy()
+    {
+        EnemyObjectPooling.Instance.DespawnEnemy(this.gameObject);
+    }
 }

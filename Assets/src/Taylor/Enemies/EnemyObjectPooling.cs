@@ -18,20 +18,25 @@ public sealed class EnemyObjectPooling : MonoBehaviour
     private class Nested
     {
         static Nested() {}
-        internal static readonly EnemyObjectPooling instance = new EnemyObjectPooling();
+
+        internal static readonly EnemyObjectPooling instance = new GameObject("EnemyObjectPoolManager").AddComponent<EnemyObjectPooling>();
     }
-
     [SerializeField] public int _defaultPoolSize = 10;
-    [SerializeField] private List<GameObject> _enemyPool = new List<GameObject>();
 
+    [SerializeField] public List<GameObject> _enemyPool = new List<GameObject>();
+    
 
-    void Start()
+    private void Awake()
     {
-        
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public List<GameObject> GenerateEnemies(int amount, List <GameObject> enemyPrefabs)
     {
+        //clear the list when first level reloads again from start menu scene
+        Debug.Log("Clearing enemyPool"); 
+        _enemyPool.Clear();
+
         Debug.Log("In GeneratingEnemies"); 
         for (int i = 0; i < amount; i++)
         {
@@ -67,6 +72,8 @@ public sealed class EnemyObjectPooling : MonoBehaviour
                 return enemy;
             }
         }
+        Debug.Log("No More Enemies To Spawn, Exiting RequestEnemy()"); 
+
         return null;
     }
 
