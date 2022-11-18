@@ -11,7 +11,7 @@ public class EnemyPrefabSpawner : MonoBehaviour
     public int maxNumEnemies = 0; 
     public int currentNumEnemies = 0; 
 
-    void Start()
+    public void Start()
     {
         maxNumEnemies = EnemyObjectPooling.Instance._defaultPoolSize; 
 
