@@ -63,7 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionTag: Player
   colliders: {fileID: 0}
-  _enemyStats: {fileID: 11400000, guid: 5c4143de2ea578e408f16fba6fa727d4, type: 2}
+  _enemyStats: {fileID: 11400000, guid: 760330e62fe03aa4298d6dc8fe99a446, type: 2}
 --- !u!1 &8276153317174102065
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a06155034c25240b4be49eecfec365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthTotal: 0
   baseHealth: 15
   currentHealth: 0
 --- !u!114 &8276153317174102063
@@ -288,7 +289,7 @@ MonoBehaviour:
   slowdownDistance: 5
   pickNextWaypointDist: 1
   endReachedDistance: 3
-  alwaysDrawGizmos: 1
+  alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 1
   constrainInsideGraph: 1

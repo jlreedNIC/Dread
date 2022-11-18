@@ -16,14 +16,14 @@ MonoBehaviour:
   rotationSpeed: 0
   accelerationStep: 0
   distanceToWaypoint: 0
-  lookRange: 10
-  lookSphereCastRadius: 10
-  patrolRadius: 20
+  lookRange: 7
+  lookSphereCastRadius: 7
+  patrolRadius: 8
   attackRate: 1
-  attackRange: 10
+  attackRange: 7
   attackForce: 0
   attackDamage: 0
-  attackCooldown: 0.8999997
+  attackCooldown: 0.54
   searchDuration: 2
   searchingTurnSpeed: 3
   stateTimeElapsed: 0
