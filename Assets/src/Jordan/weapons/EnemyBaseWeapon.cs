@@ -46,6 +46,7 @@ public class EnemyBaseWeapon : Base_Weapon
             // enemy doesn't have to worry about ammo management
             // they have infinite bullets
             GameObject bullet = Instantiate(bullet_type, firePoint.position, firePoint.rotation);
+            bullet.transform.Rotate(0,0,90);
 
             // // set max bullet dist and bullet damage
             bullet.GetComponent<Bullet>().setFireRange(curRange);

@@ -26,9 +26,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3339971459748285939}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.527569, y: -2.0770102, z: 0}
-  m_LocalScale: {x: 0.3185, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.732, y: -2.327, z: 0}
+  m_LocalScale: {x: 0.4898827, y: 0.4505, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3339971459756170523}
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 1279825743
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.96189886, g: 1, b: 0.033018887, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 611fbb2e0411c8f47aac4e944cb4b582, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -100,18 +100,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.054312944, y: 0.9941224}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 10.8, y: 10.8}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 5.78381, y: 2.947231}
   m_EdgeRadius: 0
 --- !u!114 &2237717222242160540
 MonoBehaviour:
@@ -125,14 +125,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9af586f37ca38b84fb8ce0a211170b4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 3339971459756170523}
-  bulletForce: 20
   weapon_name: 
   fire_rate: 0
   weapon_dmg_mod: 0
   fire_range: 0
-  canFire: 0
-  canBePickedUp: 0
   bullet_type: {fileID: 1818565862397610861, guid: faf8f038e3cb20243b6895a419420ab5, type: 3}
 --- !u!1 &3339971459756170524
 GameObject:
@@ -158,7 +154,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3339971459756170524}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: -3.67, y: 1.37, z: 0}
   m_LocalScale: {x: 1, y: 3.1397173, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

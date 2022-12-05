@@ -60,8 +60,8 @@ public sealed class AmmoManager : MonoBehaviour
         // this will also set the damage each bullet does
         if(bulletType == null)  
         {
-            bulletType = Resources.Load<GameObject>("Bullet");
-            SetNewAmmoType(bulletType);      
+            // bulletType = Resources.Load<GameObject>("Bullet");
+            SetNewAmmoType(Resources.Load<GameObject>("Bullet"));      
         }
     }
 
@@ -167,7 +167,9 @@ public sealed class AmmoManager : MonoBehaviour
             // Debug.Log("creating new bullet " + range);
 
             // create a bullet here with the range, damage, position, rotation
+            // firePoint.Rotate(0,0,90);
             GameObject bullet = Instantiate(bulletType, firePoint.position, firePoint.rotation);
+            bullet.transform.Rotate(0,0,90);
 
             // if a weapon's base damage is 0, then make it 1 for the purpose of multiplying down below
             if(damage == 0)
