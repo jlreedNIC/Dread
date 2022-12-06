@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7734073454430188446}
   - component: {fileID: 7734073454430188447}
-  - component: {fileID: 7734073454430188445}
   - component: {fileID: 2999591588521120852}
+  - component: {fileID: 6443889078240300069}
   m_Layer: 0
   m_Name: perma_ammo
   m_TagString: items
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7734073454430188434}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.35, y: -4.31, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.23102, y: 0.23102, z: 0.23102}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 380557997
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2747690628134850419, guid: b670ab75dde984907b8570040daa08c5, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.5373578, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 7d22515e4ca6b3441ac70856997d10a1, type: 3}
+  m_Color: {r: 0.035793543, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -86,7 +86,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &7734073454430188445
+--- !u!114 &2999591588521120852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7734073454430188434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be37eb1cf81a3b14c98f7213409b813e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammo: 5
+--- !u!60 &6443889078240300069
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,7 +116,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.8828125}
+    oldSize: {x: 10.8, y: 10.8}
     newSize: {x: 1, y: 0.8828125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -111,22 +124,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.25, y: 0.43359375}
-      - {x: -0.5, y: 0}
-      - {x: -0.25, y: -0.43359375}
-      - {x: 0.25, y: -0.43359375}
-      - {x: 0.5, y: 0}
-      - {x: 0.25, y: 0.43359375}
---- !u!114 &2999591588521120852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7734073454430188434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be37eb1cf81a3b14c98f7213409b813e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ammo: 5
+    - - {x: -0.42999998, y: 1.3399999}
+      - {x: -1.74, y: 1.3299999}
+      - {x: -1.89, y: 1.1999999}
+      - {x: -2.01, y: 1.06}
+      - {x: -2.01, y: -1.39}
+      - {x: 1.92, y: -1.39}
+      - {x: 1.92, y: 1.3399999}
