@@ -46,8 +46,10 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == name);
         // guard code for missing audio asset. Avoids null exception.
         if (s == null)
+        {
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
+        }
         s.source.Play();
     }
 }
