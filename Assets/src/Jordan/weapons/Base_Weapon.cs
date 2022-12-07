@@ -85,6 +85,11 @@ public class Base_Weapon : MonoBehaviour
         return weapon_name;
     }
     
+    /*
+     * @brief Returns the name of the sound the weapon should implement
+     *
+     * @returns string weapon sound
+     */
     virtual public string getPewNoise()
     {
         return "standard_pew";

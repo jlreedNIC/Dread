@@ -32,6 +32,11 @@ public class Damage_Decorator : Base_Decorator
         return "Weapon damage +" + dmg_upgrade;
     }
 
+    /*
+     * @brief Returns the name of the sound the weapon should implement. Damage sound.
+     *
+     * @returns string weapon sound
+     */
     override public string getPewNoise()
     {
         return "damage";

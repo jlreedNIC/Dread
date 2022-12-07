@@ -32,6 +32,11 @@ public class Range_Decorator : Base_Decorator
         return "Fire Range +" + range_upgrade;
     }
 
+    /*
+     * @brief Returns the name of the sound the weapon should implement. Range sound
+     *
+     * @returns string weapon sound
+     */
     override public string getPewNoise()
     {
         return "range";
