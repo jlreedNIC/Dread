@@ -32,6 +32,11 @@ public class Damage_Decorator : Base_Decorator
         return "Weapon damage +" + dmg_upgrade;
     }
 
+    override public string getPewNoise()
+    {
+        return "damage";
+    }
+
     /*
      * @brief Returns the damage a weapon modifies the bullets by. 
      *        Adds damage then recursively calls the GetWeaponDamage function that it 

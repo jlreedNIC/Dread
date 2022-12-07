@@ -85,6 +85,11 @@ public class Base_Weapon : MonoBehaviour
         return weapon_name;
     }
     
+    virtual public string getPewNoise()
+    {
+        return "standard_pew";
+    }
+
     // Start is called before the first frame update
     // initialize variables at the start
     public void Start()
@@ -142,7 +147,7 @@ public class Base_Weapon : MonoBehaviour
 
             // bullet created by ammo manager for player
             // if no ammo left, bullet is not created
-            GameObject bullet = AmmoManager.Instance.createBullet(curRange, curDmg, firePoint);
+            GameObject bullet = AmmoManager.Instance.createBullet(curRange, curDmg, firePoint, getPewNoise());
             if(bullet != null)
             {
                 canFire = !canFire;

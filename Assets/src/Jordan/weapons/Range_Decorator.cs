@@ -32,6 +32,11 @@ public class Range_Decorator : Base_Decorator
         return "Fire Range +" + range_upgrade;
     }
 
+    override public string getPewNoise()
+    {
+        return "range";
+    }
+
     /*
      * @brief Returns the fire range a weapon has. 
      *        Adds the fire range and recursively calls the GetWeaponFireRange function 

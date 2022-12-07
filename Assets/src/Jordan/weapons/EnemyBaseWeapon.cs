@@ -42,6 +42,9 @@ public class EnemyBaseWeapon : Base_Weapon
 
             canFire = !canFire;
 
+            // play pewpew sound
+            FindObjectOfType<AudioManager>().Play("standard_pew");
+
             // create a bullet
             // enemy doesn't have to worry about ammo management
             // they have infinite bullets

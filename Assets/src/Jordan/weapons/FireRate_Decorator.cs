@@ -32,6 +32,11 @@ public class FireRate_Decorator : Base_Decorator
         return "Fire Rate " + rate_upgrade;
     }
 
+    override public string getPewNoise()
+    {
+        return "rate";
+    }
+
     /*
      * @brief Returns the fire rate a weapon has. 
      *        Adds to the fire rate and recursively calls the GetWeaponFireRate function 
