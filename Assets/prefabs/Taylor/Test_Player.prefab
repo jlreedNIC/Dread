@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8794072403301634480}
   - component: {fileID: 8794072403301634479}
   - component: {fileID: 8794072403301634478}
-  - component: {fileID: 999118244}
   - component: {fileID: 367775969}
+  - component: {fileID: 6200118211030347664}
   m_Layer: 0
   m_Name: Test_Player
   m_TagString: Player
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 8794072403301634483}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.6120186, y: -1.3812599, z: 0}
-  m_LocalScale: {x: 1, y: 1.0000001, z: 1}
+  m_LocalScale: {x: 3.3202267, y: 3.3202271, z: 3.3202267}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3554467851931333750}
@@ -78,8 +78,8 @@ SpriteRenderer:
   m_SortingLayerID: 1279825743
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0, g: 0.7249196, b: 0.8773585, a: 1}
+  m_Sprite: {fileID: 21300000, guid: e67aa3fe5a984954c8eee8ab6bc8c823, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageable: {fileID: 367775969}
+  tempHealthHolder: 0
   _playerMovementSpeed: 5
   activeMoveSpeed: 0
   _playerDashSpeed: 10
@@ -134,22 +135,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!70 &999118244
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8794072403301634483}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
-  m_Direction: 0
 --- !u!114 &367775969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,8 +147,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a06155034c25240b4be49eecfec365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthTotal: 0
   baseHealth: 100
   currentHealth: 0
+--- !u!60 &6200118211030347664
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8794072403301634483}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.4, y: 0.47}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.14999999, y: 0.235}
+      - {x: 0.12, y: 0.21499999}
+      - {x: 0.06, y: 0.235}
+      - {x: -0.049999997, y: 0.235}
+      - {x: -0.089999996, y: 0.205}
+      - {x: -0.19, y: -0.044999998}
+      - {x: -0.19, y: -0.21499999}
+      - {x: -0.17999999, y: -0.235}
+      - {x: 0.099999994, y: -0.235}
+      - {x: 0.19999999, y: -0.13499999}
+      - {x: 0.19999999, y: 0.055}
+      - {x: 0.17999999, y: 0.235}
 --- !u!1001 &1152243456
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -184,12 +207,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3554467850779648886, guid: de550358e11194e4e887d8da206dca15, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.08096262
+      objectReference: {fileID: 0}
+    - target: {fileID: 3554467850779648886, guid: de550358e11194e4e887d8da206dca15, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.25419974
+      objectReference: {fileID: 0}
+    - target: {fileID: 3554467850779648886, guid: de550358e11194e4e887d8da206dca15, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.25419974
+      objectReference: {fileID: 0}
+    - target: {fileID: 3554467850779648886, guid: de550358e11194e4e887d8da206dca15, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.27
+      value: -0.123
       objectReference: {fileID: 0}
     - target: {fileID: 3554467850779648886, guid: de550358e11194e4e887d8da206dca15, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.67
+      value: 0.151
       objectReference: {fileID: 0}
     - target: {fileID: 3554467850779648886, guid: de550358e11194e4e887d8da206dca15, type: 3}
       propertyPath: m_LocalPosition.z
@@ -197,7 +232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3554467850779648886, guid: de550358e11194e4e887d8da206dca15, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9999646
       objectReference: {fileID: 0}
     - target: {fileID: 3554467850779648886, guid: de550358e11194e4e887d8da206dca15, type: 3}
       propertyPath: m_LocalRotation.x
@@ -209,7 +244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3554467850779648886, guid: de550358e11194e4e887d8da206dca15, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.008424488
       objectReference: {fileID: 0}
     - target: {fileID: 3554467850779648886, guid: de550358e11194e4e887d8da206dca15, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -221,7 +256,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3554467850779648886, guid: de550358e11194e4e887d8da206dca15, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -0.965
       objectReference: {fileID: 0}
     - target: {fileID: 3554467850779648890, guid: de550358e11194e4e887d8da206dca15, type: 3}
       propertyPath: m_Name

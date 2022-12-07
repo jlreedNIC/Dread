@@ -33,6 +33,16 @@ public class Damage_Decorator : Base_Decorator
     }
 
     /*
+     * @brief Returns the name of the sound the weapon should implement. Damage sound.
+     *
+     * @returns string weapon sound
+     */
+    override public string getPewNoise()
+    {
+        return "damage";
+    }
+
+    /*
      * @brief Returns the damage a weapon modifies the bullets by. 
      *        Adds damage then recursively calls the GetWeaponDamage function that it 
      *        overrides so as to recursively modify damage.

@@ -27,15 +27,14 @@ public class PlayerBaseWeapon : Base_Weapon
     {
         if(canFire)
         {
-            // play pewpew sound
-            FindObjectOfType<AudioManager>().Play("standard_pew");
+            
             int curDmg = GetWeaponDamage();
             float curRate = GetWeaponFireRate();
             int curRange = GetWeaponFireRange();
 
             // bullet created by ammo manager for player
             // if no ammo left, bullet is not created
-            GameObject bullet = AmmoManager.Instance.createBullet(curRange, curDmg, firePoint);
+            GameObject bullet = AmmoManager.Instance.createBullet(curRange, curDmg, firePoint, getPewNoise());
             if(bullet != null)
             {
                 canFire = !canFire;

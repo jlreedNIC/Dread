@@ -160,7 +160,7 @@ public sealed class AmmoManager : MonoBehaviour
      * @returns GameObject new bullet with specified parameters
      *          null if not enough ammo
      */
-    public GameObject createBullet(int range, int damage, Transform firePoint)
+    public GameObject createBullet(int range, int damage, Transform firePoint, string pewNoise)
     {
         if(totalAmmo > 0)
         {
@@ -185,9 +185,17 @@ public sealed class AmmoManager : MonoBehaviour
             // subtract from ammo count
             updateAmmoCount(-1);
 
+            // play pewpew sound
+            FindObjectOfType<AudioManager>().Play(pewNoise);
+
             return bullet;
         }
-        else return null;
+        else 
+        {
+            // play empty sound
+            FindObjectOfType<AudioManager>().Play("empty");
+            return null;
+        }
     }
 }
 

@@ -33,6 +33,16 @@ public class FireRate_Decorator : Base_Decorator
     }
 
     /*
+     * @brief Returns the name of the sound the weapon should implement. Rate sound
+     *
+     * @returns string weapon sound
+     */
+    override public string getPewNoise()
+    {
+        return "rate";
+    }
+
+    /*
      * @brief Returns the fire rate a weapon has. 
      *        Adds to the fire rate and recursively calls the GetWeaponFireRate function 
      *        that it overrides so as to recursively modify the fire rate.
