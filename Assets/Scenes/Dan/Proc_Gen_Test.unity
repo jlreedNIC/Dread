@@ -535,6 +535,7 @@ GameObject:
   - component: {fileID: 993632311}
   - component: {fileID: 993632313}
   - component: {fileID: 993632314}
+  - component: {fileID: 993632315}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -552,7 +553,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.2784314, g: 0.2784314, b: 0.2784314, a: 0}
+  m_BackGroundColor: {r: 0.028301895, g: 0.028168395, b: 0.028168395, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -647,6 +648,14 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!81 &993632315
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993632309}
+  m_Enabled: 1
 --- !u!1 &1197832688
 GameObject:
   m_ObjectHideFlags: 0
@@ -749,7 +758,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1455284486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -762,7 +771,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ebb2ae1c50a7ec4d9de46e35119bf24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sfxGroups: []
+  sounds:
+  - name: standard_pew
+    clip: {fileID: 8300000, guid: 9afd6cc7134a3428cb7606e918101f8f, type: 3}
+    volume: 0.788
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Theme
+    clip: {fileID: 8300000, guid: f5e578b4b4d36964d928c6d0913fdeab, type: 3}
+    volume: 0.312
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: empty
+    clip: {fileID: 8300000, guid: 9cf1619e3dafe6f41a702f49982e88e1, type: 3}
+    volume: 0.312
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &1455284487
 Transform:
   m_ObjectHideFlags: 0

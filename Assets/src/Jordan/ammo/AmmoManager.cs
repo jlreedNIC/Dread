@@ -181,6 +181,7 @@ public sealed class AmmoManager : MonoBehaviour
             bullet.GetComponent<Bullet>().setFireRange(range);
             bullet.GetComponent<Bullet>().setTotalDamage(damage*ammoDamage);
 
+
             // subtract from ammo count
             updateAmmoCount(-1);
 

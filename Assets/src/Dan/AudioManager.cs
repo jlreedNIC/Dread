@@ -1,44 +1,35 @@
-using System.Collections;
+using UnityEngine.Audio;
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
-
-// public enum SFXTYPE
-// {
-//     step = 0,
-//     health;
-// }
 
 
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager instance;
-
-    private AudioSource as_sfx;
-    private AudioSource[] as_music;
-
-    [SerializeField] private SFXGroup[] sfxGroups;
-
-    [System.Serializable]
-    private class SFXGroup
-    {
-        [SerializeField] private string name;
-        public AudioClip[] sounds;
-        public float[] volumes;
-    }
-
+    public Sound[] sounds;
 
     void Awake()
     {
-        instance = this;
-        as_sfx = transform.Find("AS_SFX").GetComponent<AudioSource>();
-        as_music = new AudioSource[2];
+       foreach (Sound s in sounds)
+       {
+           s.source = gameObject.AddComponent<AudioSource>();
+           s.source.clip = s.clip;
 
-        for(int i = 0; i < as_music.Length; i++)
-        {
-            as_music[i] = transform.Find("AS_MUSIC_" + i.ToString()).GetComponent<AudioSource>();
-        }
+           s.source.volume = s.volume;
+           s.source.pitch = s.pitch;
+           s.source.loop = s.loop;
+       } 
+    }
+
+    void Start ()
+    {
+        Play("Theme");
+    }
+
+    public void Play (string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        s.source.Play();
     }
 }

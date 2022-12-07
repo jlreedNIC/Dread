@@ -28,7 +28,7 @@ public class PlayerBaseWeapon : Base_Weapon
         if(canFire)
         {
             // play pewpew sound
-
+            FindObjectOfType<AudioManager>().Play("standard_pew");
             int curDmg = GetWeaponDamage();
             float curRate = GetWeaponFireRate();
             int curRange = GetWeaponFireRange();
