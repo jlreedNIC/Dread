@@ -784,6 +784,24 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  - name: damage
+    clip: {fileID: 8300000, guid: 5f2821fc1d23646259af2167fc82a481, type: 3}
+    volume: 0.761
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: range
+    clip: {fileID: 8300000, guid: f433dd47bae4e4db5a0518044da14a8d, type: 3}
+    volume: 0.783
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: rate
+    clip: {fileID: 8300000, guid: 69445cce8a60f47a59a639a565185c15, type: 3}
+    volume: 0.772
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   - name: empty
     clip: {fileID: 8300000, guid: 9cf1619e3dafe6f41a702f49982e88e1, type: 3}
     volume: 0.312
