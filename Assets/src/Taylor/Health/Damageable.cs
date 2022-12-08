@@ -60,6 +60,8 @@ public class Damageable : MonoBehaviour
                 else
                 {
                 Destroy(this.gameObject);
+                // play died sound
+                FindObjectOfType<AudioManager>().Play("player_dead");
                 }
                 
          }

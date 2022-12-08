@@ -91,6 +91,7 @@ public class WinLossMngr : MonoBehaviour
     public void triggerDeathScreen()
     {
         Debug.Log("death screen triggered");
+        
         deathScreen.SetActive(true);
     }
 

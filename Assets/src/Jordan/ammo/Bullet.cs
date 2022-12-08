@@ -48,6 +48,8 @@ public class Bullet : MonoBehaviour
         if(other.gameObject.TryGetComponent<Damageable>(out Damageable damageableComponent))
         {
             damageableComponent.TakeDamage(total_damage);
+            // play damage sound
+            FindObjectOfType<AudioManager>().Play("player_dmg");
         }
         
         Destroy(gameObject);
