@@ -125,14 +125,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40f8966cc991f2f4d9beb3f7ab630608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 3716014507282511515}
-  bulletForce: 20
   weapon_name: 
   fire_rate: 0
   weapon_dmg_mod: 0
   fire_range: 0
-  canFire: 0
-  canBePickedUp: 0
   weapon_wrappee: {fileID: 0}
   dmg_upgrade: 1
 --- !u!1 &3716014507282511516
@@ -159,7 +155,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3716014507282511516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1.415, z: 0}
   m_LocalScale: {x: 1, y: 3.1397173, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
